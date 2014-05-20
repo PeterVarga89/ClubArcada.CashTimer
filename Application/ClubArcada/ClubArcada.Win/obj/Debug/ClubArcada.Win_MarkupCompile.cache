@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\
+A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\
 ClubArcada.Win
 none
 false
 DEBUG;TRACE
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\App.xaml
+A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\App.xaml
 81267417265
 2-1942734200
 13-1415831819
-15900591065
+151811007448
 Controls\PlayerLineCtrl.xaml;Dialogs\AddPlayerDlg.xaml;Dialogs\LoginDlg.xaml;Dialogs\NewPlayerDlg.xaml;Dialogs\SyncDlg.xaml;Dialogs\TournamentSelectDlg.xaml;MainWindow.xaml;Styles\Styles.xaml;
 
 False
