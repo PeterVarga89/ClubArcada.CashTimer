@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="ClubArcada.Win.Controls.PlayerLineCtrl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="120" Height="50" Margin="10,10,10,5" HorizontalAlignment="Stretch" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="560"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border BorderBrush="DarkGray"  Background="Black" BorderThickness="1" Margin="0,0,10,0" CornerRadius="8"></Border>
+        <Border BorderBrush="DarkGray" Background="Black" BorderThickness="1" Grid.Column="1" CornerRadius="8"></Border>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="10,3,0,0" Text="{Binding Result.User.Nickname}" Padding="0" FontSize="18"  Foreground="White" > </TextBlock>
+            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" Padding="0" FontSize="14" Foreground="Wheat" Grid.Row="1" > Peter Varga</TextBlock>
+
+            <TextBlock Margin="10,3,0,0" Grid.Column="1" Grid.Row="0" Padding="0" FontSize="18"  Foreground="White" >Start: 20:15 7.5.2014</TextBlock>
+            <TextBlock Margin="10,3,0,0" Grid.Column="1" Grid.Row="1" Padding="0" FontSize="14"  Foreground="Wheat" >227 min</TextBlock>
+
+            <TextBlock Margin="10,3,0,0" Grid.Column="2" Grid.Row="0" Padding="0" FontSize="18"  Foreground="White" >In: 160 €</TextBlock>
+            <TextBlock Margin="10,3,0,0" Grid.Column="2" Grid.Row="1" Padding="0" FontSize="14"  Foreground="Wheat" >Typ hry: 1/2 €</TextBlock>
+        </Grid>
+
+        <Grid Grid.Column="1" HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource btnCashIn}" Grid.Column="0" Content="CASH IN"  HorizontalAlignment="Stretch"  Margin="10,8,5,8" Click="btnCashIn_Click" />
+            <Button Style="{StaticResource btnCashOut}" Grid.Column="1" Content="CASH OUT" HorizontalAlignment="Stretch"  Margin="5,8,5,8" Click="btnCashOut_Click" />
+            <Button Style="{StaticResource btnDelete}" Grid.Column="2" Content="DELETE" HorizontalAlignment="Stretch"  Margin="5,8,10,8" Click="btnDelete_Click" />
+        </Grid>
+
+    </Grid>
+</UserControl>

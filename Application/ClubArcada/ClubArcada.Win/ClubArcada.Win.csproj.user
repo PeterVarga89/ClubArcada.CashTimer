@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectView>ProjectFiles</ProjectView>
+    <PublishUrlHistory>A:\Club Arcada\ClubArcada.CashTimer\Releases\|publish\</PublishUrlHistory>
+    <InstallUrlHistory>http://www.pokerlevice.sk/applications/cashtimer/</InstallUrlHistory>
+    <SupportUrlHistory />
+    <UpdateUrlHistory>http://www.pokerlevice.sk/applications/cashtimer/</UpdateUrlHistory>
+    <BootstrapperUrlHistory />
+    <ErrorReportUrlHistory />
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+  </PropertyGroup>
+</Project>

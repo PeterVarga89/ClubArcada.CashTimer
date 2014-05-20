@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClubArcada.Win", "ClubArcada.Win\ClubArcada.Win.csproj", "{C532DBEC-0A6D-4AF6-887D-3ED3B9FE103A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClubArcada.BusinessObjects", "ClubArcada.BusinessObjects\ClubArcada.BusinessObjects.csproj", "{70225BB5-7DC4-4BC3-B3BC-DA871A374BAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C532DBEC-0A6D-4AF6-887D-3ED3B9FE103A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C532DBEC-0A6D-4AF6-887D-3ED3B9FE103A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C532DBEC-0A6D-4AF6-887D-3ED3B9FE103A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C532DBEC-0A6D-4AF6-887D-3ED3B9FE103A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70225BB5-7DC4-4BC3-B3BC-DA871A374BAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70225BB5-7DC4-4BC3-B3BC-DA871A374BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70225BB5-7DC4-4BC3-B3BC-DA871A374BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70225BB5-7DC4-4BC3-B3BC-DA871A374BAE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

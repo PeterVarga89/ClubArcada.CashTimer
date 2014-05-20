@@ -1,0 +1,45 @@
+﻿<Window x:Class="ClubArcada.Win.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Background="Black" Height="350" Width="525" WindowState="Maximized" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <!--HEADER-->
+        <Grid Background="Black" Grid.Row="0">
+            <StackPanel Orientation="Horizontal">
+                <Image Height="60" Margin="6,0,0,0" Source="Images/Logo.PNG" />
+            </StackPanel>
+            <Button Style="{StaticResource btnCashIn}" Width="160" HorizontalAlignment="Right" Margin="0,10,20,10" Grid.Row="0" Content="Pridat hráca" Click="Button_Click"></Button>
+            <Button Style="{StaticResource btnCashIn}" Width="160" HorizontalAlignment="Right" Margin="0,10,20,10" Grid.Row="0" Content="Pridat stôl" Click="Button_btnNewTable"></Button>
+
+            <Border BorderThickness="1" BorderBrush="Gray" Height="1" VerticalAlignment="Bottom"></Border>
+        </Grid>
+
+        <!--CONTENT-->
+        <Grid Grid.Row="1">
+            <StackPanel>
+                <StackPanel.Background>
+                    <ImageBrush ImageSource="Images/bg.png" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,160,160"></ImageBrush>
+                </StackPanel.Background>
+            </StackPanel>
+            <TabControl Name="tabCtrl" Background="Transparent">
+                <!--<TabItem Header="">
+                    <ScrollViewer>
+                        <StackPanel Name="spPlayerLineContainer" />
+                    </ScrollViewer>
+                </TabItem>-->
+            </TabControl>
+        </Grid>
+
+        <!--FOOTER-->
+        <Grid Grid.Row="2">
+            <Border BorderThickness="1" BorderBrush="DarkGray" Height="1" VerticalAlignment="Top"></Border>
+        </Grid>
+
+    </Grid>
+</Window>
