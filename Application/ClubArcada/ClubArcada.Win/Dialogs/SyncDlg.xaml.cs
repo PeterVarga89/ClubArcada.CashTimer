@@ -47,7 +47,7 @@ namespace ClubArcada.Win.Dialogs
 
                 var usersToSync = online.Where(t => !local.Select(ts => ts.TournamentId).Contains(t.TournamentId)).ToList();
                 BusinessObjects.Data.TournamentData.Insert(BusinessObjects.Enumerators.eConnectionString.Local, usersToSync);
-                System.Threading.Thread.Sleep(4000);
+                System.Threading.Thread.Sleep(500);
             };
 
             worker.RunWorkerCompleted += delegate
