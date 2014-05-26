@@ -14,9 +14,10 @@
             <StackPanel Orientation="Horizontal">
                 <Image Height="60" Margin="6,0,0,0" Source="Images/Logo.PNG" />
             </StackPanel>
-            <Button Style="{StaticResource btnCashIn}" Width="160" HorizontalAlignment="Right" Margin="0,10,20,10" Grid.Row="0" Content="Pridat hráca" Click="Button_Click"></Button>
-            <Button Style="{StaticResource btnCashIn}" Width="160" HorizontalAlignment="Right" Margin="0,10,20,10" Grid.Row="0" Content="Pridat stôl" Click="Button_btnNewTable"></Button>
-
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Style="{StaticResource btnCashIn}" Width="160" Margin="0,10,20,10" Grid.Row="0" Content="Pridat hráca" Click="Button_Click"></Button>
+            <Button Style="{StaticResource btnCashIn}" Width="160" Margin="0,10,20,10" Grid.Row="0" Content="Pridat stôl" Click="Button_btnNewTable"></Button>
+            </StackPanel>
             <Border BorderThickness="1" BorderBrush="Gray" Height="1" VerticalAlignment="Bottom"></Border>
         </Grid>
 

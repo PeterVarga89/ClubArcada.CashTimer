@@ -74,3 +74,5 @@ A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\
 A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.csproj.GenerateResource.Cache
 A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.exe.manifest
 A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.application
+A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\NewTableDlg.baml
+A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\NewTableDlg.g.cs

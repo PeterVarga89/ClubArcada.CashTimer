@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ClubArcada.Win.exe" size="509952">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ClubArcada.Win.exe" size="512512">
       <assemblyIdentity name="ClubArcada.Win" version="1.0.0.5" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>8fv84gQaas9q8CzW4db3DvjBXSv+deN20uZZNmE0Yk4=</dsig:DigestValue>
+        <dsig:DigestValue>GkHb0BXILEMKoSV5E3mIl0lnosHi64sYycvT5sDiHDg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

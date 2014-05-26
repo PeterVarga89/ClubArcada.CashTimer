@@ -14,7 +14,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>A:\Club Arcada\ClubArcada.CashTimer\Releases\</PublishUrl>
+    <PublishUrl>ftp://82.119.117.77/FTP_CashTimer/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -29,6 +29,8 @@
     <ProductName>Cash TIMER</ProductName>
     <PublisherName>Peter Varga</PublisherName>
     <SuiteName>ClubArcada</SuiteName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
     <ApplicationRevision>6</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
@@ -113,6 +115,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Dialogs\NewTableDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\SyncDlg.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -140,6 +146,9 @@
     </Compile>
     <Compile Include="Dialogs\NewPlayerDlg.xaml.cs">
       <DependentUpon>NewPlayerDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\NewTableDlg.xaml.cs">
+      <DependentUpon>NewTableDlg.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\SyncDlg.xaml.cs">
       <DependentUpon>SyncDlg.xaml</DependentUpon>
