@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\App.xaml
-9-1154393478
+14-1475402114
 2-1942734200
-142078695784
-151811007448
-Controls\PlayerLineCtrl.xaml;Dialogs\AddPlayerDlg.xaml;Dialogs\LoginDlg.xaml;Dialogs\NewPlayerDlg.xaml;Dialogs\NewTableDlg.xaml;Dialogs\SyncDlg.xaml;Dialogs\TournamentSelectDlg.xaml;MainWindow.xaml;Styles\Styles.xaml;
+21725221548
+172093965153
+Controls\PlayerLineCtrl.xaml;Dialogs\AddPlayerDlg.xaml;Dialogs\AlertDialog.xaml;Dialogs\CashInDlg.xaml;Dialogs\CashOutDlg.xaml;Dialogs\LoginDlg.xaml;Dialogs\NewPlayerDlg.xaml;Dialogs\NewTableDlg.xaml;Dialogs\RegisterUserDlg.xaml;Dialogs\SyncDlg.xaml;Dialogs\TotalCashOutDlg.xaml;Dialogs\TournamentSelectDlg.xaml;MainWindow.xaml;Styles\Styles.xaml;
 
 False
 

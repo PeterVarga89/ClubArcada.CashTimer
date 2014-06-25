@@ -14,7 +14,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>ftp://82.119.117.77/FTP_CashTimer/</PublishUrl>
+    <PublishUrl>A:\Club Arcada\ClubArcada.CashTimer\Releases\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -31,7 +31,7 @@
     <SuiteName>ClubArcada</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>32</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -77,6 +77,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\PokerSystemCommon\ClubArcada\ClubArcada.Common\bin\Debug\ClubArcada.Common.dll</HintPath>
     </Reference>
+    <Reference Include="InputPanelConfigurationLib">
+      <HintPath>..\..\Dlls\InputPanelConfigurationLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -87,6 +91,7 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationClient" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -107,6 +112,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Dialogs\AlertDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\CashInDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\CashOutDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\LoginDlg.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -119,7 +136,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Dialogs\RegisterUserDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\SyncDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\TotalCashOutDlg.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -141,6 +166,15 @@
     <Compile Include="Dialogs\AddPlayerDlg.xaml.cs">
       <DependentUpon>AddPlayerDlg.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\AlertDialog.xaml.cs">
+      <DependentUpon>AlertDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\CashInDlg.xaml.cs">
+      <DependentUpon>CashInDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\CashOutDlg.xaml.cs">
+      <DependentUpon>CashOutDlg.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\LoginDlg.xaml.cs">
       <DependentUpon>LoginDlg.xaml</DependentUpon>
     </Compile>
@@ -150,12 +184,19 @@
     <Compile Include="Dialogs\NewTableDlg.xaml.cs">
       <DependentUpon>NewTableDlg.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\RegisterUserDlg.xaml.cs">
+      <DependentUpon>RegisterUserDlg.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\SyncDlg.xaml.cs">
       <DependentUpon>SyncDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\TotalCashOutDlg.xaml.cs">
+      <DependentUpon>TotalCashOutDlg.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\TournamentSelectDlg.xaml.cs">
       <DependentUpon>TournamentSelectDlg.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InkInputHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -166,6 +207,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Other\Extensions.cs" />
     <Compile Include="Other\Functions.cs" />
     <Compile Include="Other\Session.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

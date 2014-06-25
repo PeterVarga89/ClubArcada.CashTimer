@@ -23,13 +23,13 @@
                 <ColumnDefinition Width="180"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Margin="10,3,0,0" Text="{Binding Result.User.Nickname}" Padding="0" FontSize="18"  Foreground="White" > </TextBlock>
-            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" Padding="0" FontSize="14" Foreground="Wheat" Grid.Row="1" > Peter Varga</TextBlock>
+            <TextBlock Margin="10,3,0,0" Text="{Binding Result.User.NickName, Mode=OneWay}" Padding="0" FontSize="18"  Foreground="White" > </TextBlock>
+            <TextBlock Margin="10,0,0,0" Text="{Binding Result.User.FullName, Mode=OneWay}" VerticalAlignment="Center" Padding="0" FontSize="14" Foreground="Wheat" Grid.Row="1" ></TextBlock>
 
-            <TextBlock Margin="10,3,0,0" Grid.Column="1" Grid.Row="0" Padding="0" FontSize="18"  Foreground="White" >Start: 20:15 7.5.2014</TextBlock>
-            <TextBlock Margin="10,3,0,0" Grid.Column="1" Grid.Row="1" Padding="0" FontSize="14"  Foreground="Wheat" >227 min</TextBlock>
+            <TextBlock Margin="10,3,0,0" Text="{Binding Result.StartTimeString, Mode=OneWay}" Grid.Column="1" Grid.Row="0" Padding="0" FontSize="14"  Foreground="White" ></TextBlock>
+            <TextBlock Margin="10,3,0,0" Name="txtTimer" Grid.Column="1" Grid.Row="1" Padding="0" FontSize="14"  Foreground="Wheat" ></TextBlock>
 
-            <TextBlock Margin="10,3,0,0" Grid.Column="2" Grid.Row="0" Padding="0" FontSize="18"  Foreground="White" >In: 160 €</TextBlock>
+            <TextBlock Text="{Binding Result.CashInTotal,StringFormat=In: {0}€, Mode=OneWay}" Margin="10,3,0,0" Grid.Column="2" Grid.Row="0" Padding="0" FontSize="18"  Foreground="White" ></TextBlock>
             <TextBlock Margin="10,3,0,0" Grid.Column="2" Grid.Row="1" Padding="0" FontSize="14"  Foreground="Wheat" >Typ hry: 1/2 €</TextBlock>
         </Grid>
 
@@ -37,12 +37,15 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="100"/>
+                <!--<ColumnDefinition Width="100"/>-->
             </Grid.ColumnDefinitions>
             <Button Style="{StaticResource btnCashIn}" Grid.Column="0" Content="CASH IN"  HorizontalAlignment="Stretch"  Margin="10,8,5,8" Click="btnCashIn_Click" />
             <Button Style="{StaticResource btnCashOut}" Grid.Column="1" Content="CASH OUT" HorizontalAlignment="Stretch"  Margin="5,8,5,8" Click="btnCashOut_Click" />
-            <Button Style="{StaticResource btnDelete}" Grid.Column="2" Content="DELETE" HorizontalAlignment="Stretch"  Margin="5,8,10,8" Click="btnDelete_Click" />
+            <!--<Button Style="{StaticResource btnDelete}" Grid.Column="2" Content="DELETE" HorizontalAlignment="Stretch"  Margin="5,8,10,8" Click="btnDelete_Click" />-->
         </Grid>
 
+        <Border Visibility="{Binding IsGrayVisible}" BorderBrush="Black" Opacity="0.7" Background="Black" BorderThickness="1" Margin="0,0,10,0" CornerRadius="8"></Border>
+        <Border Visibility="{Binding IsGrayVisible}" BorderBrush="Black" Opacity="0.7" Background="Black" BorderThickness="1" Grid.Column="1" CornerRadius="8"></Border>
+        
     </Grid>
 </UserControl>

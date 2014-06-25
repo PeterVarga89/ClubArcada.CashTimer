@@ -1,0 +1,15 @@
+﻿<Window x:Class="ClubArcada.Win.Dialogs.AlertDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Style="{StaticResource smallWindowStyle}"
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="{Binding AlertText}" Foreground="White" FontSize="18" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" ></TextBlock>
+
+        <Button Style="{StaticResource btnCashIn}" Margin="10" Grid.Row="6" Grid.ColumnSpan="3" Content="OK" Click="Button_Click"></Button>
+    </Grid>
+</Window>

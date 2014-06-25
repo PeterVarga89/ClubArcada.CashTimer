@@ -1,65 +1,59 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12, 13.25" name="PKDB">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.125" name="PKDB">
   <DataContextMoniker Name="/PKDBDataContext" />
   <nestedChildShapes>
-    <classShape Id="6fbe5b5a-bef7-4487-bc51-6f788cb8f186" absoluteBounds="0.75, 0.75, 2, 1.9631982421875">
+    <classShape Id="20b79de9-8e7b-45d4-a2d7-91d15b949ea1" absoluteBounds="0.5, 0.5, 2, 1.9631982421875">
       <DataClassMoniker Name="/PKDBDataContext/CashIn" />
       <nestedChildShapes>
-        <elementListCompartment Id="7330ca35-a8a2-43ed-bcf4-e8a594e1abd8" absoluteBounds="0.765, 1.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="73e4b255-e694-4b23-8b5f-e8be9a66bba6" absoluteBounds="0.515, 0.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="b2f7f6b0-55dd-4d09-9e59-46440116a314" absoluteBounds="3.75, 0.75, 2, 1.7708968098958331">
-      <DataClassMoniker Name="/PKDBDataContext/UserSetting" />
-      <nestedChildShapes>
-        <elementListCompartment Id="c5c5d811-5f75-45d4-be56-c283fe2cd8ae" absoluteBounds="3.765, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="57f31a51-9b20-4c1c-ac40-657b793d478e" absoluteBounds="0.75, 3.75, 2, 2.347801106770834">
-      <DataClassMoniker Name="/PKDBDataContext/CashResult" />
-      <nestedChildShapes>
-        <elementListCompartment Id="013f43ae-aa89-4976-acd7-3061cb101d9b" absoluteBounds="0.765, 4.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="1bf9a450-2c04-4593-b540-1df3da98a4c3" absoluteBounds="3.75, 3.75, 2, 2.1554996744791666">
+    <classShape Id="b675c1f5-7046-4c21-bdca-63e917f76bb9" absoluteBounds="2.625, 3.375, 2, 2.1554996744791666">
       <DataClassMoniker Name="/PKDBDataContext/League" />
       <nestedChildShapes>
-        <elementListCompartment Id="2972969e-c230-4ec0-8b33-1ee3681dfcd4" absoluteBounds="3.765, 4.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="9a7e98b2-8eec-4c85-8701-bf5efe8c4fb8" absoluteBounds="2.64, 3.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="794e9c6f-9e51-4405-9d07-b1c6dc2167d7" absoluteBounds="6.75, 0.75, 2, 4.6554182942708326">
+    <classShape Id="4f70b2d1-76de-45f6-8e31-429606517b14" absoluteBounds="4.75, 0.5, 2, 4.6554182942708326">
       <DataClassMoniker Name="/PKDBDataContext/TournamentCashout" />
       <nestedChildShapes>
-        <elementListCompartment Id="187db916-af26-48cb-93c7-d88f2bd9ce97" absoluteBounds="6.765, 1.21, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="0f153a74-2773-461a-bbde-07ce1647d40a" absoluteBounds="4.765, 0.96, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="1044541c-8632-4243-b0db-3aadaf9e8f55" absoluteBounds="3.75, 6.75, 2, 3.8862125651041666">
+    <classShape Id="747ff24d-3249-4a57-a3d4-afecc3ce745d" absoluteBounds="0.5, 4.5, 2, 3.8862125651041666">
       <DataClassMoniker Name="/PKDBDataContext/TournamentDetail" />
       <nestedChildShapes>
-        <elementListCompartment Id="83bff5d9-8100-46a8-8088-5a8ff134670c" absoluteBounds="3.765, 7.21, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="3c9b610d-7479-4f27-a49f-966b223a992f" absoluteBounds="0.51499999999999968, 4.96, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="f9eb32a3-f8bb-4661-94df-3bf914e84f96" absoluteBounds="6.75, 6.75, 2, 3.3093082682291666">
-      <DataClassMoniker Name="/PKDBDataContext/TournamentResult" />
-      <nestedChildShapes>
-        <elementListCompartment Id="d48ae79f-33fd-4d26-8213-5ea5973beb0e" absoluteBounds="6.765, 7.21, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="08ebf2f0-5728-4f55-8277-c7f49ba7b73f" absoluteBounds="9.75, 0.75, 2, 3.3093082682291666">
+    <classShape Id="582f8c17-681f-46e6-b8db-6efe6ef7cd2b" absoluteBounds="2.625, 5.625, 2, 3.3093082682291666">
       <DataClassMoniker Name="/PKDBDataContext/Tournament" />
       <nestedChildShapes>
-        <elementListCompartment Id="770a560b-ec3f-4df2-b5da-ac454e148b7f" absoluteBounds="9.765, 1.21, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="368b2958-ff05-4a70-9416-0e1abc704748" absoluteBounds="2.64, 6.0850000000000009, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="3a615058-e704-41a6-bfa0-483951a605f3" absoluteBounds="9.75, 5.75, 2, 2.1554996744791666">
-      <DataClassMoniker Name="/PKDBDataContext/UserRole" />
-      <nestedChildShapes>
-        <elementListCompartment Id="4b60567f-3c84-4a48-aa20-dee7ff9cde84" absoluteBounds="9.765, 6.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="3f822de0-5ba7-4008-9634-cabde9dce6be" absoluteBounds="9.75, 8.75, 2, 4.2708154296874987">
+    <classShape Id="2fbabef1-5611-415c-ae6b-84f90d64db23" absoluteBounds="6.875, 0.5, 2, 4.2708154296874987">
       <DataClassMoniker Name="/PKDBDataContext/User" />
       <nestedChildShapes>
-        <elementListCompartment Id="7e877c54-42cd-48fb-92d8-b7bb8d8c4921" absoluteBounds="9.765, 9.21, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="171c7e4f-ef3f-4a33-8e92-2ac9ed9a987e" absoluteBounds="6.8900000000000006, 0.96, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="92f910e9-18f3-4001-9b29-7e6c415f3b69" absoluteBounds="4.75, 5.25, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/PKDBDataContext/UserSetting" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6bd7fd5f-5912-4151-b91f-5329da5491f3" absoluteBounds="4.7650000000000006, 5.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bb93bdfc-0ecf-4fad-b5d4-91bc7b22a1f7" absoluteBounds="0.5, 2.625, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/PKDBDataContext/CashTable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bef1d923-bc58-4764-b239-f9d9c7360752" absoluteBounds="0.515, 3.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="03bdf956-ae31-4ca8-aad4-18c3d5e25bef" absoluteBounds="2.625, 0.5, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/PKDBDataContext/CashResult" />
+      <nestedChildShapes>
+        <elementListCompartment Id="418fb8f6-40df-4a2c-94f5-0d5f036cd189" absoluteBounds="2.64, 0.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

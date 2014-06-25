@@ -15,5 +15,14 @@ namespace ClubArcada.BusinessObjects.DataClasses
                 return string.Format("{0} - {1} {2}", this.NickName, this.FirstName, this.LastName);
             }
         }
+
+        public string FullName
+        {
+            get
+            {
+                return string.Format("{0} {1}",this.FirstName, this.LastName);
+            }
+            set { }
+        }
     }
 }

@@ -20,9 +20,11 @@ namespace ClubArcada.Win.Dialogs
     {
         CashResult Result { get; set; }
 
+        public MainWindow Main { get; set; }
+
         public List<ClubArcada.BusinessObjects.Enumerators.eGameType> GameTypeList { get; set; }
 
-        Double Amount { get; set; }
+        public Double Amount { get; set; }
 
         public NewPlayerDlg()
         {
@@ -36,19 +38,35 @@ namespace ClubArcada.Win.Dialogs
 
         private bool Validate()
         {
-            bool isValid = true;
+            int errorCount = 0;
 
-            isValid = Amount != 0;
+            errorCount = Amount == 0 ? errorCount + 1 : errorCount;
+            errorCount = cbTable.SelectedItem == null ? errorCount + 1 : errorCount;
+            errorCount = Result.User == null ? errorCount + 1 : errorCount;
 
-            return isValid;
+            return errorCount == 0;
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             if (Validate())
             {
-                CashResult res = new CashResult();
-                res.CashIns.Add(new CashIn() { Amount = Amount });
+                Result.CashResultId = Guid.NewGuid();
+                Result.StartTime = DateTime.Now;
+                Result.PlayerId = Guid.NewGuid();
+                Result.UserId = Result.User.UserId;
+
+                Result.CashIns = new List<CashIn>();
+                Result.CashIns.Add(new CashIn() 
+                {
+                    Amount = Amount,
+                    CashInId = Guid.NewGuid(),
+                    CashResultId = Result.CashResultId,
+                    DateCreated = DateTime.Now
+                });
+
+                Main.AddPlayer((cbTable.SelectedItem as CashTable).CashTableId, Result);
+                this.Close();
             }
         }
 
@@ -56,17 +74,35 @@ namespace ClubArcada.Win.Dialogs
         {
             var textBox = sender as TextBox;
 
-            if(textBox.Text != string.Empty)
+            if (textBox.Text != string.Empty)
             {
-               var userList = BusinessObjects.Data.UserData.GetListBySearchString(ClubArcada.BusinessObjects.Enumerators.eConnectionString.Online, textBox.Text);
+                var userList = BusinessObjects.Data.UserData.GetListBySearchString(ClubArcada.BusinessObjects.Enumerators.eConnectionString.Online, textBox.Text);
 
-               lbxUsers.ItemsSource = userList;
-               lbxUsers.DisplayMemberPath = "FullDislpayName";
+                var filteredUserList = userList.Where(u => !Main.PlayingPlayerIds.Contains(u.UserId)).ToList();
+                lbxUsers.ItemsSource = filteredUserList;
+                lbxUsers.DisplayMemberPath = "FullDislpayName";
             }
             else
             {
                 lbxUsers.ItemsSource = null;
             }
+        }
+
+        private void lbxUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var lbxUsers = sender as ListBox;
+            if (lbxUsers.SelectedItem != null)
+            {
+                var selectedUser = lbxUsers.SelectedItem as User;
+                Result.User = selectedUser;
+                txtSearch.Text = selectedUser.FullDislpayName;
+                lbxUsers.ItemsSource = null;
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

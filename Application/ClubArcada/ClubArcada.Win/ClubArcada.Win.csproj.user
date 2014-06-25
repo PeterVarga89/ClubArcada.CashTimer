@@ -2,7 +2,7 @@
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectView>ProjectFiles</ProjectView>
-    <PublishUrlHistory>A:\Club Arcada\ClubArcada.CashTimer\Releases\|publish\</PublishUrlHistory>
+    <PublishUrlHistory>A:\Club Arcada\ClubArcada.CashTimer\Releases\|ftp://82.119.117.77/ClubArcadaServer/|ftp://82.119.117.77/cashtimer/|ftp://82.119.117.77/FTP_CashTimer/|publish\</PublishUrlHistory>
     <InstallUrlHistory>http://www.pokerlevice.sk/applications/cashtimer/</InstallUrlHistory>
     <SupportUrlHistory />
     <UpdateUrlHistory>http://www.pokerlevice.sk/applications/cashtimer/</UpdateUrlHistory>

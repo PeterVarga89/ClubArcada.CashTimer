@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace ClubArcada.BusinessObjects
 {
@@ -25,10 +20,10 @@ namespace ClubArcada.BusinessObjects
             NotSet = 0,
 
             [Description("1 € – 1 € a nizšie")]
-            type_single,
+            type_single = 1,
 
             [Description("1 € – 2 € a vyššie")]
-            type_double,
+            type_double = 2,
         }
     }
 }

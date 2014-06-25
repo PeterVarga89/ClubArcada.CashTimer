@@ -6,3 +6,10 @@ A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessOb
 A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\obj\Debug\ClubArcada.BusinessObjects.pdb
 A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\bin\Debug\ClubArcada.Common.dll
 A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\bin\Debug\ClubArcada.Common.pdb
+A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\bin\Debug\ClubArcada.BusinessObjects.dll.config
+A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\bin\Debug\ClubArcada.BusinessObjects.dll
+A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\bin\Debug\ClubArcada.BusinessObjects.pdb
+A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\bin\Debug\ClubArcada.Common.pdb
+A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\obj\Debug\ClubArcada.BusinessObjects.csprojResolveAssemblyReference.cache
+A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\obj\Debug\ClubArcada.BusinessObjects.dll
+A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\obj\Debug\ClubArcada.BusinessObjects.pdb

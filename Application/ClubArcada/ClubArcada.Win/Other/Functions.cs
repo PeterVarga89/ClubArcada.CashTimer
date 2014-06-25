@@ -25,8 +25,8 @@ namespace ClubArcada.Win.Other
 
             message.To.Add("petervarga891@gmail.com");
 
-            message.Sender = new MailAddress("internal@renoval.hu");
-            message.From = new MailAddress("internal@renoval.hu");
+            message.Sender = new MailAddress("internal@clubarcada.hu");
+            message.From = new MailAddress("internal@clubarcada.hu");
             message.Priority = MailPriority.High;
 
             client.Send(message);

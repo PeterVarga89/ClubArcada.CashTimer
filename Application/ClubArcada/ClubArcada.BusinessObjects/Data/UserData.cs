@@ -20,10 +20,13 @@ namespace ClubArcada.BusinessObjects.Data
         {
             using (var app = new PKDBDataContext(connectionString.GetEnumDescription()))
             {
-                return app.Users.Where(u => u.NickName.ToLower().Contains(searchString.ToLower()) ||
+                return app.Users.Where(u => 
+                    u.NickName.ToLower().Contains(searchString.ToLower()) 
+                    ||
                     u.FirstName.ToLower().Contains(searchString.ToLower())
                     ||
-                    u.LastName.ToLower().Contains(searchString.ToLower())).ToList();
+                    u.LastName.ToLower().Contains(searchString.ToLower())
+                    ).ToList();
             }
         }
 
@@ -50,6 +53,15 @@ namespace ClubArcada.BusinessObjects.Data
             {
                 app.Users.InsertAllOnSubmit(entityList);
                 app.SubmitChanges();
+            }
+        }
+
+        public static bool IsNickNameExist(Enumerators.eConnectionString connectionString, string nickName)
+        {
+            using (var app = new PKDBDataContext(connectionString.GetEnumDescription()))
+            {
+                var userlist = app.Users.Where(u => u.NickName.ToLower() == nickName.ToLower()).ToList();
+                return userlist.Count > 0;
             }
         }
     }
