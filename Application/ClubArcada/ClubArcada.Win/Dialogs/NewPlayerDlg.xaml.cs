@@ -76,7 +76,7 @@ namespace ClubArcada.Win.Dialogs
 
             if (textBox.Text != string.Empty)
             {
-                var userList = BusinessObjects.Data.UserData.GetListBySearchString(ClubArcada.BusinessObjects.Enumerators.eConnectionString.Online, textBox.Text);
+                var userList = BusinessObjects.Data.UserData.GetListBySearchString(ClubArcada.BusinessObjects.Enumerators.eConnectionString.Local, textBox.Text);
 
                 var filteredUserList = userList.Where(u => !Main.PlayingPlayerIds.Contains(u.UserId)).ToList();
                 lbxUsers.ItemsSource = filteredUserList;

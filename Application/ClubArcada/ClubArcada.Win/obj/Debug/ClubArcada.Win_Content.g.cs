@@ -8,7 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("cashdb.mdf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("cashdb_log.ldf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("cash.database.mdf")]
 
 

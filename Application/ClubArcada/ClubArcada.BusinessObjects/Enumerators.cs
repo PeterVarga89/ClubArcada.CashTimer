@@ -7,8 +7,7 @@ namespace ClubArcada.BusinessObjects
         public enum eConnectionString
         {
             NotSet = 0,
-
-            [Description(@"Data Source=(LocalDB)\v11.0;Integrated Security=True;AttachDbFilename=|DataDirectory|\CashDB.mdf")]
+            [Description(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|Cash.Database.mdf;Integrated Security=True")]
             Local = 1,
 
             [Description("Data Source=82.119.117.77;Initial Catalog=PokerSystem;Integrated Security=False;User Id=PokerTimer;Password=Poker1969;MultipleActiveResultSets=True")]

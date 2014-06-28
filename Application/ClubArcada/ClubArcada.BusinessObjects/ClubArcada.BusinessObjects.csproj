@@ -50,6 +50,7 @@
       <DependentUpon>PKDB.dbml</DependentUpon>
     </Compile>
     <Compile Include="DataClasses\PartialClasses\User.cs" />
+    <Compile Include="Data\LeagueData.cs" />
     <Compile Include="Data\TournamentData.cs" />
     <Compile Include="Data\UserData.cs" />
     <Compile Include="Enumerators.cs" />

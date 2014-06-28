@@ -41,5 +41,14 @@ namespace ClubArcada.BusinessObjects.Data
                 app.SubmitChanges();
             }
         }
+
+        public static Tournament CheckIsExistByDateTime(Enumerators.eConnectionString connectionString, DateTime dateTime)
+        {
+            var list = GetList(connectionString);
+
+            var found = list.SingleOrDefault(t => t.Date.Date == dateTime.Date || (t.Date.Date.AddDays(1) == dateTime.Date.AddDays(1) && t.Date.Hour < 12));
+
+            return found;
+        }
     }
 }

@@ -26,22 +26,11 @@ namespace ClubArcada.BusinessObjects.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=82.119.117.77;Initial Catalog=PokerSystem;User ID=PokerTimer")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=82.119.117.77;Initial Catalog=PokerSystem;User ID=PokerTimer;Password" +
+            "=Poker1969")]
         public string PokerSystemConnectionString {
             get {
                 return ((string)(this["PokerSystemConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=\"A:\\Club Arcada\\ClubArcada.CashTimer" +
-            "\\Application\\ClubArcada\\ClubArcada.Win\\CashTimerDB.mdf\";Integrated Security=True" +
-            "")]
-        public string CashTimerDBConnectionString {
-            get {
-                return ((string)(this["CashTimerDBConnectionString"]));
             }
         }
     }

@@ -16,5 +16,6 @@ namespace ClubArcada.Win
             Other.Functions.SendMail(e.Exception.Message.ToString(), e.Exception.InnerException.ToString());
             e.Handled = true;
         }
+        
     }
 }

@@ -35,12 +35,16 @@
 
         <Grid Grid.Column="1" HorizontalAlignment="Stretch">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <!--<ColumnDefinition Width="100"/>-->
             </Grid.ColumnDefinitions>
             <Button Style="{StaticResource btnCashIn}" Grid.Column="0" Content="CASH IN"  HorizontalAlignment="Stretch"  Margin="10,8,5,8" Click="btnCashIn_Click" />
             <Button Style="{StaticResource btnCashOut}" Grid.Column="1" Content="CASH OUT" HorizontalAlignment="Stretch"  Margin="5,8,5,8" Click="btnCashOut_Click" />
+            <Button Style="{StaticResource btnCashOut}" Grid.Column="2" Content="START" HorizontalAlignment="Stretch"  Margin="5,8,5,8" Click="btnCashOut_Click" />
+            <Button Style="{StaticResource btnCashOut}" Grid.Column="3" Content="PAUSE" HorizontalAlignment="Stretch"  Margin="5,8,5,8" Click="btnCashOut_Click" />
             <!--<Button Style="{StaticResource btnDelete}" Grid.Column="2" Content="DELETE" HorizontalAlignment="Stretch"  Margin="5,8,10,8" Click="btnDelete_Click" />-->
         </Grid>
 

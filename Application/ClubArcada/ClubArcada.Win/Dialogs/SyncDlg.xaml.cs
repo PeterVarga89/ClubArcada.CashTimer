@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using ClubArcada.BusinessObjects;
+using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 
@@ -22,11 +24,19 @@ namespace ClubArcada.Win.Dialogs
             var worker = new BackgroundWorker();
             worker.DoWork += delegate
             {
-                var onlineUsers = BusinessObjects.Data.UserData.GetList(BusinessObjects.Enumerators.eConnectionString.Online);
-                var localUsers = BusinessObjects.Data.UserData.GetList(BusinessObjects.Enumerators.eConnectionString.Local);
+                try
+                {
+                    var onlineUsers = BusinessObjects.Data.UserData.GetList(BusinessObjects.Enumerators.eConnectionString.Online);
+                    var localUsers = BusinessObjects.Data.UserData.GetList(BusinessObjects.Enumerators.eConnectionString.Local);
 
-                var usersToSync = onlineUsers.Where(u => !localUsers.Select(us => us.UserId).Contains(u.UserId)).ToList();
-                BusinessObjects.Data.UserData.Insert(BusinessObjects.Enumerators.eConnectionString.Local, usersToSync);
+                    var usersToSync = onlineUsers.Where(u => !localUsers.Select(us => us.UserId).Contains(u.UserId)).ToList();
+                    BusinessObjects.Data.UserData.Insert(BusinessObjects.Enumerators.eConnectionString.Local, usersToSync);
+                }
+                catch(Exception e)
+                {
+                    Other.Functions.SendMail(e.Message.ToString(), e.InnerException.ToString());
+                }
+                
             };
 
             worker.RunWorkerCompleted += delegate
@@ -58,6 +68,27 @@ namespace ClubArcada.Win.Dialogs
 
             worker.RunWorkerAsync();
             tbBusy.Text = "Sync Tournaments...";
+        }
+
+        private void CheckTournament()
+        {
+            var tour = BusinessObjects.Data.TournamentData.CheckIsExistByDateTime(Enumerators.eConnectionString.Local, DateTime.Now);
+
+            if(tour == null)
+            {
+                var newTour = new BusinessObjects.DataClasses.Tournament()
+                {
+                    Date = DateTime.Now,
+                    DateCreated = DateTime.Now,
+                    DateDeleted = null,
+                    IsHidden = true,
+                    LeagueId = BusinessObjects.Data.LeagueData.GetActiveLeague(Enumerators.eConnectionString.Local).LeagueId,
+                    Name = "Cash Game Hidden",
+                    TournamentId = Guid.NewGuid()
+                };
+
+                BusinessObjects.Data.TournamentData.Insert(Enumerators.eConnectionString.Local, newTour);
+            }
         }
     }
 }
