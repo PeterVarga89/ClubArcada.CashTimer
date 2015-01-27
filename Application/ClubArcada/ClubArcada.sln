@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClubArcada.Documents", "Clu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClubArcada.Win", "ClubArcada.Win\ClubArcada.Win.csproj", "{A282ECB8-6B80-4CC4-BFC3-6663DE9E2C4A}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ClubArcada.Database", "ClubArcada.Database\ClubArcada.Database.sqlproj", "{A343705C-42B3-419D-A49A-5C739139D9A0}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,12 +33,6 @@ Global
 		{A282ECB8-6B80-4CC4-BFC3-6663DE9E2C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A282ECB8-6B80-4CC4-BFC3-6663DE9E2C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A282ECB8-6B80-4CC4-BFC3-6663DE9E2C4A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A343705C-42B3-419D-A49A-5C739139D9A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A343705C-42B3-419D-A49A-5C739139D9A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A343705C-42B3-419D-A49A-5C739139D9A0}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{A343705C-42B3-419D-A49A-5C739139D9A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A343705C-42B3-419D-A49A-5C739139D9A0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A343705C-42B3-419D-A49A-5C739139D9A0}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
