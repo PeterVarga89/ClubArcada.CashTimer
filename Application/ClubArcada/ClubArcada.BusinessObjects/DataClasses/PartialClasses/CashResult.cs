@@ -1,21 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClubArcada.BusinessObjects.DataClasses
 {
     public partial class CashResult
     {
         public User User { get; set; }
+
         public List<CashIn> CashIns { get; set; }
+
+        public eGameType GameType { get; set; }
 
         public string StartTimeString
         {
             get
             {
-                return string.Format("Start: {0}", this.StartTime.Value.ToString("dd.MM.yyyy hh:mm"));
+                return string.Format("Reg.: {0}", this.StartTime.Value.ToString("dd.MM.yyyy HH:mm"));
             }
         }
 
@@ -27,19 +27,8 @@ namespace ClubArcada.BusinessObjects.DataClasses
             }
         }
 
-        public int CalculatedPoints
-        {
-            get
-            {
-                if(this.EndTime.HasValue)
-                {
-                    return (EndTime.Value - StartTime.Value).Minutes;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        public int MinutesPlayed { get; set; }
+
+        public int PlayedMinutes { get { return MinutesPlayed / 60; } }
     }
 }

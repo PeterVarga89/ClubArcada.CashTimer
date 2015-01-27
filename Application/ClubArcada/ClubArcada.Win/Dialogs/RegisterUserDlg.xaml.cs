@@ -1,18 +1,10 @@
-﻿using ClubArcada.BusinessObjects.Data;
+﻿using ClubArcada.BusinessObjects;
+using ClubArcada.BusinessObjects.Data;
 using ClubArcada.BusinessObjects.DataClasses;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ClubArcada.Win.Dialogs
 {
@@ -32,13 +24,13 @@ namespace ClubArcada.Win.Dialogs
                 User user = new User()
                 {
                     UserId = Guid.NewGuid(),
-                    Comment = txtDescription.Text,
+                    Comment = txtDescription.Text.Trim(),
                     DateActivated = DateTime.Now,
                     DateCreated = DateTime.Now,
                     DateDeleted = null,
-                    Email = txtEmail.Text,
-                    FirstName = txtFirstName.Text,
-                    LastName = txtLastName.Text,
+                    Email = txtEmail.Text.Trim(),
+                    FirstName = txtFirstName.Text.Trim(),
+                    LastName = txtLastName.Text.Trim(),
                     IsAdmin = false,
                     IsBlocked = false,
                     IsMail = true,
@@ -46,22 +38,28 @@ namespace ClubArcada.Win.Dialogs
                     IsSms = true,
                     NickName = txtNickName.Text,
                     Password = string.Empty,
-                    PhoneNumber = txtPhoneNumber.Text,
+                    PhoneNumber = txtPhoneNumber.Text.Trim(),
                     PeronalId = string.Empty
                 };
 
-                UserData.Insert(BusinessObjects.Enumerators.eConnectionString.Online, user);
+                var worker = new BackgroundWorker();
+                worker.DoWork += delegate
+                {
+                    UserData.Insert(eConnectionString.Online, user);
+                    UserData.Insert(eConnectionString.Local, user);
 
-                StringBuilder bodyMessage = new StringBuilder();
-                bodyMessage.Append("Ncik: " + user.NickName).AppendLine();
-                bodyMessage.Append("Meno: " + user.FirstName).AppendLine();
-                bodyMessage.Append("Priezvisko: " + user.LastName).AppendLine().AppendLine();
+                    var mailBody = string.Format(Mailer.Constants.MailNewUserRegistrationBody, user.NickName, user.FirstName, user.LastName, user.PhoneNumber, user.Email);
+                    ClubArcada.Mailer.Mailer.SendMail(Mailer.Constants.MailNewUserRegistrationSubject, mailBody);
+                };
 
-                bodyMessage.Append("Tel.: " + user.PhoneNumber).AppendLine();
-                bodyMessage.Append("E-mail.: " + user.Email).AppendLine();
+                worker.RunWorkerCompleted += delegate
+                {
+                    busyIndicator.IsBusy = false;
+                    this.Close();
+                };
 
-                Other.Functions.SendMail("New Player Registration", bodyMessage.ToString());
-                this.Close();
+                busyIndicator.IsBusy = true;
+                worker.RunWorkerAsync();
             }
         }
 
@@ -69,14 +67,12 @@ namespace ClubArcada.Win.Dialogs
         {
             bool isValid = true;
 
-            ValidateControl(ref isValid, UserData.IsNickNameExist(BusinessObjects.Enumerators.eConnectionString.Online, txtNickName.Text));
+            ValidateControl(ref isValid, UserData.IsNickNameExist(eConnectionString.Online, txtNickName.Text));
             ValidateControl(ref isValid, string.IsNullOrEmpty(txtFirstName.Text));
             ValidateControl(ref isValid, string.IsNullOrEmpty(txtLastName.Text));
-            ValidateControl(ref isValid, string.IsNullOrEmpty((cbxGender.SelectedItem as ComboBoxItem).Tag.ToString()));
 
             return isValid;
         }
-
 
         private void ValidateControl(ref bool isValid, bool req)
         {

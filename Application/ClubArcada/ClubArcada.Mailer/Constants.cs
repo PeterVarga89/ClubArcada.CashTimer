@@ -1,0 +1,21 @@
+﻿namespace ClubArcada.Mailer
+{
+    public class Constants
+    {
+        public const string MailFrom = "cashtimer@arcade-group.sk";
+        public const string MailSender = "cashtimer@arcade-group.sk";
+
+        public const string MailTo = "office@arcade-group.sk";
+        public const string MailToCC = "petervarga@arcade-group.sk";
+
+        public static int MailPort = 25;
+        public static string MailUserName = "cashtimer@arcade-group.sk";
+        public static string MailPassword = "vape6931";
+        public static string MailSmtpClient = "imap.arcade-group.sk";
+
+        public static string MailNewUserRegistrationSubject = "Registrácia nového hráča";
+        public static string MailNewUserRegistrationBody = "Nick: {0}\nMeno: {1}\nPriezvisko: {2}\nTelefon: {3}\nEmail: {4}";
+
+        public static string MailSignature = "\n----\nTento mail je generovaný automaticky.\nNeodpovedajte naň.";
+    }
+}

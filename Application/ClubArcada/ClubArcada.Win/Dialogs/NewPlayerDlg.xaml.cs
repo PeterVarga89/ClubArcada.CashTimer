@@ -1,39 +1,35 @@
-﻿using ClubArcada.BusinessObjects.DataClasses;
+﻿using ClubArcada.BusinessObjects;
+using ClubArcada.BusinessObjects.DataClasses;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using ClubArcada.Common;
 
 namespace ClubArcada.Win.Dialogs
 {
     public partial class NewPlayerDlg : Window
     {
-        CashResult Result { get; set; }
+        public CashResult Result { get; set; }
 
         public MainWindow Main { get; set; }
 
-        public List<ClubArcada.BusinessObjects.Enumerators.eGameType> GameTypeList { get; set; }
+        public List<eGameType> GameTypeList { get; set; }
 
         public Double Amount { get; set; }
 
-        public NewPlayerDlg()
+        public NewPlayerDlg(Guid selectedTableId)
         {
             InitializeComponent();
             Result = new CashResult();
+            Result.CashTableId = selectedTableId;
 
             Result.CashResultId = Guid.NewGuid();
             DataContext = this;
-            GameTypeList = Common.Extensions.GetValueList<ClubArcada.BusinessObjects.Enumerators.eGameType>();
+            GameTypeList = Common.Extensions.GetValueList<eGameType>();
         }
 
         private bool Validate()
@@ -55,9 +51,10 @@ namespace ClubArcada.Win.Dialogs
                 Result.StartTime = DateTime.Now;
                 Result.PlayerId = Guid.NewGuid();
                 Result.UserId = Result.User.UserId;
+                Result.TournamentId = Main.Tournament.TournamentId;
 
                 Result.CashIns = new List<CashIn>();
-                Result.CashIns.Add(new CashIn() 
+                Result.CashIns.Add(new CashIn()
                 {
                     Amount = Amount,
                     CashInId = Guid.NewGuid(),
@@ -76,7 +73,7 @@ namespace ClubArcada.Win.Dialogs
 
             if (textBox.Text != string.Empty)
             {
-                var userList = BusinessObjects.Data.UserData.GetListBySearchString(ClubArcada.BusinessObjects.Enumerators.eConnectionString.Local, textBox.Text);
+                var userList = BusinessObjects.Data.UserData.GetListBySearchString(eConnectionString.Local, RemoveDiacritics(textBox.Text));
 
                 var filteredUserList = userList.Where(u => !Main.PlayingPlayerIds.Contains(u.UserId)).ToList();
                 lbxUsers.ItemsSource = filteredUserList;
@@ -103,6 +100,28 @@ namespace ClubArcada.Win.Dialogs
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void txtAmount_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txtAmount.Text = string.Empty;
+        }
+
+        private static string RemoveDiacritics(string text)
+        {
+            string formD = text.Normalize(NormalizationForm.FormD);
+            StringBuilder sb = new StringBuilder();
+
+            foreach (char ch in formD)
+            {
+                UnicodeCategory uc = CharUnicodeInfo.GetUnicodeCategory(ch);
+                if (uc != UnicodeCategory.NonSpacingMark)
+                {
+                    sb.Append(ch);
+                }
+            }
+
+            return sb.ToString().Normalize(NormalizationForm.FormC);
         }
     }
 }

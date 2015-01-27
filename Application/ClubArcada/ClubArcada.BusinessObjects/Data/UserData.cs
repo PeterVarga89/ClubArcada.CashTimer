@@ -8,7 +8,7 @@ namespace ClubArcada.BusinessObjects.Data
 {
     public class UserData
     {
-        public static List<User> GetList(Enumerators.eConnectionString connectionString)
+        public static List<User> GetList(eConnectionString connectionString)
         {
             using (var app = new PKDBDataContext(connectionString.GetEnumDescription()))
             {
@@ -16,21 +16,23 @@ namespace ClubArcada.BusinessObjects.Data
             }
         }
 
-        public static List<User> GetListBySearchString(Enumerators.eConnectionString connectionString, string searchString)
+        public static List<User> GetListBySearchString(eConnectionString connectionString, string searchString)
         {
             using (var app = new PKDBDataContext(connectionString.GetEnumDescription()))
             {
-                return app.Users.Where(u => 
-                    u.NickName.ToLower().Contains(searchString.ToLower()) 
+                return app.Users.Where(u =>
+                    u.NickName.ToLower().Contains(searchString.ToLower())
                     ||
                     u.FirstName.ToLower().Contains(searchString.ToLower())
                     ||
                     u.LastName.ToLower().Contains(searchString.ToLower())
+                    ||
+                    (u.FirstName + " " + u.LastName).ToLower().StartsWith(searchString.ToLower())
                     ).ToList();
             }
         }
 
-        public static User GetById(Enumerators.eConnectionString connectionString, Guid id)
+        public static User GetById(eConnectionString connectionString, Guid id)
         {
             using (var app = new PKDBDataContext(connectionString.GetEnumDescription()))
             {
@@ -38,7 +40,7 @@ namespace ClubArcada.BusinessObjects.Data
             }
         }
 
-        public static void Insert(Enumerators.eConnectionString connectionString, User entity)
+        public static void Insert(eConnectionString connectionString, User entity)
         {
             using (var app = new PKDBDataContext(connectionString.GetEnumDescription()))
             {
@@ -47,7 +49,7 @@ namespace ClubArcada.BusinessObjects.Data
             }
         }
 
-        public static void Insert(Enumerators.eConnectionString connectionString, List<User> entityList)
+        public static void Insert(eConnectionString connectionString, List<User> entityList)
         {
             using (var app = new PKDBDataContext(connectionString.GetEnumDescription()))
             {
@@ -56,7 +58,7 @@ namespace ClubArcada.BusinessObjects.Data
             }
         }
 
-        public static bool IsNickNameExist(Enumerators.eConnectionString connectionString, string nickName)
+        public static bool IsNickNameExist(eConnectionString connectionString, string nickName)
         {
             using (var app = new PKDBDataContext(connectionString.GetEnumDescription()))
             {

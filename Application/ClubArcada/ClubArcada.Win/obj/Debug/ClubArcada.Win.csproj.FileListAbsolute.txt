@@ -1,86 +1,60 @@
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.Win.exe.config
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.Win.exe
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.Win.pdb
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.csprojResolveAssemblyReference.cache
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\MainWindow.baml
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\MainWindow.g.cs
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\App.g.cs
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win_MarkupCompile.cache
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.g.resources
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.Properties.Resources.resources
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.csproj.GenerateResource.Cache
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.exe
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.pdb
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Controls\PlayerLineCtrl.baml
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Controls\PlayerLineCtrl.g.cs
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Styles\Styles.baml
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\App.baml
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.BusinessObjects.dll
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.BusinessObjects.pdb
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.Common.dll
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.Common.pdb
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\CashDB.mdf
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\CashDB_log.ldf
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win_Content.g.cs
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\LoginDlg.baml
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\SyncDlg.baml
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\TournamentSelectDlg.baml
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\LoginDlg.g.cs
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\SyncDlg.g.cs
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\TournamentSelectDlg.g.cs
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\AddPlayerDlg.baml
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\NewPlayerDlg.baml
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\AddPlayerDlg.g.cs
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\NewPlayerDlg.g.cs
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\WPFToolkit.Extended.dll
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.Win.exe.manifest
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.Win.application
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.exe.manifest
-A:\Club Arcada\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.application
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\Cash.Database.mdf
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.BusinessObjects.dll
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.BusinessObjects.pdb
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.csprojResolveAssemblyReference.cache
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Controls\PlayerLineCtrl.baml
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\AddPlayerDlg.baml
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\AlertDialog.baml
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\CashInDlg.baml
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\CashOutDlg.baml
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\LoginDlg.baml
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\NewPlayerDlg.baml
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\NewTableDlg.baml
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\RegisterUserDlg.baml
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\SyncDlg.baml
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\TotalCashOutDlg.baml
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\TournamentSelectDlg.baml
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\MainWindow.baml
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Styles\Styles.baml
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\App.baml
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Controls\PlayerLineCtrl.g.cs
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\AddPlayerDlg.g.cs
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\AlertDialog.g.cs
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\CashInDlg.g.cs
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\CashOutDlg.g.cs
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\LoginDlg.g.cs
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\NewPlayerDlg.g.cs
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\NewTableDlg.g.cs
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\RegisterUserDlg.g.cs
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\SyncDlg.g.cs
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\TotalCashOutDlg.g.cs
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\TournamentSelectDlg.g.cs
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\MainWindow.g.cs
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\App.g.cs
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win_Content.g.cs
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win_MarkupCompile.cache
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.g.resources
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.Properties.Resources.resources
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.csproj.GenerateResource.Cache
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.exe.manifest
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.application
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.exe
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.pdb
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.Win.exe.config
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.Win.exe.manifest
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.Win.application
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.Win.exe
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.Win.pdb
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.csprojResolveAssemblyReference.cache
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\App.baml
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Controls\PlayerLineCtrl.baml
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\AddPlayerDlg.baml
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\AlertDialog.baml
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\CashInDlg.baml
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\CashOutDlg.baml
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\LoginDlg.baml
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\NewPlayerDlg.baml
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\NewTableDlg.baml
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\RegisterUserDlg.baml
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\SyncDlg.baml
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\TotalCashOutDlg.baml
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\TournamentSelectDlg.baml
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\MainWindow.baml
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Templates\TabItemTemplate.baml
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\App.g.cs
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Controls\PlayerLineCtrl.g.cs
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\AddPlayerDlg.g.cs
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\AlertDialog.g.cs
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\CashInDlg.g.cs
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\CashOutDlg.g.cs
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\LoginDlg.g.cs
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\NewPlayerDlg.g.cs
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\NewTableDlg.g.cs
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\RegisterUserDlg.g.cs
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\SyncDlg.g.cs
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\TotalCashOutDlg.g.cs
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\TournamentSelectDlg.g.cs
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\MainWindow.g.cs
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win_Content.g.cs
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win_MarkupCompile.cache
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win_MarkupCompile.lref
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.Win.exe.config
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\Cash.Database.mdf
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\Cash.Database_log.ldf
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.Win.exe
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.Win.pdb
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.BusinessObjects.dll
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.Common.dll
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.Documents.dll
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.Mailer.dll
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\WPFToolkit.Extended.dll
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\GemBox.Spreadsheet.dll
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.BusinessObjects.pdb
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.Documents.pdb
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.Mailer.pdb
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Styles\Styles.baml
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.g.resources
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.Properties.Resources.resources
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.csproj.GenerateResource.Cache
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.exe
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.pdb
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\Documents\ClubArcadaCashReport.xlsx
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.Win.exe.manifest
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\bin\Debug\ClubArcada.Win.application
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.exe.manifest
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.application
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\ConfirmDialog.baml
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\ConfirmDialog.g.cs

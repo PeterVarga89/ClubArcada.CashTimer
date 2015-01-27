@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectView>ProjectFiles</ProjectView>
-    <PublishUrlHistory>ftp://82.119.117.77/pokerlevice.sk/applications/cashtimer/|A:\Club Arcada\ClubArcada.CashTimer\Releases\|ftp://82.119.117.77/ClubArcadaServer/|ftp://82.119.117.77/cashtimer/|ftp://82.119.117.77/FTP_CashTimer/</PublishUrlHistory>
+    <PublishUrlHistory>ftp://82.119.117.77/pokerlevice.sk/applications/cashtimer/|publish\</PublishUrlHistory>
     <InstallUrlHistory>http://www.pokerlevice.sk/applications/cashtimer/</InstallUrlHistory>
     <SupportUrlHistory />
-    <UpdateUrlHistory>http://www.pokerlevice.sk/applications/cashtimer/</UpdateUrlHistory>
+    <UpdateUrlHistory />
     <BootstrapperUrlHistory />
     <ErrorReportUrlHistory />
     <FallbackCulture>en-US</FallbackCulture>
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
+    <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
 </Project>

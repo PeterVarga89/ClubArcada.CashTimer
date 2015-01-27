@@ -33,5 +33,27 @@ namespace ClubArcada.BusinessObjects.Properties {
                 return ((string)(this["PokerSystemConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=A:\\Club.Arcada\\ClubArcada.CashTimer\\" +
+            "ClubArcada.CashTimer\\Application\\ClubArcada\\ClubArcada.Win\\Cash.Database.mdf;Int" +
+            "egrated Security=True")]
+        public string Cash_DatabaseConnectionString {
+            get {
+                return ((string)(this["Cash_DatabaseConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=82.119.117.77;Initial Catalog=PokerSystem;User ID=PokerTimer")]
+        public string PokerSystemConnectionString1 {
+            get {
+                return ((string)(this["PokerSystemConnectionString1"]));
+            }
+        }
     }
 }

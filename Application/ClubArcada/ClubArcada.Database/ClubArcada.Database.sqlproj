@@ -7,8 +7,8 @@
     <Name>ClubArcada.Database</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{3039fca2-2a71-4716-92bf-c5fd70a71067}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <ProjectGuid>{a343705c-42b3-419d-a49a-5c739139d9a0}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -47,25 +47,25 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <!-- VS10 without SP1 will not have VisualStudioVersion set, so do that here -->
   <PropertyGroup>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
-    <!-- Default to the v10.0 targets path if the targets file for the current VS version is not found -->
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
     <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
-    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">10.0</VisualStudioVersion>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
   </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
-    <Folder Include="dbo\Stored Procedures\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Wages.sql" />
     <Build Include="dbo\Tables\UserSettings.sql" />
     <Build Include="dbo\Tables\Users.sql" />
     <Build Include="dbo\Tables\UserRoles.sql" />
+    <Build Include="dbo\Tables\Transactions.sql" />
     <Build Include="dbo\Tables\TournamentTemplates.sql" />
     <Build Include="dbo\Tables\Tournaments.sql" />
     <Build Include="dbo\Tables\TournamentResults.sql" />
@@ -74,20 +74,15 @@
     <Build Include="dbo\Tables\Structures.sql" />
     <Build Include="dbo\Tables\StructureDetails.sql" />
     <Build Include="dbo\Tables\Screenshots.sql" />
+    <Build Include="dbo\Tables\Photos.sql" />
     <Build Include="dbo\Tables\Personal.sql" />
     <Build Include="dbo\Tables\News.sql" />
     <Build Include="dbo\Tables\Logins.sql" />
     <Build Include="dbo\Tables\Leagues.sql" />
+    <Build Include="dbo\Tables\Galleries.sql" />
     <Build Include="dbo\Tables\CashTables.sql" />
     <Build Include="dbo\Tables\CashResults.sql" />
     <Build Include="dbo\Tables\CashIns.sql" />
-    <Build Include="dbo\Stored Procedures\uspGetTournamentsStats.sql" />
-    <Build Include="dbo\Stored Procedures\uspGetTournaments.sql" />
-    <Build Include="dbo\Stored Procedures\uspGetPrizePoolByLeagueId.sql" />
-    <Build Include="dbo\Stored Procedures\uspGetLeagueLadder.sql" />
-    <Build Include="dbo\Stored Procedures\uspGetCGBankByLeagueId.sql" />
-    <Build Include="dbo\Stored Procedures\uspGetCashLadder.sql" />
-    <Build Include="dbo\Stored Procedures\uspGetBankByTournamentId.sql" />
-    <Build Include="dbo\Stored Procedures\uspAPCBankByLeagueId.sql" />
+    <Build Include="dbo\Tables\Banners.sql" />
   </ItemGroup>
 </Project>

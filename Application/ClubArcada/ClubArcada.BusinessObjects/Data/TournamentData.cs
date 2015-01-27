@@ -8,7 +8,7 @@ namespace ClubArcada.BusinessObjects.Data
 {
     public class TournamentData
     {
-        public static List<Tournament> GetList(Enumerators.eConnectionString connectionString)
+        public static List<Tournament> GetList(eConnectionString connectionString)
         {
             using (var app = new PKDBDataContext(connectionString.GetEnumDescription()))
             {
@@ -16,7 +16,7 @@ namespace ClubArcada.BusinessObjects.Data
             }
         }
 
-        public static Tournament GetById(Enumerators.eConnectionString connectionString, Guid id)
+        public static Tournament GetById(eConnectionString connectionString, Guid id)
         {
             using (var app = new PKDBDataContext(connectionString.GetEnumDescription()))
             {
@@ -24,16 +24,19 @@ namespace ClubArcada.BusinessObjects.Data
             }
         }
 
-        public static void Insert(Enumerators.eConnectionString connectionString, Tournament entity)
+        public static void Insert(eConnectionString connectionString, Tournament entity)
         {
             using (var app = new PKDBDataContext(connectionString.GetEnumDescription()))
             {
-                app.Tournaments.InsertOnSubmit(entity);
-                app.SubmitChanges();
+                if (app.Tournaments.SingleOrDefault(t => t.TournamentId == entity.TournamentId) == null)
+                {
+                    app.Tournaments.InsertOnSubmit(entity);
+                    app.SubmitChanges();
+                }
             }
         }
 
-        public static void Insert(Enumerators.eConnectionString connectionString, List<Tournament> entityList)
+        public static void Insert(eConnectionString connectionString, List<Tournament> entityList)
         {
             using (var app = new PKDBDataContext(connectionString.GetEnumDescription()))
             {
@@ -42,13 +45,22 @@ namespace ClubArcada.BusinessObjects.Data
             }
         }
 
-        public static Tournament CheckIsExistByDateTime(Enumerators.eConnectionString connectionString, DateTime dateTime)
+        public static Tournament CheckIsExistByDateTime(eConnectionString connectionString, DateTime dateTime)
         {
             var list = GetList(connectionString);
 
-            var found = list.SingleOrDefault(t => t.Date.Date == dateTime.Date || (t.Date.Date.AddDays(1) == dateTime.Date.AddDays(1) && t.Date.Hour < 12));
+            var found = list.FirstOrDefault(t => t.Date.Date == dateTime.Date || (t.Date.Date.AddDays(1) == dateTime.Date.AddDays(1) && t.Date.Hour < 12));
 
             return found;
+        }
+
+        public static void InsertCashout(eConnectionString connectionString, TournamentCashout entity)
+        {
+            using (var app = new PKDBDataContext(connectionString.GetEnumDescription()))
+            {
+                app.TournamentCashouts.InsertOnSubmit(entity);
+                app.SubmitChanges();
+            }
         }
     }
 }

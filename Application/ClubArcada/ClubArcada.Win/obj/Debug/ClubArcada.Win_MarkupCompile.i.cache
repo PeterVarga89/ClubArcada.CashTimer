@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\
 ClubArcada.Win
 none
 false
 DEBUG;TRACE
-A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\App.xaml
-14-1475402114
-1-1907184768
-25-467142141
-172093965153
-Controls\PlayerLineCtrl.xaml;Dialogs\AddPlayerDlg.xaml;Dialogs\AlertDialog.xaml;Dialogs\CashInDlg.xaml;Dialogs\CashOutDlg.xaml;Dialogs\LoginDlg.xaml;Dialogs\NewPlayerDlg.xaml;Dialogs\NewTableDlg.xaml;Dialogs\RegisterUserDlg.xaml;Dialogs\SyncDlg.xaml;Dialogs\TotalCashOutDlg.xaml;Dialogs\TournamentSelectDlg.xaml;MainWindow.xaml;Styles\Styles.xaml;
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\App.xaml
+16126706695
+3-1260148243
+27-84883506
+20171834865
+Controls\PlayerLineCtrl.xaml;Dialogs\AddPlayerDlg.xaml;Dialogs\ConfirmDialog.xaml;Dialogs\AlertDialog.xaml;Dialogs\CashInDlg.xaml;Dialogs\CashOutDlg.xaml;Dialogs\LoginDlg.xaml;Dialogs\NewPlayerDlg.xaml;Dialogs\NewTableDlg.xaml;Dialogs\RegisterUserDlg.xaml;Dialogs\SyncDlg.xaml;Dialogs\TotalCashOutDlg.xaml;Dialogs\TournamentSelectDlg.xaml;MainWindow.xaml;Styles\Styles.xaml;Templates\TabItemTemplate.xaml;
 
 False
 

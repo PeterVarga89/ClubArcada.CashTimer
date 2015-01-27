@@ -1,5 +1,6 @@
 ﻿<Window x:Class="ClubArcada.Win.Dialogs.TotalCashOutDlg"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:wpfx="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Style="{StaticResource dialogWindowStyle}"
         >
@@ -20,21 +21,25 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0" Content="Meno"/>
-        <TextBox IsEnabled="False" Grid.Column="2" Margin="0,2,5,2" Text="Cash Game Night" />
+        <TextBox IsEnabled="False" Grid.Column="2" Margin="0,2,5,2" Text="Cash Game" />
 
         <Label Grid.Row="1" Content="Dátum"/>
         <TextBox Name="txtDate" IsEnabled="False" Grid.Column="2" Grid.Row="1" Margin="0,2,5,2" Text="{Binding Date, Mode=OneWay}" />
@@ -45,7 +50,7 @@
         <Label Grid.Row="3" Content="Cash Out Total"/>
         <TextBox IsEnabled="False" Grid.Column="2" Grid.Row="3" Margin="0,2,5,2" Text="{Binding CashOutTotal, Mode=OneWay}" />
 
-        <Label Grid.Row="4" Content="Strava"/>
+        <Label Grid.Row="4" Content="Strava/Účet"/>
         <TextBox IsEnabled="True" Grid.Column="2" Grid.Row="4" Margin="0,2,5,2" Text="{Binding Food}" />
 
         <Label Grid.Row="5" Content="CG Liga"/>
@@ -57,10 +62,24 @@
         <Label Grid.Row="7" Content="Vyplatený Bonus"/>
         <TextBox IsEnabled="True" Grid.Column="2" Grid.Row="7" Margin="0,2,5,2" Text="{Binding PaidBonus}" />
 
-        <Label Grid.Row="8" Content="Komment"/>
-        <TextBox IsEnabled="True" Grid.Column="2" Grid.Row="8" AcceptsReturn="True" Margin="0,2,5,2" Text="{Binding Comment}" />
+        <Label Grid.Row="8" Content="Rake"/>
+        <TextBox IsEnabled="True" Grid.Column="2" Grid.Row="8" Margin="0,2,5,2" Text="{Binding Rake}" />
 
-        <Button Style="{StaticResource btnCashIn}" Margin="5" Grid.Row="9" Grid.ColumnSpan="3" Content="Uložiť a Ukončiť" Click="Button_Click" ></Button>
-        <Button Style="{StaticResource btnDelete}" Margin="5" Grid.Row="10" Grid.ColumnSpan="3" Content="Zavrieť" Click="Button_Click_1" ></Button>
+        <Label Grid.Row="9" Content="Rozbiehač"/>
+        <TextBox IsEnabled="True" Grid.Column="2" Grid.Row="9" Margin="0,2,5,2" Text="{Binding RunHelp}" />
+
+        <Label Grid.Row="10" Content="Floor"/>
+        <TextBox IsEnabled="True" Grid.Column="2" Grid.Row="10" Margin="0,2,5,2" Text="{Binding Floor}" />
+        
+        <Label Grid.Row="11" Content="Dealer"/>
+        <TextBox IsEnabled="True" Grid.Column="2" Grid.Row="11" Margin="0,2,5,2" Text="{Binding Dealer}" />
+
+        <Label Grid.Row="12" Content="Komment"/>
+        <TextBox IsEnabled="True" Grid.Column="2" Grid.Row="12" AcceptsReturn="True" Margin="0,2,5,2" Text="{Binding Comment}" />
+
+        <Button Style="{StaticResource btnCashIn}" Margin="5" Grid.Row="13" Grid.ColumnSpan="3" Content="Uložiť a Ukončiť" Click="Button_Click" ></Button>
+        <Button Style="{StaticResource btnDelete}" Margin="5" Grid.Row="14" Grid.ColumnSpan="3" Content="Zavrieť" Click="Button_Click_1" ></Button>
+
+        <wpfx:BusyIndicator Name="BusyIndicator" Grid.ColumnSpan="3" Grid.RowSpan="15" ></wpfx:BusyIndicator>
     </Grid>
 </Window>

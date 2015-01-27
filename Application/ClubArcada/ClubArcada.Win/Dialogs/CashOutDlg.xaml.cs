@@ -8,6 +8,7 @@ namespace ClubArcada.Win.Dialogs
     public partial class CashOutDlg : Window
     {
         public Controls.PlayerLineCtrl Sender { get; set; }
+
         public CashResult CashResult { get; set; }
 
         public CashOutDlg(CashResult cashResult)
@@ -27,6 +28,8 @@ namespace ClubArcada.Win.Dialogs
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
+            CashResult.EndTime = null;
+            Sender.Timer.Start();
             this.Close();
         }
 
@@ -36,6 +39,15 @@ namespace ClubArcada.Win.Dialogs
             Sender.Timer.Stop();
             Sender.Refresh();
             this.Close();
+
+            var mainWindow = (Application.Current.MainWindow as MainWindow);
+
+            mainWindow.PlayingPlayerIds.Remove(CashResult.UserId);
+        }
+
+        private void txtCashOut_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txtCashOut.Text = string.Empty;
         }
     }
 }

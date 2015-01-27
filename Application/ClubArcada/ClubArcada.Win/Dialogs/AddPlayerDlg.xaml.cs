@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace ClubArcada.Win.Dialogs
 {
@@ -12,7 +14,7 @@ namespace ClubArcada.Win.Dialogs
             this.Closed += AddPlayerDlg_Closed;
         }
 
-        void AddPlayerDlg_Closed(object sender, System.EventArgs e)
+        private void AddPlayerDlg_Closed(object sender, System.EventArgs e)
         {
             if (ToOpenOnClose != null)
                 ToOpenOnClose.ShowDialog();
@@ -27,7 +29,7 @@ namespace ClubArcada.Win.Dialogs
 
         private void ExistingPlayer_Click(object sender, RoutedEventArgs e)
         {
-            ToOpenOnClose = new Dialogs.NewPlayerDlg();
+            ToOpenOnClose = new Dialogs.NewPlayerDlg(new Guid((Main.tabCtrl.SelectedContent as ListBox).Tag.ToString()));
             (ToOpenOnClose as NewPlayerDlg).Main = Main;
             this.Close();
         }
@@ -41,7 +43,6 @@ namespace ClubArcada.Win.Dialogs
 
         private void Inkognito_Click(object sender, RoutedEventArgs e)
         {
-
         }
     }
 }

@@ -24,18 +24,31 @@ namespace ClubArcada.Win.Dialogs
 
         private void btClose_Click(object sender, RoutedEventArgs e)
         {
+            this.DialogResult = false;
             this.Close();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+            if(CashIn.Amount < 30)
+            {
+                Dialogs.AlertDialog aDlg = new AlertDialog("Minimum 30€ !");
+                aDlg.ShowDialog();
+                return;
+            }
+
             CashIn.CashInId = Guid.NewGuid();
             CashIn.DateCreated = DateTime.Now;
             CashIn.CashResultId = CashResult.CashResultId;
             CashResult.CashIns.Add(CashIn);
             Sender.Refresh();
-            
+            this.DialogResult = true;
             this.Close();
+        }
+
+        private void txtAmount_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txtAmount.Text = string.Empty;
         }
     }
 }

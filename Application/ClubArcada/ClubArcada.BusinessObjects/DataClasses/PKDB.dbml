@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PokerSystem" Class="PKDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=82.119.117.77;Initial Catalog=PokerSystem;User ID=PokerTimer" SettingsObjectName="ClubArcada.BusinessObjects.Properties.Settings" SettingsPropertyName="PokerSystemConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=82.119.117.77;Initial Catalog=PokerSystem;User ID=PokerTimer" SettingsObjectName="ClubArcada.BusinessObjects.Properties.Settings" SettingsPropertyName="PokerSystemConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.CashIns" Member="CashIns">
     <Type Name="CashIn">
       <Column Name="CashInId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -8,6 +8,31 @@
       <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="DateDeleted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Amount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CashResults" Member="CashResults">
+    <Type Name="CashResult">
+      <Column Name="CashResultId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TournamentId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CashTableId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="PlayerId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Duration" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Quociente" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CashOut" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CashTables" Member="CashTables">
+    <Type Name="CashTable">
+      <Column Name="CashTableId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TournamentId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="GameType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateDeleted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateClosed" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Leagues" Member="Leagues">
@@ -19,6 +44,64 @@
       <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="DateDeleted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="OldId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Logins" Member="Logins">
+    <Type Name="Login">
+      <Column Name="LoginId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tournaments" Member="Tournaments">
+    <Type Name="Tournament">
+      <Column Name="TournamentId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LeagueId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedByUserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DeletedByUserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateDeleted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="GameType" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="OldId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="DateEnded" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsHidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Transactions" Member="Transactions">
+    <Type Name="Transaction">
+      <Column Name="TransactionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CratedByUserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsBorrowed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DateDeleted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="User_Transaction" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NickName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PeronalId" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsSms" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsMail" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsAdmin" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsBlocked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DateActivated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateDeleted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OldId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsPersonal" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="User_Transaction" Member="Transactions" ThisKey="UserId" OtherKey="UserId" Type="Transaction" />
     </Type>
   </Table>
   <Table Name="dbo.TournamentCashouts" Member="TournamentCashouts">
@@ -43,184 +126,10 @@
       <Column Name="Place_08" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="Place_09" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="Place_10" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="BonusCash" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Dealer" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BonusUsed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RunnerHelp" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TournamentDetails" Member="TournamentDetails">
-    <Type Name="TournamentDetail">
-      <Column Name="TournamentDetailId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TournamentId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="StructureId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="BuyInPrize" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ReBuyPrize" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AddOnPrize" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="BuyInStack" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ReBuyStack" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AddOnStack" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="BonusStack" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="IsFullPointed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="IsLeague" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="ReEntryCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="GTD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ReBuyCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="IsFood" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Tournaments" Member="Tournaments">
-    <Type Name="Tournament">
-      <Column Name="TournamentId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="LeagueId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="CreatedByUserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="DeletedByUserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="DateDeleted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="GameType" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
-      <Column Name="OldId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Column Name="DateEnded" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="IsHidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Users" Member="Users">
-    <Type Name="User">
-      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="NickName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="FirstName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="LastName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="PeronalId" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="PhoneNumber" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="Comment" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
-      <Column Name="Password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="IsSms" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="IsMail" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="IsAdmin" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="IsBlocked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="DateActivated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="DateDeleted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="OldId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="IsPersonal" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.UserSettings" Member="UserSettings">
-    <Type Name="UserSetting">
-      <Column Name="SettingId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="LeagueTableUpdateDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CashTableUpdateDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ApcLeagueUpdateDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ApcCashUpdateDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.CashTables" Member="CashTables">
-    <Type Name="CashTable">
-      <Column Name="CashTableId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="GameType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="DateDeleted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.CashResults" Member="CashResults">
-    <Type Name="CashResult">
-      <Column Name="CashResultId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TournamentId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="CashTableId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="PlayerId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="Duration" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="StartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="EndTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Quociente" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="CashOut" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Function Name="dbo.uspAPCBankByLeagueId" Method="uspAPCBankByLeagueId">
-    <ElementType Name="uspAPCBankByLeagueIdResult">
-      <Column Name="PrizePool" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.uspGetTournamentsStats" Method="uspGetTournamentsStats">
-    <Parameter Name="LeagueId" Parameter="leagueId" Type="System.Guid" DbType="UniqueIdentifier" />
-    <ElementType Name="uspGetTournamentsStatsResult">
-      <Column Name="" Member="Column1" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Bank" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="GTD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PlayerCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ReBuys" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AddOns" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.uspGetBankByTournamentId" Method="uspGetBankByTournamentId">
-    <Parameter Name="tournamentId" Type="System.Guid" DbType="UniqueIdentifier" />
-    <ElementType Name="uspGetBankByTournamentIdResult">
-      <Column Name="Bank" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.uspGetCashLadder" Method="uspGetCashLadder">
-    <Parameter Name="Count" Parameter="count" Type="System.Int32" DbType="Int" />
-    <ElementType Name="uspGetCashLadderResult">
-      <Column Name="userid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="points" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="playcount" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="nickname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.uspGetCGBankByLeagueId" Method="uspGetCGBankByLeagueId">
-    <Parameter Name="LeagueId" Parameter="leagueId" Type="System.Guid" DbType="UniqueIdentifier" />
-    <ElementType Name="uspGetCGBankByLeagueIdResult">
-      <Column Name="PrizePool" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.uspGetLeagueLadder" Method="uspGetLeagueLadder">
-    <Parameter Name="Count" Parameter="count" Type="System.Int32" DbType="Int" />
-    <ElementType Name="uspGetLeagueLadderResult">
-      <Column Name="userid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="points" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="playcount" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="nickname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.uspGetPrizePoolByLeagueId" Method="uspGetPrizePoolByLeagueId">
-    <Parameter Name="LeagueId" Parameter="leagueId" Type="System.Guid" DbType="UniqueIdentifier" />
-    <ElementType Name="uspGetPrizePoolByLeagueIdResult">
-      <Column Name="PrizePool" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.uspGetTournaments" Method="uspGetTournaments">
-    <Parameter Name="LeagueId" Parameter="leagueId" Type="System.Guid" DbType="UniqueIdentifier" />
-    <Parameter Name="onlyFuture" Type="System.Boolean" DbType="Bit" />
-    <ElementType Name="uspGetTournamentsResult">
-      <Column Name="TournamentId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="PlayerCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Bank" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="GameType" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
-      <Column Name="IsFullPointed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="IsLeague" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="BuyInPrize" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ReBuyPrize" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AddOnPrize" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="BuyInStack" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ReBuyStack" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AddOnStack" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="BonusStack" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="GTD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ReEntryCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ReBuyCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="IsFood" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="IsHidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="DateDeleted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="DeletedByUserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="CreatedByUserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="AddOns" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PlayerCount1" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ReBuys" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </ElementType>
-  </Function>
 </Database>

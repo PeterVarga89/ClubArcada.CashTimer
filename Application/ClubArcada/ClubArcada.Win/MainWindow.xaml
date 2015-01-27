@@ -1,12 +1,12 @@
 ﻿<Window x:Class="ClubArcada.Win.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Background="Black" Height="350" Width="525" WindowState="Maximized" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
+        Title="MainWindow" Background="Black"  Height="1280" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="70" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
         <!--HEADER-->
@@ -15,34 +15,48 @@
                 <Image Height="60" Margin="6,0,0,0" Source="Images/Logo.PNG" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button IsEnabled="False" Name="btnAddPlayer" Style="{StaticResource btnCashIn}" Width="160" Margin="0,10,20,10" Grid.Row="0" Content="Pridat hráca" Click="Button_Click"></Button>
-            <Button Style="{StaticResource btnCashIn}" Width="160" Margin="0,10,20,10" Grid.Row="0" Content="Pridat stôl" Click="Button_btnNewTable"></Button>
+
+                <TextBlock Visibility="{Binding PausedVisibility}" Text="PAUSED"  Foreground="Red"  Margin="0,0,30,0" Name="button1" VerticalAlignment="Center" FontSize="30">
+                    <TextBlock.Triggers>
+                        <EventTrigger RoutedEvent="Button.Loaded">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard BeginTime="00:00:00" 
+                                        RepeatBehavior="Forever" 
+                                        Storyboard.TargetName="button1" 
+                                        Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)">
+                                        <ColorAnimation From="Red" To="Yellow" Duration="0:0:1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </TextBlock.Triggers>
+                </TextBlock>
+
+                <Button Name="btnGlobalPause" Style="{StaticResource btnDelete}" Width="120" Margin="0,10,20,10" Grid.Row="0" Content="Start" Click="btnGlobalPause_Click"></Button>
+                <Button Name="btnChangeBlinds" Style="{StaticResource btnCashIn}" Width="120" Margin="0,10,20,10" Grid.Row="0" Content="Zmeniť blindy" Click="btnChangeBlinds_Click"></Button>
+                <Button IsEnabled="False" Name="btnAddPlayer" Style="{StaticResource btnCashIn}" Width="120" Margin="0,10,20,10" Grid.Row="0" Content="Pridat hráca" Click="Button_Click"></Button>
+                <Button Style="{StaticResource btnCashIn}" Width="120" Margin="0,10,20,10" Grid.Row="0" Content="Pridat stôl" Click="Button_btnNewTable"></Button>
             </StackPanel>
             <Border BorderThickness="1" BorderBrush="Gray" Height="1" VerticalAlignment="Bottom"></Border>
         </Grid>
 
         <!--CONTENT-->
-        <Grid Grid.Row="1">
+        <Grid Name="gridMain" Grid.Row="1">
             <StackPanel>
                 <StackPanel.Background>
                     <ImageBrush ImageSource="Images/bg.png" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,160,160"></ImageBrush>
                 </StackPanel.Background>
             </StackPanel>
             <TabControl Name="tabCtrl" Background="Transparent">
-                <!--<TabItem Header="">
-                    <ScrollViewer>
-                        <StackPanel Name="spPlayerLineContainer" />
-                    </ScrollViewer>
-                </TabItem>-->
             </TabControl>
         </Grid>
 
         <!--FOOTER-->
         <Grid Grid.Row="2">
+            <TextBlock Margin="5,0,0,0" FontSize="16" VerticalAlignment="Center" Foreground="White" Name="txtBattery" />
             <Border BorderThickness="1" BorderBrush="DarkGray" Height="1" VerticalAlignment="Top"></Border>
             <Button HorizontalAlignment="Right" Style="{StaticResource btnCashIn}" Width="160" Margin="0,4,20,4" Grid.Row="0" Content="Ukončiť turnaj" Click="Button_Click_1"></Button>
-
         </Grid>
-
     </Grid>
 </Window>

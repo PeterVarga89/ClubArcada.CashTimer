@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Text;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -11,11 +6,23 @@ namespace ClubArcada.Win
 {
     public partial class App : Application
     {
-        void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        public App()
+            : base()
         {
-            Other.Functions.SendMail(e.Exception.Message.ToString(), e.Exception.InnerException.ToString());
+            this.DispatcherUnhandledException += App_DispatcherUnhandledException;
+        }
+
+        private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
+            StringBuilder bodyMessage = new StringBuilder();
+
+            bodyMessage.Append("Expection: " + e.Exception.InnerException.Message).AppendLine().AppendLine();
+            bodyMessage.Append("Message: " + e.Exception.Message).AppendLine().AppendLine();
+            bodyMessage.Append("StackTrace: " + e.Exception.StackTrace).AppendLine();
+
+            Mailer.Mailer.SendErrorMail("CashTimer Error", bodyMessage.ToString());
             e.Handled = true;
         }
-        
     }
 }

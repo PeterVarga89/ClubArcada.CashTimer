@@ -12,6 +12,11 @@
             <Setter Property="HorizontalContentAlignment" Value="Right"></Setter>
             <Setter Property="Foreground" Value="Wheat"></Setter>
         </Style>
+
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+
     </Window.Resources>
     <Grid Background="Transparent">
         <Grid>

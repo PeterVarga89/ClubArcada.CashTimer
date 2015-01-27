@@ -19,6 +19,10 @@
     [Place_08]            FLOAT (53)       NOT NULL,
     [Place_09]            FLOAT (53)       NOT NULL,
     [Place_10]            FLOAT (53)       NOT NULL,
+    [BonusCash]           INT              CONSTRAINT [DF_TournamentCashouts_BonusCash] DEFAULT ((0)) NULL,
+    [Dealer]              INT              NULL,
+    [BonusUsed]           INT              NULL,
+    [RunnerHelp]          INT              NULL,
     CONSTRAINT [PK_TournamentCashouts] PRIMARY KEY CLUSTERED ([TournamentCashoutId] ASC)
 );
 
