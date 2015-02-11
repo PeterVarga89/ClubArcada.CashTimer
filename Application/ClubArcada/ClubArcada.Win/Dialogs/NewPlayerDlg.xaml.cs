@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace ClubArcada.Win.Dialogs
 {
-    public partial class NewPlayerDlg : Window
+    public partial class NewPlayerDlg : DialogBase
     {
         public CashResult Result { get; set; }
 
@@ -19,7 +19,9 @@ namespace ClubArcada.Win.Dialogs
 
         public List<eGameType> GameTypeList { get; set; }
 
-        public Double Amount { get; set; }
+        public double Amount { get; set; }
+
+        public double Borrowed { get; set; }
 
         public NewPlayerDlg(Guid selectedTableId)
         {
@@ -30,13 +32,13 @@ namespace ClubArcada.Win.Dialogs
             Result.CashResultId = Guid.NewGuid();
             DataContext = this;
             GameTypeList = Common.Extensions.GetValueList<eGameType>();
+            txtSearch.Focus();
         }
 
         private bool Validate()
         {
             int errorCount = 0;
 
-            errorCount = Amount == 0 ? errorCount + 1 : errorCount;
             errorCount = cbTable.SelectedItem == null ? errorCount + 1 : errorCount;
             errorCount = Result.User == null ? errorCount + 1 : errorCount;
 
@@ -47,23 +49,81 @@ namespace ClubArcada.Win.Dialogs
         {
             if (Validate())
             {
-                Result.CashResultId = Guid.NewGuid();
-                Result.StartTime = DateTime.Now;
-                Result.PlayerId = Guid.NewGuid();
-                Result.UserId = Result.User.UserId;
-                Result.TournamentId = Main.Tournament.TournamentId;
-
-                Result.CashIns = new List<CashIn>();
-                Result.CashIns.Add(new CashIn()
+                if (Result.User == null)
                 {
-                    Amount = Amount,
-                    CashInId = Guid.NewGuid(),
-                    CashResultId = Result.CashResultId,
-                    DateCreated = DateTime.Now
-                });
+                    var alertDlg = new Dialogs.AlertDialog("Vyberte si hráča!");
+                    alertDlg.ShowDialog();
+                    return;
+                }
 
-                Main.AddPlayer((cbTable.SelectedItem as CashTable).CashTableId, Result);
-                this.Close();
+                if (Amount == 0)
+                {
+                    var alertDlg = new Dialogs.AlertDialog("Cash in nemôže byť nula!");
+                    alertDlg.ShowDialog();
+                    return;
+                }
+
+                var confirmText = string.Format("Určite chcete registrovať hráča {0} do hry, cash in: {1}€ ?", Result.User.FullName, Amount);
+
+                var confirmDlg1 = new Dialogs.ConfirmDialog(confirmText);
+                confirmDlg1.ShowDialog();
+                if (confirmDlg1.DialogResult.HasValue && confirmDlg1.DialogResult.Value)
+                {
+                    if (Borrowed != 0)
+                    {
+                        if (Borrowed > Amount)
+                        {
+                            var alertDlg = new Dialogs.AlertDialog("Požičaná čiastka nemôže byť väčšia ako Cash in!");
+                            alertDlg.ShowDialog();
+                            return;
+                        }
+
+                        var confirmDlg = new Dialogs.ConfirmDialog(string.Format("Určite chcete požičať peniaze? ({0}€)", Borrowed));
+                        confirmDlg.ShowDialog();
+
+                        if (!confirmDlg.DialogResult.HasValue || (confirmDlg.DialogResult.HasValue && confirmDlg.DialogResult.Value == false))
+                        {
+                            return;
+                        }
+
+                        BusinessObjects.Data.TransactionData.Create(eConnectionString.Online, new Transaction()
+                        {
+                            Amount = Borrowed * (-1),
+                            UserId = Result.User.UserId,
+                            TransactionType = (int)eTransactionType.NotSet,
+                            DateDeleted = null,
+                            DateUsed = null,
+                            Description = string.Empty,
+                            CratedByUserId = App.User.UserId
+                        });
+
+                        var balance = BusinessObjects.Data.UserData.GetUserBalance(Result.User.UserId);
+                        var mailBody = string.Format(Mailer.Constants.MailNewBorrowBody, Result.User.NickName, Result.User.FirstName, Result.User.LastName, "Cash Game", Borrowed, balance, App.User.FullName);
+                        ClubArcada.Mailer.Mailer.SendMail(Mailer.Constants.MailNewBorrowSubject, mailBody);
+                    }
+
+                    Result.CashResultId = Guid.NewGuid();
+                    Result.StartTime = DateTime.Now;
+                    Result.PlayerId = Guid.NewGuid();
+                    Result.UserId = Result.User.UserId;
+                    Result.TournamentId = Main.Tournament.TournamentId;
+
+                    Result.CashIns = new List<CashIn>();
+                    Result.CashIns.Add(new CashIn()
+                    {
+                        Amount = Amount,
+                        CashInId = Guid.NewGuid(),
+                        CashResultId = Result.CashResultId,
+                        DateCreated = DateTime.Now
+                    });
+
+                    Main.AddPlayer((cbTable.SelectedItem as CashTable).CashTableId, Result);
+                    this.Close();
+                }
+                else
+                {
+                    return;
+                }
             }
         }
 
@@ -104,7 +164,7 @@ namespace ClubArcada.Win.Dialogs
 
         private void txtAmount_GotFocus(object sender, RoutedEventArgs e)
         {
-            txtAmount.Text = string.Empty;
+            (sender as TextBox).Text = string.Empty;
         }
 
         private static string RemoveDiacritics(string text)

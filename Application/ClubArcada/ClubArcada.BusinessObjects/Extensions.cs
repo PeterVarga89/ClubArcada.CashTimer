@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,19 +22,28 @@ namespace ClubArcada.BusinessObjects
 
         public static string RemoveDiacritics(this string text)
         {
-            string formD = text.Normalize(NormalizationForm.FormD);
-            StringBuilder sb = new StringBuilder();
+            text = text.Replace("á", "a");
+            text = text.Replace("é", "e");
+            text = text.Replace("í", "i");
+            text = text.Replace("ó", "o");
+            text = text.Replace("š", "s");
+            text = text.Replace("ž", "z");
+            text = text.Replace("č", "c");
 
-            foreach (char ch in formD)
-            {
-                UnicodeCategory uc = CharUnicodeInfo.GetUnicodeCategory(ch);
-                if (uc != UnicodeCategory.NonSpacingMark)
-                {
-                    sb.Append(ch);
-                }
-            }
-
-            return sb.ToString().Normalize(NormalizationForm.FormC);
+            return text;
         }
+
+        public static T Copy<T>(this T source)
+        {
+            DataContractSerializer serializer = new DataContractSerializer(typeof(T));
+            using (MemoryStream ms = new MemoryStream())
+            {
+                serializer.WriteObject(ms, source);
+                ms.Seek(0, SeekOrigin.Begin);
+                return (T)serializer.ReadObject(ms);
+            }
+        }
+
+        
     }
 }

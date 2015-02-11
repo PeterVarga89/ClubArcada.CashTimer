@@ -30,7 +30,7 @@
     <SuiteName>Club Arcada</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>12</ApplicationRevision>
+    <ApplicationRevision>41</ApplicationRevision>
     <ApplicationVersion>3.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -45,6 +45,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -80,6 +81,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -101,12 +103,16 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\DoubleTextBox.cs" />
     <Compile Include="Controls\PlayerLineCtrl.xaml.cs">
       <DependentUpon>PlayerLineCtrl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\TabItemCtrl.cs" />
     <Compile Include="Dialogs\AddPlayerDlg.xaml.cs">
       <DependentUpon>AddPlayerDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\BonusDialog.xaml.cs">
+      <DependentUpon>BonusDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\ConfirmDialog.xaml.cs">
       <DependentUpon>ConfirmDialog.xaml</DependentUpon>
@@ -120,6 +126,7 @@
     <Compile Include="Dialogs\CashOutDlg.xaml.cs">
       <DependentUpon>CashOutDlg.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\DialogBase.cs" />
     <Compile Include="Dialogs\LoginDlg.xaml.cs">
       <DependentUpon>LoginDlg.xaml</DependentUpon>
     </Compile>
@@ -141,6 +148,9 @@
     <Compile Include="Dialogs\TournamentSelectDlg.xaml.cs">
       <DependentUpon>TournamentSelectDlg.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\TransactionDlg.xaml.cs">
+      <DependentUpon>TransactionDlg.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InkInputHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -161,6 +171,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Resource Include="Images\bg_v_02.jpg" />
+    <Resource Include="Images\bg_v_01.jpg" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -188,6 +200,10 @@
     <Page Include="Dialogs\AddPlayerDlg.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\BonusDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\ConfirmDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -233,9 +249,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Dialogs\TransactionDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ListboxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\Styles.xaml">
       <Generator>MSBuild:Compile</Generator>

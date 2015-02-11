@@ -10,6 +10,15 @@ namespace ClubArcada.Win
             : base()
         {
             this.DispatcherUnhandledException += App_DispatcherUnhandledException;
+
+            this.Startup += App_Startup;
+        }
+
+        private void App_Startup(object sender, StartupEventArgs e)
+        {
+            var mainwindow = new MainWindow();
+            var dlgLogin = new Dialogs.LoginDlg();
+            dlgLogin.ShowDialog();
         }
 
         private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
@@ -24,5 +33,13 @@ namespace ClubArcada.Win
             Mailer.Mailer.SendErrorMail("CashTimer Error", bodyMessage.ToString());
             e.Handled = true;
         }
+
+        public static MainWindow ParentWindow
+        {
+            get;
+            set;
+        }
+
+        public static BusinessObjects.DataClasses.User User { get; set; }
     }
 }

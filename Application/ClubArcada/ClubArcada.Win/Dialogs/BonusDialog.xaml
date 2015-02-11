@@ -1,0 +1,36 @@
+﻿<src:DialogBase x:Class="ClubArcada.Win.Dialogs.BonusDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:src="clr-namespace:ClubArcada.Win.Dialogs"
+        Title="Bonus"
+        Style="{StaticResource dialogWindowStyle}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Button Content="Poker" Margin="2,0,2,0" Grid.Row="0" Grid.Column="0" Click="btnPoker_Click" Style="{StaticResource btnCashOut}" />
+        <Button Content="Straight Flush" Margin="2,0,2,0" Grid.Row="0" Grid.Column="1" Click="btnSF_Click" Style="{StaticResource btnCashOut}" />
+        <Button Content="Royal Flush" Margin="2,0,2,0" Grid.Row="0" Grid.Column="2" Click="btnRF_Click" Style="{StaticResource btnCashOut}" />
+
+        <TextBlock Grid.Row="1" Foreground="White" Text="Výhra" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" />
+        <TextBox Name="txtWin" Grid.Row="1" Grid.Column="1" Height="35" Grid.ColumnSpan="2" Margin="0,4,2,2" IsEnabled="False" />
+
+        <TextBlock Grid.Row="2" Foreground="White" Text="Sa používa teraz" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" />
+        <ComboBox Name="cbxIsUsing" Grid.Column="1" Margin="0,2,2,2" Grid.ColumnSpan="2" Grid.Row="2">
+            <ComboBoxItem Content="Áno" IsSelected="True" Tag="1" />
+            <ComboBoxItem Content="Nie" Tag="0" />
+        </ComboBox>
+
+        <Button Content="Ok" Margin="2" Grid.Row="3" Grid.Column="1" Style="{StaticResource btnCashIn}" Click="btnSave_Click" />
+        <Button Content="Storno" Margin="2" Grid.Row="3" Grid.Column="2" Style="{StaticResource btnDelete}" Click="btnCancel_Click" />
+    </Grid>
+</src:DialogBase>

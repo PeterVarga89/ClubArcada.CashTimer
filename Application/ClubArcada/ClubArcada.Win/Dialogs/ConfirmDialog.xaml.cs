@@ -2,7 +2,7 @@
 
 namespace ClubArcada.Win.Dialogs
 {
-    public partial class ConfirmDialog : Window
+    public partial class ConfirmDialog : DialogBase
     {
         public string AlertText { get; set; }
 

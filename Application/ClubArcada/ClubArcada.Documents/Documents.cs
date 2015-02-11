@@ -3,7 +3,6 @@ using GemBox.Spreadsheet;
 using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 
 namespace ClubArcada.Documents
@@ -26,7 +25,7 @@ namespace ClubArcada.Documents
 
             ws.get_Range("C7", "C7").Cells.Value2 = tournament.Date.ToString("dd.MM.yyyy - hh:mm");
             ws.get_Range("C8", "C8").Cells.Value2 = tournament.DateEnded.Value.ToString("dd.MM.yyyy - hh:mm");
-            ws.get_Range("C9", "C9").Cells.Value2 = (tournament.DateEnded.Value - tournament.Date).Minutes.ToString() + " min";
+            ws.get_Range("C9", "C9").Cells.Value2 = (tournament.DateEnded.Value - tournament.Date).TotalMinutes.ToString() + " min";
             ws.get_Range("C11", "C11").Cells.Value2 = playerList.Count.ToString();
             ws.get_Range("C12", "C12").Cells.Value2 = tableList.Count.ToString();
 
@@ -47,8 +46,6 @@ namespace ClubArcada.Documents
                 ws.get_Range("F" + row.ToString(), "F" + row.ToString()).Cells.Value2 = p.CashOut.HasValue ? p.CashOut.Value : 0;
                 ws.get_Range("G" + row.ToString(), "G" + row.ToString()).Cells.Value2 = p.CashOut.Value - p.CashInTotal;
                 ws.get_Range("H" + row.ToString(), "H" + row.ToString()).Cells.Value2 = p.Duration;
-
-                //ws.get_Range("A" + row.ToString(), "K" + row.ToString()).Cells.Value = ".Style.Borders.SetBorders(MultipleBorders.Bottom, Color.FromArgb(125, 140, 167), LineStyle.Dashed)";
 
                 row++;
             }

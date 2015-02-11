@@ -1,17 +1,15 @@
-﻿<Window x:Class="ClubArcada.Win.Dialogs.AddPlayerDlg"
+﻿<src:DialogBase x:Class="ClubArcada.Win.Dialogs.AddPlayerDlg"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Style="{StaticResource dialogWindowStyle}"
-        >
+        xmlns:src="clr-namespace:ClubArcada.Win.Dialogs"
+        Title="Pridanie hráča"
+        Style="{StaticResource dialogWindowStyle}">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Button Style="{StaticResource btnCashIn}" Margin="5" Grid.Row="0" Content="Existujuci hrac" Click="ExistingPlayer_Click"></Button>
-        <Button Style="{StaticResource btnCashIn}" Margin="5" Grid.Row="1" Content="Novy hrac" Click="Register_Click"></Button>
-        <Button Style="{StaticResource btnDelete}" Margin="5" Grid.Row="3" Content="Zrusit" Click="Cancel_Click"></Button>
-    </Grid>
 
-</Window>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+        <Button Style="{StaticResource btnCashIn}" Width="200" Margin="5" Content="Existujúci hráč" Click="ExistingPlayer_Click"></Button>
+        <Button Style="{StaticResource btnCashIn}" Width="200" Margin="5" Content="Registrovať hráča" Click="Register_Click"></Button>
+        <Button Style="{StaticResource btnDelete}" Width="200" Margin="5" Content="Zrusit" Click="Cancel_Click"></Button>
+        </StackPanel>
+    </Grid>
+</src:DialogBase>

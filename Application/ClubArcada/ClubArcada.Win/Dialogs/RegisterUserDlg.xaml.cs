@@ -4,17 +4,20 @@ using ClubArcada.BusinessObjects.DataClasses;
 using System;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
+using ClubArcada.Win.Other;
 
 namespace ClubArcada.Win.Dialogs
 {
-    public partial class RegisterUserDlg : Window
+    public partial class RegisterUserDlg : DialogBase
     {
         public MainWindow Main { get; set; }
 
         public RegisterUserDlg()
         {
             InitializeComponent();
+            txtNickName.Focus();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -24,7 +27,7 @@ namespace ClubArcada.Win.Dialogs
                 User user = new User()
                 {
                     UserId = Guid.NewGuid(),
-                    Comment = txtDescription.Text.Trim(),
+                    Comment = string.Empty,
                     DateActivated = DateTime.Now,
                     DateCreated = DateTime.Now,
                     DateDeleted = null,
@@ -45,8 +48,8 @@ namespace ClubArcada.Win.Dialogs
                 var worker = new BackgroundWorker();
                 worker.DoWork += delegate
                 {
-                    UserData.Insert(eConnectionString.Online, user);
-                    UserData.Insert(eConnectionString.Local, user);
+                    UserData.Insert(eConnectionString.Online, user.Clone());
+                    UserData.Insert(eConnectionString.Local, user.Clone());
 
                     var mailBody = string.Format(Mailer.Constants.MailNewUserRegistrationBody, user.NickName, user.FirstName, user.LastName, user.PhoneNumber, user.Email);
                     ClubArcada.Mailer.Mailer.SendMail(Mailer.Constants.MailNewUserRegistrationSubject, mailBody);
@@ -67,23 +70,23 @@ namespace ClubArcada.Win.Dialogs
         {
             bool isValid = true;
 
-            ValidateControl(ref isValid, UserData.IsNickNameExist(eConnectionString.Online, txtNickName.Text));
-            ValidateControl(ref isValid, string.IsNullOrEmpty(txtFirstName.Text));
-            ValidateControl(ref isValid, string.IsNullOrEmpty(txtLastName.Text));
+            ValidateControl(txtNickName, ref isValid, UserData.IsNickNameExist(eConnectionString.Online, txtNickName.Text));
+            ValidateControl(txtFirstName, ref isValid, string.IsNullOrEmpty(txtFirstName.Text));
+            ValidateControl(txtLastName, ref isValid, string.IsNullOrEmpty(txtLastName.Text));
 
             return isValid;
         }
 
-        private void ValidateControl(ref bool isValid, bool req)
+        private void ValidateControl(Control control, ref bool isValid, bool req)
         {
             if (req)
             {
                 isValid = false;
-                txtNickName.Background = Brushes.Red;
+                control.Background = Brushes.Red;
             }
             else
             {
-                txtNickName.Background = Brushes.White;
+                control.Background = Brushes.White;
             }
         }
 

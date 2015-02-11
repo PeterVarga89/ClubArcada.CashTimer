@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClubArcada.BusinessObjects.DataClasses
 {
+    [Serializable]
     public partial class User
     {
         public string FullDislpayName

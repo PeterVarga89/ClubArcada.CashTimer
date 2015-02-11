@@ -12,24 +12,25 @@ namespace ClubArcada.BusinessObjects.Data
         {
             using (var app = new PKDBDataContext(connectionString.GetEnumDescription()))
             {
-                return app.Users.ToList();
+                return app.Users.Where(u => !u.DateDeleted.HasValue).ToList();
             }
         }
 
         public static List<User> GetListBySearchString(eConnectionString connectionString, string searchString)
         {
-            using (var app = new PKDBDataContext(connectionString.GetEnumDescription()))
-            {
-                return app.Users.Where(u =>
-                    u.NickName.ToLower().Contains(searchString.ToLower())
+            var list = GetList(connectionString);
+
+            return list.Where(u =>
+                    !u.DateDeleted.HasValue
+                    && (
+                    u.NickName.ToLower().RemoveDiacritics().StartsWith(searchString.ToLower())
                     ||
-                    u.FirstName.ToLower().Contains(searchString.ToLower())
+                    u.FirstName.ToLower().RemoveDiacritics().StartsWith(searchString.ToLower())
                     ||
-                    u.LastName.ToLower().Contains(searchString.ToLower())
+                    u.LastName.ToLower().RemoveDiacritics().StartsWith(searchString.ToLower())
                     ||
-                    (u.FirstName + " " + u.LastName).ToLower().StartsWith(searchString.ToLower())
-                    ).ToList();
-            }
+                    (u.FirstName + " " + u.LastName).ToLower().RemoveDiacritics().StartsWith(searchString.ToLower()))
+                    ).OrderBy(u => u.FirstName).ToList();
         }
 
         public static User GetById(eConnectionString connectionString, Guid id)
@@ -58,12 +59,58 @@ namespace ClubArcada.BusinessObjects.Data
             }
         }
 
+        public static void Update(eConnectionString connectionString, User entity)
+        {
+            using (var app = new PKDBDataContext(connectionString.GetEnumDescription()))
+            {
+                var user = app.Users.SingleOrDefault(u => u.UserId == entity.UserId);
+
+                user.DateDeleted = entity.DateDeleted;
+                user.NickName = entity.NickName;
+                user.FirstName = entity.FirstName;
+                user.LastName = entity.LastName;
+                user.PhoneNumber = entity.PhoneNumber;
+                user.Email = entity.Email;
+                app.SubmitChanges();
+            }
+        }
+
         public static bool IsNickNameExist(eConnectionString connectionString, string nickName)
         {
             using (var app = new PKDBDataContext(connectionString.GetEnumDescription()))
             {
                 var userlist = app.Users.Where(u => u.NickName.ToLower() == nickName.ToLower()).ToList();
                 return userlist.Count > 0;
+            }
+        }
+
+        public static double GetUserBalance(Guid userId)
+        {
+            using (var app = new PKDBDataContext(eConnectionString.Online.GetEnumDescription()))
+            {
+                var re = app.GetUserBalance(userId);
+                if (re.IsNull())
+                    return 0;
+
+                var res = app.GetUserBalance(userId).SingleOrDefault();
+
+                if (res.IsNull())
+                    return 0;
+
+                var result = app.GetUserBalance(userId).SingleOrDefault().Column1;
+                return result.HasValue ? result.Value : 0;
+            }
+        }
+
+        public static User Login(string email, string password)
+        {
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+                return (User)null;
+
+            using (var app = new PKDBDataContext(eConnectionString.Online.GetEnumDescription()))
+            {
+                var user = app.Users.SingleOrDefault(u => u.Email == email && u.Password == password);
+                return user;
             }
         }
     }

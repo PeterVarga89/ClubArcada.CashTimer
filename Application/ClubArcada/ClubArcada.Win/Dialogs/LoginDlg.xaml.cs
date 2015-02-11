@@ -14,14 +14,31 @@ using System.Windows.Shapes;
 
 namespace ClubArcada.Win.Dialogs
 {
-    /// <summary>
-    /// Interaction logic for LoginDlg.xaml
-    /// </summary>
     public partial class LoginDlg : Window
     {
         public LoginDlg()
         {
             InitializeComponent();
+        }
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            var user = BusinessObjects.Data.UserData.Login(txtEmail.Text, txtPassword.Password);
+            if(user == null)
+            {
+                return;
+            }
+            else
+            {
+                App.User = user;
+                this.DialogResult = true;
+                this.Close();
+            }
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(1);
         }
     }
 }

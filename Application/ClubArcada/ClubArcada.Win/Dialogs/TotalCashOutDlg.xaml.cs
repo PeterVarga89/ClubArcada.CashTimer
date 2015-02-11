@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace ClubArcada.Win.Dialogs
 {
-    public partial class TotalCashOutDlg : Window
+    public partial class TotalCashOutDlg : DialogBase
     {
         public MainWindow Main { get; set; }
 
@@ -15,13 +15,13 @@ namespace ClubArcada.Win.Dialogs
 
         public DateTime Date { get { return DateTime.Now; } }
 
-        public int CashOutTotal { get { return Main.TotalCashOut; } }
+        public double CashOutTotal { get { return Main.TotalCashOut; } }
 
         public int Floor { get; set; }
 
         public int Dealer { get; set; }
 
-        public int Food { get; set; }
+        public double Food { get; set; }
 
         public int Rake { get; set; }
 

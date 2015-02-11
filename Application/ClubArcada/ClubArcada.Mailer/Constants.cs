@@ -16,6 +16,13 @@
         public static string MailNewUserRegistrationSubject = "Registrácia nového hráča";
         public static string MailNewUserRegistrationBody = "Nick: {0}\nMeno: {1}\nPriezvisko: {2}\nTelefon: {3}\nEmail: {4}";
 
+        public static string MailNewBonusSubject = "Bonus bol priradený";
+        public static string MailNewBonusBody = "Nick: {0}\nMeno: {1}\nPriezvisko: {2}\nHra: {3}\nSuma: {4}€\nBalance: {5}€";
+
+        public static string MailNewReplySubject = "Peniaze boli vrátené";
+        public static string MailNewBorrowSubject = "Peniaze boli požičané";
+        public static string MailNewBorrowBody = "Nick: {0}\nMeno: {1}\nPriezvisko: {2}\nHra: {3}\nSuma: {4}€\nBalance: {5}€\nZodpovedný: {6}";
+
         public static string MailSignature = "\n----\nTento mail je generovaný automaticky.\nNeodpovedajte naň.";
     }
 }

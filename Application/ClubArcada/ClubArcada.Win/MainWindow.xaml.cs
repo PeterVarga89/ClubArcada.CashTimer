@@ -28,7 +28,8 @@ namespace ClubArcada.Win
         private enum Property
         {
             NotSet = 0,
-            PausedVisibility
+            PausedVisibility,
+            IsShadeVisible
         }
 
         private void Refresh()
@@ -37,6 +38,20 @@ namespace ClubArcada.Win
         }
 
         # endregion
+
+        private Visibility _isShadeVisible;
+        public Visibility IsShadeVisible
+        {
+            get
+            {
+                return _isShadeVisible;
+            }
+            set
+            {
+                _isShadeVisible = value;
+                PropertyChange(Property.IsShadeVisible);
+            }
+        }
 
         public Visibility PausedVisibility { get { return IsPaused ? Visibility.Visible : Visibility.Collapsed; } }
 
@@ -51,17 +66,39 @@ namespace ClubArcada.Win
         public MainWindow()
         {
             InitializeComponent();
+            IsShadeVisible = System.Windows.Visibility.Collapsed;
             this.Loaded += MainWindow_Loaded;
             DataContext = this;
-
-            //var stream = ClubArcada.Documents.Documents.GetStream(DateTime.Now, Tournament, CashResults, Tables, 500, 100);
-
-            //ClubArcada.Mailer.Mailer.SendMail("subject", stream, "test.pdf", "Test");
+            App.ParentWindow = this;
             InkInputHelper.DisableWPFTabletSupport();
+
+            this.SizeChanged += MainWindow_SizeChanged;
+
+            if (App.User.IsNotNull())
+                txtLoggedInUser.Text = string.Format("Zodpovedný: {0},", App.User.FullName);
+        }
+
+        private void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            HandleBackground(e.NewSize.Width, e.NewSize.Height);
+        }
+
+        private void HandleBackground(double width, double height)
+        {
+            if (Height > width)
+            {
+                img_bg.Source = (ImageSource)FindResource("ImagePortrait");
+            }
+            else
+            {
+                img_bg.Source = (ImageSource)FindResource("ImageLandscape");
+            }
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            HandleBackground(this.ActualWidth, this.ActualHeight);
+
             //Windows 8 API to enable touch keyboard to monitor for focus tracking in this WPF application
             InputPanelConfiguration cp = new InputPanelConfiguration();
             IInputPanelConfiguration icp = cp as IInputPanelConfiguration;
@@ -175,7 +212,7 @@ namespace ClubArcada.Win
             }
         }
 
-        public int TotalCashOut
+        public double TotalCashOut
         {
             get
             {
@@ -260,10 +297,17 @@ namespace ClubArcada.Win
 
         private void btnChangeBlinds_Click(object sender, RoutedEventArgs e)
         {
+            if (tabCtrl.SelectedContent == null)
+            {
+                var alertDlg = new Dialogs.AlertDialog("Najprv pridajte stôl!");
+                alertDlg.ShowDialog();
+                return;
+            }
+
             var confirmDlg = new Dialogs.ConfirmDialog("Určite chcete zmeniť blindy?");
             confirmDlg.ShowDialog();
 
-            if(!confirmDlg.DialogResult.HasValue || (confirmDlg.DialogResult.HasValue && confirmDlg.DialogResult.Value == false))
+            if (!confirmDlg.DialogResult.HasValue || (confirmDlg.DialogResult.HasValue && confirmDlg.DialogResult.Value == false))
             {
                 return;
             }
@@ -290,6 +334,16 @@ namespace ClubArcada.Win
             {
                 c.GameType = table.GameTypeEnum;
             }
+        }
+
+        public void CreateCashinForBonus(Guid userId, decimal amount)
+        {
+        }
+
+        private void btnTrasaction_Click(object sender, RoutedEventArgs e)
+        {
+            var dlg = new Dialogs.TransactionDlg();
+            dlg.Show();
         }
     }
 }

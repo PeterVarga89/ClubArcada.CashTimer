@@ -7,7 +7,7 @@ using System.Windows.Controls;
 
 namespace ClubArcada.Win.Dialogs
 {
-    public partial class NewTableDlg : Window
+    public partial class NewTableDlg : DialogBase
     {
         public NewTableDlg()
         {

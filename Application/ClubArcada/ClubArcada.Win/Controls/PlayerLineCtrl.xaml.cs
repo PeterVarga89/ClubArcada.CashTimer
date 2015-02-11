@@ -137,5 +137,12 @@ namespace ClubArcada.Win.Controls
                 t.RefreshVisibility();
             }
         }
+
+        private void btnBonus_Click(object sender, RoutedEventArgs e)
+        {
+            var dlg = new Dialogs.BonusDialog(Result.User, Main);
+            dlg.ShowDialog();
+            this.Refresh();
+        }
     }
 }

@@ -58,3 +58,9 @@ E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTime
 E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\ClubArcada.Win.application
 E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\ConfirmDialog.baml
 E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\ConfirmDialog.g.cs
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\BonusDialog.baml
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\BonusDialog.g.cs
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Styles\ListboxStyle.baml
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\TransactionDlg.g.cs
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.Win\obj\Debug\Dialogs\TransactionDlg.baml

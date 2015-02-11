@@ -23,4 +23,19 @@ namespace ClubArcada.BusinessObjects
         [Description("1€ – 2€ a vyššie")]
         type_double = 2,
     }
+
+    public enum eTransactionType
+    {
+        [Description("Požičané (-)")]
+        NotSet = 0,
+
+        [Description("Vrátené (+)")]
+        Gived = 1,
+
+        [Description("Bonus (+)")]
+        Bonus = 2,
+
+        [Description("Bar (-)")]
+        Bar = 3,
+    }
 }

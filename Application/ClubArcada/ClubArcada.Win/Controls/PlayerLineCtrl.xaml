@@ -4,13 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="120" Height="50" Margin="5,5,5,5" HorizontalAlignment="Stretch" d:DesignWidth="800">
+             d:DesignHeight="120" Height="50" Margin="0,5,0,5" HorizontalAlignment="Stretch" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="540"/>
+            <ColumnDefinition Width="430"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Border BorderBrush="DarkGray"  Background="Black" BorderThickness="1" Margin="0,0,10,0" CornerRadius="8"></Border>
+        <Border BorderBrush="DarkGray"  Background="Black" BorderThickness="1" Margin="0,0,5,0" CornerRadius="8"></Border>
         <Border BorderBrush="DarkGray" Background="Black" BorderThickness="1" Grid.Column="1" CornerRadius="8"></Border>
 
         <Grid>
@@ -19,12 +19,12 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="240"/>
+                <ColumnDefinition Width="150"/>
                 <ColumnDefinition Width="180"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Margin="10,3,0,0" Text="{Binding Result.User.NickName, Mode=OneWay}" Padding="0" FontSize="18"  Foreground="White" > </TextBlock>
-            <TextBlock Margin="10,0,0,0" Text="{Binding Result.User.FullName, Mode=OneWay}" VerticalAlignment="Center" Padding="0" FontSize="14" Foreground="Wheat" Grid.Row="1" ></TextBlock>
+            <TextBlock Margin="10,3,0,0" Text="{Binding Result.User.NickName, Mode=OneWay}" Padding="0" FontSize="16"  Foreground="White" > </TextBlock>
+            <TextBlock Margin="10,0,0,0" Text="{Binding Result.User.FullName, Mode=OneWay}" VerticalAlignment="Center" Padding="0" FontSize="12" Foreground="Wheat" Grid.Row="1" ></TextBlock>
 
             <TextBlock Margin="10,3,0,0" Text="{Binding Result.StartTimeString, Mode=OneWay}" Grid.Column="1" Grid.Row="0" Padding="0" FontSize="14"  Foreground="White" ></TextBlock>
             <TextBlock Margin="10,3,0,0" Name="txtTimer" Grid.Column="1" Grid.Row="1" Padding="0" FontSize="14"  Foreground="Wheat" ></TextBlock>
@@ -41,18 +41,21 @@
 
         <Grid Grid.Column="1" HorizontalAlignment="Stretch">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
             
             <Button Style="{StaticResource btnCashInImage}" Grid.Column="0" Content="CASH IN"  HorizontalAlignment="Stretch"  Margin="10,8,5,8" Click="btnCashIn_Click" />
             <Button Style="{StaticResource btnCashOutImage}" Grid.Column="1" Content="CASH OUT" HorizontalAlignment="Stretch"  Margin="5,8,5,8" Click="btnCashOut_Click" />
-            <Button Visibility="{Binding PlayBtnVisibility}" Style="{StaticResource btnPlay}" Grid.Column="2" Content="START" HorizontalAlignment="Stretch"  Margin="5,8,5,8" Click="btnStart_Click" />
-            <Button Visibility="{Binding PauseBtnVisibility}" Style="{StaticResource btnPause}" Grid.Column="2" Content="PAUSE" HorizontalAlignment="Stretch"  Margin="5,8,5,8" Click="btnPause_Click" />
+            <Button Style="{StaticResource btnCashOutImage}" Grid.Column="2" Content="BONUS" HorizontalAlignment="Stretch"  Margin="5,8,5,8" Click="btnBonus_Click" />
+            
+            <Button Visibility="{Binding PlayBtnVisibility}" Style="{StaticResource btnPlay}" Grid.Column="3" Content="START" HorizontalAlignment="Stretch"  Margin="5,8,5,8" Click="btnStart_Click" />
+            <Button Visibility="{Binding PauseBtnVisibility}" Style="{StaticResource btnPause}" Grid.Column="3" Content="PAUSE" HorizontalAlignment="Stretch"  Margin="5,8,5,8" Click="btnPause_Click" />
 
             <Border Visibility="{Binding IsGrayVisible}" BorderBrush="Black" Opacity="0.7" Background="Black" BorderThickness="1" Grid.ColumnSpan="3" CornerRadius="8"></Border>
-            <Button Visibility="{Binding IsGrayVisible}" Style="{StaticResource btnRePlay}" Grid.Column="2" Content="PLAY" HorizontalAlignment="Stretch"  Margin="5,8,5,8" Click="btnRePlay_Click" />
+            <Button Visibility="{Binding IsGrayVisible}" Style="{StaticResource btnRePlay}" Grid.Column="3" Content="PLAY" HorizontalAlignment="Stretch"  Margin="5,8,5,8" Click="btnRePlay_Click" />
         </Grid>
 
         <Border Visibility="{Binding IsGrayVisible}" BorderBrush="Black" Opacity="0.7" Background="Black" BorderThickness="1" Margin="0,0,10,0" CornerRadius="8"></Border>

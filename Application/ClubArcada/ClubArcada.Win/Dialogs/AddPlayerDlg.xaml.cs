@@ -4,7 +4,7 @@ using System.Windows.Controls;
 
 namespace ClubArcada.Win.Dialogs
 {
-    public partial class AddPlayerDlg : Window
+    public partial class AddPlayerDlg : DialogBase
     {
         public MainWindow Main { get; set; }
 

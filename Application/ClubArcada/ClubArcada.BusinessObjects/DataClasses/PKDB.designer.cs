@@ -18,6 +18,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 	using System.Reflection;
 	using System.Linq;
 	using System.Linq.Expressions;
+	using System.Runtime.Serialization;
 	using System.ComponentModel;
 	using System;
 	
@@ -33,9 +34,6 @@ namespace ClubArcada.BusinessObjects.DataClasses
     partial void InsertCashIn(CashIn instance);
     partial void UpdateCashIn(CashIn instance);
     partial void DeleteCashIn(CashIn instance);
-    partial void InsertCashResult(CashResult instance);
-    partial void UpdateCashResult(CashResult instance);
-    partial void DeleteCashResult(CashResult instance);
     partial void InsertCashTable(CashTable instance);
     partial void UpdateCashTable(CashTable instance);
     partial void DeleteCashTable(CashTable instance);
@@ -48,15 +46,18 @@ namespace ClubArcada.BusinessObjects.DataClasses
     partial void InsertTournament(Tournament instance);
     partial void UpdateTournament(Tournament instance);
     partial void DeleteTournament(Tournament instance);
-    partial void InsertTransaction(Transaction instance);
-    partial void UpdateTransaction(Transaction instance);
-    partial void DeleteTransaction(Transaction instance);
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
     partial void InsertTournamentCashout(TournamentCashout instance);
     partial void UpdateTournamentCashout(TournamentCashout instance);
     partial void DeleteTournamentCashout(TournamentCashout instance);
+    partial void InsertCashResult(CashResult instance);
+    partial void UpdateCashResult(CashResult instance);
+    partial void DeleteCashResult(CashResult instance);
+    partial void InsertTransaction(Transaction instance);
+    partial void UpdateTransaction(Transaction instance);
+    partial void DeleteTransaction(Transaction instance);
     #endregion
 		
 		public PKDBDataContext() : 
@@ -97,14 +98,6 @@ namespace ClubArcada.BusinessObjects.DataClasses
 			}
 		}
 		
-		public System.Data.Linq.Table<CashResult> CashResults
-		{
-			get
-			{
-				return this.GetTable<CashResult>();
-			}
-		}
-		
 		public System.Data.Linq.Table<CashTable> CashTables
 		{
 			get
@@ -137,14 +130,6 @@ namespace ClubArcada.BusinessObjects.DataClasses
 			}
 		}
 		
-		public System.Data.Linq.Table<Transaction> Transactions
-		{
-			get
-			{
-				return this.GetTable<Transaction>();
-			}
-		}
-		
 		public System.Data.Linq.Table<User> Users
 		{
 			get
@@ -160,9 +145,33 @@ namespace ClubArcada.BusinessObjects.DataClasses
 				return this.GetTable<TournamentCashout>();
 			}
 		}
+		
+		public System.Data.Linq.Table<CashResult> CashResults
+		{
+			get
+			{
+				return this.GetTable<CashResult>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Transaction> Transactions
+		{
+			get
+			{
+				return this.GetTable<Transaction>();
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetUserBalance")]
+		public ISingleResult<GetUserBalanceResult> GetUserBalance([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="UniqueIdentifier")] System.Nullable<System.Guid> userId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userId);
+			return ((ISingleResult<GetUserBalanceResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CashIns")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class CashIn : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -200,10 +209,11 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		
 		public CashIn()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CashInId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public System.Guid CashInId
 		{
 			get
@@ -224,6 +234,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CashResultId", DbType="UniqueIdentifier NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Guid CashResultId
 		{
 			get
@@ -244,6 +255,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedByUserId", DbType="UniqueIdentifier NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Guid CreatedByUserId
 		{
 			get
@@ -264,6 +276,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.DateTime DateCreated
 		{
 			get
@@ -284,6 +297,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateDeleted", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.Nullable<System.DateTime> DateDeleted
 		{
 			get
@@ -304,6 +318,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Float NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public double Amount
 		{
 			get
@@ -342,287 +357,22 @@ namespace ClubArcada.BusinessObjects.DataClasses
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CashResults")]
-	public partial class CashResult : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private System.Guid _CashResultId;
-		
-		private System.Guid _TournamentId;
-		
-		private System.Guid _UserId;
-		
-		private System.Nullable<System.Guid> _CashTableId;
-		
-		private System.Guid _PlayerId;
-		
-		private int _Duration;
-		
-		private System.Nullable<System.DateTime> _StartTime;
-		
-		private System.Nullable<System.DateTime> _EndTime;
-		
-		private System.Nullable<double> _Quociente;
-		
-		private System.Nullable<int> _CashOut;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnCashResultIdChanging(System.Guid value);
-    partial void OnCashResultIdChanged();
-    partial void OnTournamentIdChanging(System.Guid value);
-    partial void OnTournamentIdChanged();
-    partial void OnUserIdChanging(System.Guid value);
-    partial void OnUserIdChanged();
-    partial void OnCashTableIdChanging(System.Nullable<System.Guid> value);
-    partial void OnCashTableIdChanged();
-    partial void OnPlayerIdChanging(System.Guid value);
-    partial void OnPlayerIdChanged();
-    partial void OnDurationChanging(int value);
-    partial void OnDurationChanged();
-    partial void OnStartTimeChanging(System.Nullable<System.DateTime> value);
-    partial void OnStartTimeChanged();
-    partial void OnEndTimeChanging(System.Nullable<System.DateTime> value);
-    partial void OnEndTimeChanged();
-    partial void OnQuocienteChanging(System.Nullable<double> value);
-    partial void OnQuocienteChanged();
-    partial void OnCashOutChanging(System.Nullable<int> value);
-    partial void OnCashOutChanged();
-    #endregion
-		
-		public CashResult()
+		private void Initialize()
 		{
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CashResultId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid CashResultId
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
 		{
-			get
-			{
-				return this._CashResultId;
-			}
-			set
-			{
-				if ((this._CashResultId != value))
-				{
-					this.OnCashResultIdChanging(value);
-					this.SendPropertyChanging();
-					this._CashResultId = value;
-					this.SendPropertyChanged("CashResultId");
-					this.OnCashResultIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TournamentId", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid TournamentId
-		{
-			get
-			{
-				return this._TournamentId;
-			}
-			set
-			{
-				if ((this._TournamentId != value))
-				{
-					this.OnTournamentIdChanging(value);
-					this.SendPropertyChanging();
-					this._TournamentId = value;
-					this.SendPropertyChanged("TournamentId");
-					this.OnTournamentIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid UserId
-		{
-			get
-			{
-				return this._UserId;
-			}
-			set
-			{
-				if ((this._UserId != value))
-				{
-					this.OnUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._UserId = value;
-					this.SendPropertyChanged("UserId");
-					this.OnUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CashTableId", DbType="UniqueIdentifier")]
-		public System.Nullable<System.Guid> CashTableId
-		{
-			get
-			{
-				return this._CashTableId;
-			}
-			set
-			{
-				if ((this._CashTableId != value))
-				{
-					this.OnCashTableIdChanging(value);
-					this.SendPropertyChanging();
-					this._CashTableId = value;
-					this.SendPropertyChanged("CashTableId");
-					this.OnCashTableIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlayerId", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid PlayerId
-		{
-			get
-			{
-				return this._PlayerId;
-			}
-			set
-			{
-				if ((this._PlayerId != value))
-				{
-					this.OnPlayerIdChanging(value);
-					this.SendPropertyChanging();
-					this._PlayerId = value;
-					this.SendPropertyChanged("PlayerId");
-					this.OnPlayerIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Duration", DbType="Int NOT NULL")]
-		public int Duration
-		{
-			get
-			{
-				return this._Duration;
-			}
-			set
-			{
-				if ((this._Duration != value))
-				{
-					this.OnDurationChanging(value);
-					this.SendPropertyChanging();
-					this._Duration = value;
-					this.SendPropertyChanged("Duration");
-					this.OnDurationChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartTime", DbType="DateTime")]
-		public System.Nullable<System.DateTime> StartTime
-		{
-			get
-			{
-				return this._StartTime;
-			}
-			set
-			{
-				if ((this._StartTime != value))
-				{
-					this.OnStartTimeChanging(value);
-					this.SendPropertyChanging();
-					this._StartTime = value;
-					this.SendPropertyChanged("StartTime");
-					this.OnStartTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndTime", DbType="DateTime")]
-		public System.Nullable<System.DateTime> EndTime
-		{
-			get
-			{
-				return this._EndTime;
-			}
-			set
-			{
-				if ((this._EndTime != value))
-				{
-					this.OnEndTimeChanging(value);
-					this.SendPropertyChanging();
-					this._EndTime = value;
-					this.SendPropertyChanged("EndTime");
-					this.OnEndTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quociente", DbType="Float")]
-		public System.Nullable<double> Quociente
-		{
-			get
-			{
-				return this._Quociente;
-			}
-			set
-			{
-				if ((this._Quociente != value))
-				{
-					this.OnQuocienteChanging(value);
-					this.SendPropertyChanging();
-					this._Quociente = value;
-					this.SendPropertyChanged("Quociente");
-					this.OnQuocienteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CashOut", DbType="Int")]
-		public System.Nullable<int> CashOut
-		{
-			get
-			{
-				return this._CashOut;
-			}
-			set
-			{
-				if ((this._CashOut != value))
-				{
-					this.OnCashOutChanging(value);
-					this.SendPropertyChanging();
-					this._CashOut = value;
-					this.SendPropertyChanged("CashOut");
-					this.OnCashOutChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
+			this.Initialize();
 		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CashTables")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class CashTable : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -664,10 +414,11 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		
 		public CashTable()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CashTableId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public System.Guid CashTableId
 		{
 			get
@@ -688,6 +439,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TournamentId", DbType="UniqueIdentifier NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Guid TournamentId
 		{
 			get
@@ -708,6 +460,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GameType", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public int GameType
 		{
 			get
@@ -728,6 +481,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string Name
 		{
 			get
@@ -748,6 +502,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.DateTime DateCreated
 		{
 			get
@@ -768,6 +523,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateDeleted", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public System.Nullable<System.DateTime> DateDeleted
 		{
 			get
@@ -788,6 +544,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateClosed", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public System.Nullable<System.DateTime> DateClosed
 		{
 			get
@@ -826,9 +583,22 @@ namespace ClubArcada.BusinessObjects.DataClasses
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Leagues")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class League : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -870,10 +640,11 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		
 		public League()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LeagueId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public System.Guid LeagueId
 		{
 			get
@@ -894,6 +665,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedByUserId", DbType="UniqueIdentifier NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Guid CreatedByUserId
 		{
 			get
@@ -914,6 +686,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string Name
 		{
 			get
@@ -934,6 +707,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Bit NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public bool IsActive
 		{
 			get
@@ -954,6 +728,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.DateTime DateCreated
 		{
 			get
@@ -974,6 +749,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateDeleted", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public System.Nullable<System.DateTime> DateDeleted
 		{
 			get
@@ -994,6 +770,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OldId", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public int OldId
 		{
 			get
@@ -1032,9 +809,22 @@ namespace ClubArcada.BusinessObjects.DataClasses
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Logins")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class Login : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -1060,10 +850,11 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		
 		public Login()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LoginId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public System.Guid LoginId
 		{
 			get
@@ -1084,6 +875,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="UniqueIdentifier NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Guid UserId
 		{
 			get
@@ -1104,6 +896,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.DateTime DateCreated
 		{
 			get
@@ -1142,9 +935,22 @@ namespace ClubArcada.BusinessObjects.DataClasses
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tournaments")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class Tournament : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -1210,10 +1016,11 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		
 		public Tournament()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TournamentId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public System.Guid TournamentId
 		{
 			get
@@ -1234,6 +1041,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LeagueId", DbType="UniqueIdentifier NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Guid LeagueId
 		{
 			get
@@ -1254,6 +1062,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedByUserId", DbType="UniqueIdentifier NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Guid CreatedByUserId
 		{
 			get
@@ -1274,6 +1083,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeletedByUserId", DbType="UniqueIdentifier")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.Nullable<System.Guid> DeletedByUserId
 		{
 			get
@@ -1294,6 +1104,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.DateTime DateCreated
 		{
 			get
@@ -1314,6 +1125,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateDeleted", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public System.Nullable<System.DateTime> DateDeleted
 		{
 			get
@@ -1334,6 +1146,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public string Name
 		{
 			get
@@ -1354,6 +1167,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public System.DateTime Date
 		{
 			get
@@ -1374,6 +1188,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GameType", DbType="Char(1) NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
 		public char GameType
 		{
 			get
@@ -1394,6 +1209,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(500)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
 		public string Description
 		{
 			get
@@ -1414,6 +1230,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OldId", DbType="BigInt NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=11)]
 		public long OldId
 		{
 			get
@@ -1434,6 +1251,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateEnded", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=12)]
 		public System.Nullable<System.DateTime> DateEnded
 		{
 			get
@@ -1454,6 +1272,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsHidden", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=13)]
 		public System.Nullable<bool> IsHidden
 		{
 			get
@@ -1492,232 +1311,22 @@ namespace ClubArcada.BusinessObjects.DataClasses
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Transactions")]
-	public partial class Transaction : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private System.Guid _TransactionId;
-		
-		private System.Guid _UserId;
-		
-		private System.Guid _CratedByUserId;
-		
-		private System.DateTime _DateCreated;
-		
-		private bool _IsBorrowed;
-		
-		private System.Nullable<System.DateTime> _DateDeleted;
-		
-		private EntityRef<User> _User;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnTransactionIdChanging(System.Guid value);
-    partial void OnTransactionIdChanged();
-    partial void OnUserIdChanging(System.Guid value);
-    partial void OnUserIdChanged();
-    partial void OnCratedByUserIdChanging(System.Guid value);
-    partial void OnCratedByUserIdChanged();
-    partial void OnDateCreatedChanging(System.DateTime value);
-    partial void OnDateCreatedChanged();
-    partial void OnIsBorrowedChanging(bool value);
-    partial void OnIsBorrowedChanged();
-    partial void OnDateDeletedChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateDeletedChanged();
-    #endregion
-		
-		public Transaction()
+		private void Initialize()
 		{
-			this._User = default(EntityRef<User>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid TransactionId
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
 		{
-			get
-			{
-				return this._TransactionId;
-			}
-			set
-			{
-				if ((this._TransactionId != value))
-				{
-					this.OnTransactionIdChanging(value);
-					this.SendPropertyChanging();
-					this._TransactionId = value;
-					this.SendPropertyChanged("TransactionId");
-					this.OnTransactionIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid UserId
-		{
-			get
-			{
-				return this._UserId;
-			}
-			set
-			{
-				if ((this._UserId != value))
-				{
-					if (this._User.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._UserId = value;
-					this.SendPropertyChanged("UserId");
-					this.OnUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CratedByUserId", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid CratedByUserId
-		{
-			get
-			{
-				return this._CratedByUserId;
-			}
-			set
-			{
-				if ((this._CratedByUserId != value))
-				{
-					this.OnCratedByUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._CratedByUserId = value;
-					this.SendPropertyChanged("CratedByUserId");
-					this.OnCratedByUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime NOT NULL")]
-		public System.DateTime DateCreated
-		{
-			get
-			{
-				return this._DateCreated;
-			}
-			set
-			{
-				if ((this._DateCreated != value))
-				{
-					this.OnDateCreatedChanging(value);
-					this.SendPropertyChanging();
-					this._DateCreated = value;
-					this.SendPropertyChanged("DateCreated");
-					this.OnDateCreatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsBorrowed", DbType="Bit NOT NULL")]
-		public bool IsBorrowed
-		{
-			get
-			{
-				return this._IsBorrowed;
-			}
-			set
-			{
-				if ((this._IsBorrowed != value))
-				{
-					this.OnIsBorrowedChanging(value);
-					this.SendPropertyChanging();
-					this._IsBorrowed = value;
-					this.SendPropertyChanged("IsBorrowed");
-					this.OnIsBorrowedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateDeleted", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DateDeleted
-		{
-			get
-			{
-				return this._DateDeleted;
-			}
-			set
-			{
-				if ((this._DateDeleted != value))
-				{
-					this.OnDateDeletedChanging(value);
-					this.SendPropertyChanging();
-					this._DateDeleted = value;
-					this.SendPropertyChanged("DateDeleted");
-					this.OnDateDeletedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Transaction", Storage="_User", ThisKey="UserId", OtherKey="UserId", IsForeignKey=true)]
-		public User User
-		{
-			get
-			{
-				return this._User.Entity;
-			}
-			set
-			{
-				User previousValue = this._User.Entity;
-				if (((previousValue != value) 
-							|| (this._User.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._User.Entity = null;
-						previousValue.Transactions.Remove(this);
-					}
-					this._User.Entity = value;
-					if ((value != null))
-					{
-						value.Transactions.Add(this);
-						this._UserId = value.UserId;
-					}
-					else
-					{
-						this._UserId = default(System.Guid);
-					}
-					this.SendPropertyChanged("User");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
+			this.Initialize();
 		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -1760,6 +1369,8 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		private bool _IsPersonal;
 		
 		private EntitySet<Transaction> _Transactions;
+		
+		private bool serializing;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1805,11 +1416,11 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		
 		public User()
 		{
-			this._Transactions = new EntitySet<Transaction>(new Action<Transaction>(this.attach_Transactions), new Action<Transaction>(this.detach_Transactions));
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public System.Guid UserId
 		{
 			get
@@ -1830,6 +1441,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NickName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string NickName
 		{
 			get
@@ -1850,6 +1462,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string FirstName
 		{
 			get
@@ -1870,6 +1483,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string LastName
 		{
 			get
@@ -1890,6 +1504,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PeronalId", DbType="NChar(10) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public string PeronalId
 		{
 			get
@@ -1910,6 +1525,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public string Email
 		{
 			get
@@ -1930,6 +1546,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneNumber", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public string PhoneNumber
 		{
 			get
@@ -1950,6 +1567,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comment", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public string Comment
 		{
 			get
@@ -1970,6 +1588,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
 		public string Password
 		{
 			get
@@ -1990,6 +1609,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsSms", DbType="Bit NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
 		public bool IsSms
 		{
 			get
@@ -2010,6 +1630,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsMail", DbType="Bit NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=11)]
 		public bool IsMail
 		{
 			get
@@ -2030,6 +1651,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsAdmin", DbType="Bit NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=12)]
 		public bool IsAdmin
 		{
 			get
@@ -2050,6 +1672,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsBlocked", DbType="Bit NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=13)]
 		public bool IsBlocked
 		{
 			get
@@ -2070,6 +1693,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateActivated", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=14)]
 		public System.Nullable<System.DateTime> DateActivated
 		{
 			get
@@ -2090,6 +1714,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=15)]
 		public System.DateTime DateCreated
 		{
 			get
@@ -2110,6 +1735,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateDeleted", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=16)]
 		public System.Nullable<System.DateTime> DateDeleted
 		{
 			get
@@ -2130,6 +1756,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OldId", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=17)]
 		public int OldId
 		{
 			get
@@ -2150,6 +1777,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsPersonal", DbType="Bit NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=18)]
 		public bool IsPersonal
 		{
 			get
@@ -2170,10 +1798,16 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Transaction", Storage="_Transactions", ThisKey="UserId", OtherKey="UserId")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=19, EmitDefaultValue=false)]
 		public EntitySet<Transaction> Transactions
 		{
 			get
 			{
+				if ((this.serializing 
+							&& (this._Transactions.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
 				return this._Transactions;
 			}
 			set
@@ -2213,9 +1847,37 @@ namespace ClubArcada.BusinessObjects.DataClasses
 			this.SendPropertyChanging();
 			entity.User = null;
 		}
+		
+		private void Initialize()
+		{
+			this._Transactions = new EntitySet<Transaction>(new Action<Transaction>(this.attach_Transactions), new Action<Transaction>(this.detach_Transactions));
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TournamentCashouts")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class TournamentCashout : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -2325,10 +1987,11 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		
 		public TournamentCashout()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TournamentCashoutId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public System.Guid TournamentCashoutId
 		{
 			get
@@ -2349,6 +2012,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TournamentId", DbType="UniqueIdentifier NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Guid TournamentId
 		{
 			get
@@ -2369,6 +2033,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rake", DbType="Float NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public double Rake
 		{
 			get
@@ -2389,6 +2054,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PrizePool", DbType="Float NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public double PrizePool
 		{
 			get
@@ -2409,6 +2075,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Food", DbType="Float NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public double Food
 		{
 			get
@@ -2429,6 +2096,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dotation", DbType="Float NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public double Dotation
 		{
 			get
@@ -2449,6 +2117,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Floor", DbType="Float NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public double Floor
 		{
 			get
@@ -2469,6 +2138,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comment", DbType="VarChar(500) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public string Comment
 		{
 			get
@@ -2489,6 +2159,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CGBank", DbType="Float NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
 		public double CGBank
 		{
 			get
@@ -2509,6 +2180,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_APCBank", DbType="Float NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
 		public double APCBank
 		{
 			get
@@ -2529,6 +2201,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Place_01", DbType="Float NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=11)]
 		public double Place_01
 		{
 			get
@@ -2549,6 +2222,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Place_02", DbType="Float NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=12)]
 		public double Place_02
 		{
 			get
@@ -2569,6 +2243,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Place_03", DbType="Float NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=13)]
 		public double Place_03
 		{
 			get
@@ -2589,6 +2264,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Place_04", DbType="Float NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=14)]
 		public double Place_04
 		{
 			get
@@ -2609,6 +2285,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Place_05", DbType="Float NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=15)]
 		public double Place_05
 		{
 			get
@@ -2629,6 +2306,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Place_06", DbType="Float NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=16)]
 		public double Place_06
 		{
 			get
@@ -2649,6 +2327,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Place_07", DbType="Float NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=17)]
 		public double Place_07
 		{
 			get
@@ -2669,6 +2348,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Place_08", DbType="Float NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=18)]
 		public double Place_08
 		{
 			get
@@ -2689,6 +2369,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Place_09", DbType="Float NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=19)]
 		public double Place_09
 		{
 			get
@@ -2709,6 +2390,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Place_10", DbType="Float NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=20)]
 		public double Place_10
 		{
 			get
@@ -2729,6 +2411,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BonusCash", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=21)]
 		public System.Nullable<int> BonusCash
 		{
 			get
@@ -2749,6 +2432,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dealer", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=22)]
 		public System.Nullable<int> Dealer
 		{
 			get
@@ -2769,6 +2453,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BonusUsed", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=23)]
 		public System.Nullable<int> BonusUsed
 		{
 			get
@@ -2789,6 +2474,7 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RunnerHelp", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=24)]
 		public System.Nullable<int> RunnerHelp
 		{
 			get
@@ -2825,6 +2511,664 @@ namespace ClubArcada.BusinessObjects.DataClasses
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CashResults")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class CashResult : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _CashResultId;
+		
+		private System.Guid _TournamentId;
+		
+		private System.Guid _UserId;
+		
+		private System.Nullable<System.Guid> _CashTableId;
+		
+		private System.Guid _PlayerId;
+		
+		private int _Duration;
+		
+		private System.Nullable<System.DateTime> _StartTime;
+		
+		private System.Nullable<System.DateTime> _EndTime;
+		
+		private System.Nullable<double> _Quociente;
+		
+		private System.Nullable<double> _CashOut;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCashResultIdChanging(System.Guid value);
+    partial void OnCashResultIdChanged();
+    partial void OnTournamentIdChanging(System.Guid value);
+    partial void OnTournamentIdChanged();
+    partial void OnUserIdChanging(System.Guid value);
+    partial void OnUserIdChanged();
+    partial void OnCashTableIdChanging(System.Nullable<System.Guid> value);
+    partial void OnCashTableIdChanged();
+    partial void OnPlayerIdChanging(System.Guid value);
+    partial void OnPlayerIdChanged();
+    partial void OnDurationChanging(int value);
+    partial void OnDurationChanged();
+    partial void OnStartTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnStartTimeChanged();
+    partial void OnEndTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnEndTimeChanged();
+    partial void OnQuocienteChanging(System.Nullable<double> value);
+    partial void OnQuocienteChanged();
+    partial void OnCashOutChanging(System.Nullable<double> value);
+    partial void OnCashOutChanged();
+    #endregion
+		
+		public CashResult()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CashResultId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public System.Guid CashResultId
+		{
+			get
+			{
+				return this._CashResultId;
+			}
+			set
+			{
+				if ((this._CashResultId != value))
+				{
+					this.OnCashResultIdChanging(value);
+					this.SendPropertyChanging();
+					this._CashResultId = value;
+					this.SendPropertyChanged("CashResultId");
+					this.OnCashResultIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TournamentId", DbType="UniqueIdentifier NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public System.Guid TournamentId
+		{
+			get
+			{
+				return this._TournamentId;
+			}
+			set
+			{
+				if ((this._TournamentId != value))
+				{
+					this.OnTournamentIdChanging(value);
+					this.SendPropertyChanging();
+					this._TournamentId = value;
+					this.SendPropertyChanged("TournamentId");
+					this.OnTournamentIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="UniqueIdentifier NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public System.Guid UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CashTableId", DbType="UniqueIdentifier")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+		public System.Nullable<System.Guid> CashTableId
+		{
+			get
+			{
+				return this._CashTableId;
+			}
+			set
+			{
+				if ((this._CashTableId != value))
+				{
+					this.OnCashTableIdChanging(value);
+					this.SendPropertyChanging();
+					this._CashTableId = value;
+					this.SendPropertyChanged("CashTableId");
+					this.OnCashTableIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlayerId", DbType="UniqueIdentifier NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+		public System.Guid PlayerId
+		{
+			get
+			{
+				return this._PlayerId;
+			}
+			set
+			{
+				if ((this._PlayerId != value))
+				{
+					this.OnPlayerIdChanging(value);
+					this.SendPropertyChanging();
+					this._PlayerId = value;
+					this.SendPropertyChanged("PlayerId");
+					this.OnPlayerIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Duration", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
+		public int Duration
+		{
+			get
+			{
+				return this._Duration;
+			}
+			set
+			{
+				if ((this._Duration != value))
+				{
+					this.OnDurationChanging(value);
+					this.SendPropertyChanging();
+					this._Duration = value;
+					this.SendPropertyChanged("Duration");
+					this.OnDurationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartTime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
+		public System.Nullable<System.DateTime> StartTime
+		{
+			get
+			{
+				return this._StartTime;
+			}
+			set
+			{
+				if ((this._StartTime != value))
+				{
+					this.OnStartTimeChanging(value);
+					this.SendPropertyChanging();
+					this._StartTime = value;
+					this.SendPropertyChanged("StartTime");
+					this.OnStartTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndTime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
+		public System.Nullable<System.DateTime> EndTime
+		{
+			get
+			{
+				return this._EndTime;
+			}
+			set
+			{
+				if ((this._EndTime != value))
+				{
+					this.OnEndTimeChanging(value);
+					this.SendPropertyChanging();
+					this._EndTime = value;
+					this.SendPropertyChanged("EndTime");
+					this.OnEndTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quociente", DbType="Float")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
+		public System.Nullable<double> Quociente
+		{
+			get
+			{
+				return this._Quociente;
+			}
+			set
+			{
+				if ((this._Quociente != value))
+				{
+					this.OnQuocienteChanging(value);
+					this.SendPropertyChanging();
+					this._Quociente = value;
+					this.SendPropertyChanged("Quociente");
+					this.OnQuocienteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CashOut", DbType="Float")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
+		public System.Nullable<double> CashOut
+		{
+			get
+			{
+				return this._CashOut;
+			}
+			set
+			{
+				if ((this._CashOut != value))
+				{
+					this.OnCashOutChanging(value);
+					this.SendPropertyChanging();
+					this._CashOut = value;
+					this.SendPropertyChanged("CashOut");
+					this.OnCashOutChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Transactions")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class Transaction : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _TransactionId;
+		
+		private System.Guid _UserId;
+		
+		private System.Guid _CratedByUserId;
+		
+		private double _Amount;
+		
+		private int _TransactionType;
+		
+		private System.DateTime _DateCreated;
+		
+		private System.Nullable<System.DateTime> _DateDeleted;
+		
+		private System.Nullable<System.DateTime> _DateUsed;
+		
+		private string _Description;
+		
+		private EntityRef<User> _User;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnTransactionIdChanging(System.Guid value);
+    partial void OnTransactionIdChanged();
+    partial void OnUserIdChanging(System.Guid value);
+    partial void OnUserIdChanged();
+    partial void OnCratedByUserIdChanging(System.Guid value);
+    partial void OnCratedByUserIdChanged();
+    partial void OnAmountChanging(double value);
+    partial void OnAmountChanged();
+    partial void OnTransactionTypeChanging(int value);
+    partial void OnTransactionTypeChanged();
+    partial void OnDateCreatedChanging(System.DateTime value);
+    partial void OnDateCreatedChanged();
+    partial void OnDateDeletedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateDeletedChanged();
+    partial void OnDateUsedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateUsedChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    #endregion
+		
+		public Transaction()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public System.Guid TransactionId
+		{
+			get
+			{
+				return this._TransactionId;
+			}
+			set
+			{
+				if ((this._TransactionId != value))
+				{
+					this.OnTransactionIdChanging(value);
+					this.SendPropertyChanging();
+					this._TransactionId = value;
+					this.SendPropertyChanged("TransactionId");
+					this.OnTransactionIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="UniqueIdentifier NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public System.Guid UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					if (this._User.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CratedByUserId", DbType="UniqueIdentifier NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public System.Guid CratedByUserId
+		{
+			get
+			{
+				return this._CratedByUserId;
+			}
+			set
+			{
+				if ((this._CratedByUserId != value))
+				{
+					this.OnCratedByUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._CratedByUserId = value;
+					this.SendPropertyChanged("CratedByUserId");
+					this.OnCratedByUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Float NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+		public double Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this.OnAmountChanging(value);
+					this.SendPropertyChanging();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionType", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+		public int TransactionType
+		{
+			get
+			{
+				return this._TransactionType;
+			}
+			set
+			{
+				if ((this._TransactionType != value))
+				{
+					this.OnTransactionTypeChanging(value);
+					this.SendPropertyChanging();
+					this._TransactionType = value;
+					this.SendPropertyChanged("TransactionType");
+					this.OnTransactionTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
+		public System.DateTime DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this.OnDateCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._DateCreated = value;
+					this.SendPropertyChanged("DateCreated");
+					this.OnDateCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateDeleted", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
+		public System.Nullable<System.DateTime> DateDeleted
+		{
+			get
+			{
+				return this._DateDeleted;
+			}
+			set
+			{
+				if ((this._DateDeleted != value))
+				{
+					this.OnDateDeletedChanging(value);
+					this.SendPropertyChanging();
+					this._DateDeleted = value;
+					this.SendPropertyChanged("DateDeleted");
+					this.OnDateDeletedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateUsed", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
+		public System.Nullable<System.DateTime> DateUsed
+		{
+			get
+			{
+				return this._DateUsed;
+			}
+			set
+			{
+				if ((this._DateUsed != value))
+				{
+					this.OnDateUsedChanging(value);
+					this.SendPropertyChanging();
+					this._DateUsed = value;
+					this.SendPropertyChanged("DateUsed");
+					this.OnDateUsedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(500)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Transaction", Storage="_User", ThisKey="UserId", OtherKey="UserId", IsForeignKey=true)]
+		public User User
+		{
+			get
+			{
+				return this._User.Entity;
+			}
+			set
+			{
+				User previousValue = this._User.Entity;
+				if (((previousValue != value) 
+							|| (this._User.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._User.Entity = null;
+						previousValue.Transactions.Remove(this);
+					}
+					this._User.Entity = value;
+					if ((value != null))
+					{
+						value.Transactions.Add(this);
+						this._UserId = value.UserId;
+					}
+					else
+					{
+						this._UserId = default(System.Guid);
+					}
+					this.SendPropertyChanged("User");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void Initialize()
+		{
+			this._User = default(EntityRef<User>);
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+	}
+	
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class GetUserBalanceResult
+	{
+		
+		private System.Nullable<double> _Column1;
+		
+		public GetUserBalanceResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="", Storage="_Column1", DbType="Float")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public System.Nullable<double> Column1
+		{
+			get
+			{
+				return this._Column1;
+			}
+			set
+			{
+				if ((this._Column1 != value))
+				{
+					this._Column1 = value;
+				}
 			}
 		}
 	}

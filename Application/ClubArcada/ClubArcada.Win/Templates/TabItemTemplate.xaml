@@ -41,15 +41,35 @@
 
             <Trigger Property="IsSelected" Value="True">
                 <Setter Property="Panel.ZIndex" Value="100" />
-                <Setter TargetName="Border" Property="Background" Value="Green" />
+                <!--<Setter TargetName="Border" Property="Background" Value="Green" />-->
                 <Setter TargetName="Border" Property="BorderThickness" Value="1,1,1,0" />
-                <Setter TargetName="Border" Property="BorderBrush" Value="DarkGray" />
+                <Setter TargetName="Border" Property="BorderBrush" Value="#003C07" />
+                <Setter TargetName="Border" Property="Background">
+                    <Setter.Value>
+                        <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5">
+                            <RadialGradientBrush.GradientStops>
+                                <GradientStop Color="DarkGreen" Offset="1.0" />
+                                <GradientStop Color="#008500" Offset="0" />
+                            </RadialGradientBrush.GradientStops>
+                        </RadialGradientBrush>
+                    </Setter.Value>
+                </Setter>
             </Trigger>
             <Trigger Property="IsSelected" Value="False">
                 <Setter Property="Panel.ZIndex" Value="1" />
-                <Setter TargetName="Border" Property="Background" Value="Gray" />
+                <!--<Setter TargetName="Border" Property="Background" Value="Gray" />-->
                 <Setter TargetName="Border" Property="BorderThickness" Value="1,1,1,0" />
                 <Setter TargetName="Border" Property="BorderBrush" Value="DarkGray" />
+                <Setter TargetName="Border" Property="Background">
+                    <Setter.Value>
+                        <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5">
+                            <RadialGradientBrush.GradientStops>
+                                <GradientStop Color="#767676" Offset="1.0" />
+                                <GradientStop Color="DarkGray" Offset="0" />
+                            </RadialGradientBrush.GradientStops>
+                        </RadialGradientBrush>
+                    </Setter.Value>
+                </Setter>
             </Trigger>
 
         </ControlTemplate.Triggers>

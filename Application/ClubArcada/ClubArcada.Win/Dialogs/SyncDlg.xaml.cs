@@ -1,5 +1,6 @@
 ﻿using ClubArcada.BusinessObjects;
 using ClubArcada.BusinessObjects.Data;
+using ClubArcada.Win.Other;
 using System;
 using System.ComponentModel;
 using System.Linq;
@@ -34,8 +35,13 @@ namespace ClubArcada.Win.Dialogs
                     var onlineUsers = BusinessObjects.Data.UserData.GetList(eConnectionString.Online);
                     var localUsers = BusinessObjects.Data.UserData.GetList(eConnectionString.Local);
 
-                    var usersToSync = onlineUsers.Where(u => !localUsers.Select(us => us.UserId).Contains(u.UserId)).ToList();
+                    var usersToSync = onlineUsers.Where(u => !localUsers.Select(us => us.UserId).Contains(u.UserId)).ToList().Clone();
                     BusinessObjects.Data.UserData.Insert(eConnectionString.Local, usersToSync);
+
+                    foreach (var u in onlineUsers)
+                    {
+                        BusinessObjects.Data.UserData.Update(eConnectionString.Local, u);
+                    }
                 }
                 catch (Exception e)
                 {
