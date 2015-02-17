@@ -1,5 +1,6 @@
 ﻿using ClubArcada.BusinessObjects;
 using ClubArcada.BusinessObjects.Data;
+using ClubArcada.BusinessObjects.DataClasses;
 using ClubArcada.Win.Other;
 using System;
 using System.ComponentModel;
@@ -8,20 +9,24 @@ using System.Windows;
 
 namespace ClubArcada.Win.Dialogs
 {
-    public partial class SyncDlg : Window
+    public partial class SyncDlg : DialogBase
     {
-        public MainWindow MainWindow { get; set; }
-
-        public SyncDlg(MainWindow mainWindow)
+        public SyncDlg()
         {
-            MainWindow = mainWindow;
             InitializeComponent();
             SyncUsers();
-            SyncTournaments();
+            //SyncTournaments();
             CheckTournament();
         }
 
-        private bool IsBusy { get { return busyIndicator.IsBusy; } set { busyIndicator.IsBusy = value; } }
+        private bool IsBusy
+        {
+            get { return bi.Visibility == System.Windows.Visibility.Visible; } 
+            set 
+            {
+                bi.Visibility = value ? Visibility.Visible : Visibility.Collapsed; 
+            } 
+        }
 
         private void SyncUsers()
         {
@@ -50,10 +55,10 @@ namespace ClubArcada.Win.Dialogs
 
             worker.RunWorkerCompleted += delegate
             {
+                this.Close();
             };
 
             worker.RunWorkerAsync();
-            tbBusy.Text = "Sync Users...";
         }
 
         private void SyncTournaments()
@@ -75,12 +80,13 @@ namespace ClubArcada.Win.Dialogs
             };
 
             worker.RunWorkerAsync();
-            tbBusy.Text = "Sync Tournaments...";
         }
 
         private void CheckTournament()
         {
-            var tour = BusinessObjects.Data.TournamentData.CheckIsExistByDateTime(eConnectionString.Local, DateTime.Now);
+            //var tour = BusinessObjects.Data.TournamentData.CheckIsExistByDateTime(eConnectionString.Local, DateTime.Now);
+
+            Tournament tour = null;
 
             if (tour == null)
             {
@@ -90,7 +96,7 @@ namespace ClubArcada.Win.Dialogs
                 tour.DateDeleted = null;
                 tour.IsHidden = true;
                 tour.LeagueId = BusinessObjects.Data.LeagueData.GetActiveLeague(eConnectionString.Online).LeagueId;
-                tour.Name = "Cash Game Hidden";
+                tour.Name = "Cash Game";
                 tour.TournamentId = Guid.NewGuid();
                 tour.Description = string.Empty;
                 tour.GameType = 'C';
@@ -99,10 +105,10 @@ namespace ClubArcada.Win.Dialogs
             }
             else
             {
-                MainWindow.CashResults = BusinessObjects.Data.CashResultData.GetListByTournamentId(eConnectionString.Local, tour.TournamentId);
+                App.ParentWindow.CashResults = BusinessObjects.Data.CashResultData.GetListByTournamentId(eConnectionString.Local, tour.TournamentId);
             }
 
-            MainWindow.Tournament = tour;
+            App.ParentWindow.Tournament = tour;
         }
     }
 }

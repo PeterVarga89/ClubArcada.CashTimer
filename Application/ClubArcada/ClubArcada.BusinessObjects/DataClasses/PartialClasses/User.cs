@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClubArcada.BusinessObjects.DataClasses
 {
@@ -21,9 +17,22 @@ namespace ClubArcada.BusinessObjects.DataClasses
         {
             get
             {
-                return string.Format("{0} {1}",this.FirstName, this.LastName);
+                return string.Format("{0} {1}", this.FirstName, this.LastName);
             }
             set { }
+        }
+
+        public eAutoReturnState AutoReturnState
+        {
+            get
+            {
+                if (!this.IsAutoReturn.HasValue)
+                    return eAutoReturnState.NotSet;
+                else if (this.IsAutoReturn.HasValue && !this.IsAutoReturn.Value)
+                    return eAutoReturnState.Neto;
+                else
+                    return eAutoReturnState.Full;
+            }
         }
     }
 }

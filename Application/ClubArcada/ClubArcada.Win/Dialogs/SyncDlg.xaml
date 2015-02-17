@@ -1,27 +1,16 @@
-﻿<Window x:Class="ClubArcada.Win.Dialogs.SyncDlg"
+﻿<src:DialogBase x:Class="ClubArcada.Win.Dialogs.SyncDlg"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:wpfx="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Style="{StaticResource smallWindowStyle}"
-        >
+        xmlns:src="clr-namespace:ClubArcada.Win.Dialogs"
+        xmlns:ctr="clr-namespace:ClubArcada.Win.Controls"
+        Title="Synchronizácia údajov"
+        Style="{StaticResource dialogWindowStyle}">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
 
-        <Grid Background="Black" Grid.Row="0">
-            <StackPanel Orientation="Horizontal">
-                <Image Height="60" Margin="6,0,0,0" Source="../Images/Logo.PNG" />
-                <TextBlock Text="Cash Game Timer System" FontSize="32" FontWeight="Bold" Margin="20,0,0,0" Foreground="White" VerticalAlignment="Center"></TextBlock>
-            </StackPanel>
-            <Border BorderThickness="1" BorderBrush="Gray" Height="1" VerticalAlignment="Bottom"></Border>
-        </Grid>
+        <!--<wpfx:BusyIndicator Name="busyIndicator" Background="Black" BusyContent="Synchronizuju sa hraci">
+        </wpfx:BusyIndicator>-->
 
-        <wpfx:BusyIndicator Name="busyIndicator" Grid.Row="1" Background="Black" BusyContent="Synchronizuju sa hraci a turnaje">
-            
-        </wpfx:BusyIndicator>
-        
-        <TextBlock Name="tbBusy" Grid.RowSpan="2"></TextBlock>
+        <ctr:BusyIndicator Visibility="Visible" Height="200" x:Name="bi"/>
     </Grid>
-</Window>
+</src:DialogBase>

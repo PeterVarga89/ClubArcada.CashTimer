@@ -12,13 +12,11 @@ namespace ClubArcada.Win.Dialogs
     {
         public Transaction Transaction { get; set; }
         public User User { get; set; }
-        public MainWindow MainWindow { get; set; }
 
-        public BonusDialog(User user, MainWindow parent)
+        public BonusDialog(User user)
         {
             DataContext = this;
             InitializeComponent();
-            MainWindow = parent;
             this.Title = "Bonus - " + user.FullDislpayName;
 
             User = user;
@@ -46,7 +44,7 @@ namespace ClubArcada.Win.Dialogs
 
                     if (Transaction.DateUsed.HasValue)
                     {
-                        var cashresult = MainWindow.CashResults.SingleOrDefault(m => m.UserId == User.UserId);
+                        var cashresult = App.ParentWindow.CashResults.SingleOrDefault(m => m.UserId == User.UserId);
                         cashresult.CashIns.Add(new CashIn()
                         {
                             Amount = (double)Transaction.Amount,

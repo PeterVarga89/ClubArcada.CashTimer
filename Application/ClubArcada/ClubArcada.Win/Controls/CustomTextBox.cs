@@ -1,27 +1,13 @@
-﻿using System.Windows.Controls;
+﻿using ClubArcada.Win.Dialogs;
+using System.Windows.Controls;
 
 namespace ClubArcada.Win.Controls
 {
-    public class DoubleTextBox : TextBox
+    public class CustomTextBox : TextBox
     {
-        public DoubleTextBox()
+        public CustomTextBox()
             : base()
         {
-            App.KeyBoard.TBX = this;
-        }
-
-        private void ShowKeyboard()
-        {
-            App.KeyBoard.TBX = this;
-            App.KeyBoard.Show();
-        }
-
-        protected override void OnTextChanged(TextChangedEventArgs e)
-        {
-            base.OnTextChanged(e);
-
-            Text = Text.Replace(',', '.');
-            CaretIndex = this.Text.Length;
         }
 
         protected override void OnGotFocus(System.Windows.RoutedEventArgs e)
@@ -66,6 +52,12 @@ namespace ClubArcada.Win.Controls
         {
             base.OnLostFocus(e);
             App.KeyBoard.Visibility = System.Windows.Visibility.Hidden;
+        }
+
+        private void ShowKeyboard()
+        {
+            App.KeyBoard.TBX = this;
+            App.KeyBoard.Show();
         }
     }
 }

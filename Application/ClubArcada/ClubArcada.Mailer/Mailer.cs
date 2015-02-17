@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Net.Mail;
 
 namespace ClubArcada.Mailer
@@ -17,7 +18,7 @@ namespace ClubArcada.Mailer
             System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient(Constants.MailSmtpClient);
             smtp.Port = Constants.MailPort;
             smtp.Credentials = new System.Net.NetworkCredential(Constants.MailUserName, Constants.MailPassword);
-            smtp.Send(message);
+            Send(smtp, message);
         }
 
         public static void SendMail(string subject, MemoryStream attachment, string attachmentName, string bodyMessage)
@@ -33,7 +34,7 @@ namespace ClubArcada.Mailer
             System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient(Constants.MailSmtpClient);
             smtp.Port = Constants.MailPort;
             smtp.Credentials = new System.Net.NetworkCredential(Constants.MailUserName, Constants.MailPassword);
-            smtp.Send(message);
+            Send(smtp, message);
         }
 
         public static void SendMail(string subject, Stream attachment, string attachmentName, string bodyMessage)
@@ -49,7 +50,7 @@ namespace ClubArcada.Mailer
             System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient(Constants.MailSmtpClient);
             smtp.Port = Constants.MailPort;
             smtp.Credentials = new System.Net.NetworkCredential(Constants.MailUserName, Constants.MailPassword);
-            smtp.Send(message);
+            Send(smtp, message);
         }
 
         private static void SetMessageDetails(ref System.Net.Mail.MailMessage message)
@@ -73,7 +74,18 @@ namespace ClubArcada.Mailer
             System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient(Constants.MailSmtpClient);
             smtp.Port = Constants.MailPort;
             smtp.Credentials = new System.Net.NetworkCredential(Constants.MailUserName, Constants.MailPassword);
-            smtp.Send(message);
+            Send(smtp, message);
+        }
+
+        private static void Send(SmtpClient client, MailMessage message)
+        {
+            try
+            {
+                client.Send(message);
+            }
+            catch (Exception e)
+            {
+            }
         }
     }
 }

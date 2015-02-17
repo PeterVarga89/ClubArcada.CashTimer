@@ -12,12 +12,10 @@ namespace ClubArcada.Win.Dialogs
 {
     public partial class RegisterUserDlg : DialogBase
     {
-        public MainWindow Main { get; set; }
-
         public RegisterUserDlg()
         {
             InitializeComponent();
-            txtNickName.Focus();
+            this.Loaded += delegate { txtNickName.Focus(); };
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)

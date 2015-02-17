@@ -12,25 +12,25 @@ namespace ClubArcada.BusinessObjects.Data
         {
             using (var app = new PKDBDataContext(connectionString.GetEnumDescription()))
             {
-                return app.Users.Where(u => !u.DateDeleted.HasValue).ToList();
+                return app.Users.ToList();
             }
         }
 
         public static List<User> GetListBySearchString(eConnectionString connectionString, string searchString)
         {
-            var list = GetList(connectionString);
+            var list = GetList(connectionString).Where(u => !u.DateDeleted.HasValue).ToList();
 
-            return list.Where(u =>
-                    !u.DateDeleted.HasValue
-                    && (
+            var result = list.Where(u =>
                     u.NickName.ToLower().RemoveDiacritics().StartsWith(searchString.ToLower())
                     ||
                     u.FirstName.ToLower().RemoveDiacritics().StartsWith(searchString.ToLower())
                     ||
                     u.LastName.ToLower().RemoveDiacritics().StartsWith(searchString.ToLower())
                     ||
-                    (u.FirstName + " " + u.LastName).ToLower().RemoveDiacritics().StartsWith(searchString.ToLower()))
-                    ).OrderBy(u => u.FirstName).ToList();
+                    (u.FirstName + " " + u.LastName).ToLower().RemoveDiacritics().StartsWith(searchString.ToLower())
+                    ).OrderBy(u => u.NickName).ToList();
+
+            return result;
         }
 
         public static User GetById(eConnectionString connectionString, Guid id)
@@ -71,6 +71,7 @@ namespace ClubArcada.BusinessObjects.Data
                 user.LastName = entity.LastName;
                 user.PhoneNumber = entity.PhoneNumber;
                 user.Email = entity.Email;
+                user.IsAutoReturn = entity.IsAutoReturn;
                 app.SubmitChanges();
             }
         }

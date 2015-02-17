@@ -26,8 +26,6 @@ namespace ClubArcada.Win.Dialogs
             this.Top = this.Owner.Top;
         }
 
-        
-
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);

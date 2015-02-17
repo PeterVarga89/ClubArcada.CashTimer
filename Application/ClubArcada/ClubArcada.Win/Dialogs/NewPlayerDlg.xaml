@@ -42,17 +42,17 @@
             </Grid.RowDefinitions>
 
             <Label Grid.Row="0" Content="Player" />
-            <TextBox Name="txtSearch" Grid.Column="2" Margin="0,2,5,2" KeyUp="TextBox_KeyUp" />
-            <ListBox Grid.Column="2" Name="lbxUsers" Grid.Row="1" Grid.RowSpan="2" Margin="0,2,5,2" SelectionChanged="lbxUsers_SelectionChanged" />
+            <ctr:CustomTextBox x:Name="txtSearch" Grid.Column="2" Margin="0,2,5,2" TextChanged="txtSearch_TextChanged" />
+            <ListBox Grid.Column="2" FontSize="6" Name="lbxUsers" Grid.Row="1" Grid.RowSpan="2" Margin="0,2,5,2" SelectionChanged="lbxUsers_SelectionChanged" />
 
             <Label Grid.Row="3" Content="Stôl č."></Label>
-            <ComboBox SelectedValue="{Binding Result.CashTableId}" Name="cbTable" DisplayMemberPath="Name" SelectedValuePath="CashTableId" ItemsSource="{Binding Main.Tables}" Grid.Column="2" Grid.Row="3" Margin="0,2,5,2" />
+            <ComboBox SelectedValue="{Binding Result.CashTableId}" Name="cbTable" DisplayMemberPath="Name" SelectedValuePath="CashTableId" ItemsSource="{Binding TableList}" Grid.Column="2" Grid.Row="3" Margin="0,2,5,2" />
 
             <Label Grid.Row="4" Content="Cash in"></Label>
-            <ctr:DoubleTextBox GotFocus="txtAmount_GotFocus" x:Name="txtAmount" Text="{Binding Amount, Mode=TwoWay}" Grid.Column="2" Grid.Row="4" Margin="0,2,5,2" />
+            <ctr:DoubleTextBox x:Name="txtAmount" Text="{Binding Amount, Mode=TwoWay}" Grid.Column="2" Grid.Row="4" Margin="0,2,5,2" />
 
             <Label Grid.Row="5" Content="Požičané"></Label>
-            <ctr:DoubleTextBox GotFocus="txtAmount_GotFocus" x:Name="txtBorrowed" Text="{Binding Borrowed, Mode=TwoWay}" Grid.Column="2" Grid.Row="5" Margin="0,2,5,2" />
+            <ctr:DoubleTextBox  x:Name="txtBorrowed" Text="{Binding Borrowed, Mode=TwoWay}" Grid.Column="2" Grid.Row="5" Margin="0,2,5,2" />
 
             <StackPanel Grid.Row="6" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Style="{StaticResource btnCashIn}" Width="200" Margin="5" Grid.ColumnSpan="3" Content="Pridat" Click="Add_Click"></Button>

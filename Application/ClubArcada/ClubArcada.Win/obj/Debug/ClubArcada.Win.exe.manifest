@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="ClubArcada.Win.exe" version="3.1.0.41" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
-  <description asmv2:iconFile="Martz90-Hex-Game-governor-of-poker.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <asmv1:assemblyIdentity name="ClubArcada.Win.exe" version="3.1.0.63" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
     <assemblyIdentity name="ClubArcada.Win" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ClubArcada.BusinessObjects.dll" size="57856">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ClubArcada.BusinessObjects.dll" size="59904">
       <assemblyIdentity name="ClubArcada.BusinessObjects" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>wa2Qx6XPf6ix9H43/zbPbNa0xUEq7uPcXVx7toBvpKI=</dsig:DigestValue>
+        <dsig:DigestValue>ehcVt3mBinFOjL+vz/vhM7AA/Ayr7PhsUM7slgnKsug=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ClubArcada.Documents.dll" size="13312">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ClubArcada.Documents.dll" size="13824">
       <assemblyIdentity name="ClubArcada.Documents" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>rRP8Eu7QYfTqzG9Zn2F1rWUzQPCSLHrmYCrYtkVt8Cg=</dsig:DigestValue>
+        <dsig:DigestValue>tCD1seJSZiaIBo/mQlL4n5boIc3A+ZUkTHZTdhDkiws=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -86,19 +86,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>DpkN4NYqK99e7z1eqBDbAsdbnHBZvKAAIIa8ivkAPW4=</dsig:DigestValue>
+        <dsig:DigestValue>wSuD2YA9oVkk1U31pkwLg09JSZ02YWLVj9WpAKOyNuM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ClubArcada.Win.exe" size="925096">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ClubArcada.Win.exe" size="1633704">
       <assemblyIdentity name="ClubArcada.Win" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>kkkYDdj4PAIWgANvifKXOlyKNkgg5FLRtzyMtN+wumA=</dsig:DigestValue>
+        <dsig:DigestValue>RYLFVyh4Tol0mNKJ50Qu5LmRyXthnC1A24gQXQy8JVg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -111,6 +111,18 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>jrPyybuzkji7vddHX3a819u96+6Ny8W77QhyZlCkS+Y=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WpfAnimatedGif.dll" size="40448">
+      <assemblyIdentity name="WpfAnimatedGif" version="1.4.12.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>RsdaEaOr4wJ5M+M3DQC0+zFus50y+XiIWxUU6mp4HMQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -132,7 +144,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Y5EQVWMIK34WlGzqObXG++aLQDIbePsAJ9wH+/57qnU=</dsig:DigestValue>
+      <dsig:DigestValue>PQ+9bj1mzJDU5MWQtqNbwlsqArfp4lJejP06PXjjAXM=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Cash.Database_log.ldf" size="1114112" writeableType="applicationData">
@@ -141,7 +153,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>J2g5W0LGvtGxF9hQ4MFK10KNLwh0cWWiBNwlwPanwS4=</dsig:DigestValue>
+      <dsig:DigestValue>sehYBxaUKLpyQl7EWAFyYrpHgSBpzpjmnIGOKNW53Vg=</dsig:DigestValue>
     </hash>
   </file>
   <file name="ClubArcada.Win.exe.config" size="531">
@@ -153,22 +165,22 @@
       <dsig:DigestValue>rvI7+xLtvoEbgXt+88yy3CZYP8ND4Aa65ekune84Qow=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Documents\ClubArcadaCashReport.xlsx" size="29166">
+  <file name="Documents\ClubArcadaCashReport.xlsx" size="29272">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>g6Hp/E4PyFwYh5SsnpKfoljDYDP6rIsBMo6P7bXHoYk=</dsig:DigestValue>
+      <dsig:DigestValue>K4IG3w7kk2Ki9MNbS6mBN/g0XIQFozoV0sL/NpFjqmI=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Martz90-Hex-Game-governor-of-poker.ico" size="225537">
+  <file name="icon.ico" size="562718">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>X3lNm9LO8wgoRM8uYluC7mOC8M6bwV+CkOU537DJiAY=</dsig:DigestValue>
+      <dsig:DigestValue>p8LIOjgwaMCL9GpW+ZzqUdubiXYDju0p1HzRFlsNzSY=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

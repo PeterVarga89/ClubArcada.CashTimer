@@ -2,6 +2,13 @@
 
 namespace ClubArcada.BusinessObjects
 {
+    public enum eAutoReturnState
+    {
+        NotSet = 0,
+        Neto = 1,
+        Full = 2
+    }
+
     public enum eConnectionString
     {
         NotSet = 0,

@@ -41,7 +41,8 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0" Content="Hráč" />
-        <TextBox Name="txtSearch" Grid.Column="2" Margin="0,2,5,2" KeyUp="TextBox_KeyUp" />
+
+        <ctr:CustomTextBox x:Name="txtSearch" Grid.Column="2" Margin="0,2,5,2" TextChanged="txtSearch_TextChanged" />
         <ListBox Grid.Column="2" Name="lbxUsers" Grid.Row="1" Grid.RowSpan="2" Margin="0,2,5,2" SelectionChanged="lbxUsers_SelectionChanged" />
 
         <Label Grid.Row="3" Content="Typ"></Label>

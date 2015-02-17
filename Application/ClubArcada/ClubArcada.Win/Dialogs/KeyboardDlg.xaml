@@ -1,0 +1,126 @@
+﻿<Window x:Class="ClubArcada.Win.Dialogs.KeyboardDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStyle="None"
+        WindowState="Normal"
+        
+        Topmost="True"
+        Title="KeyboardDlg" Height="270" Width="800" ResizeMode="NoResize">
+    <Grid Background="#333333" Name="gridContainer">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="1" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0" Content="Q" Margin="1" Grid.Column="0" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="0" Content="W" Margin="1" Grid.Column="1" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="0" Content="E" Margin="1" Grid.Column="2" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="0" Content="R" Margin="1" Grid.Column="3" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="0" Content="T" Margin="1" Grid.Column="4" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="0" Content="Y" Margin="1" Grid.Column="5" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="0" Content="U" Margin="1" Grid.Column="6" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="0" Content="I" Margin="1" Grid.Column="7" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="0" Content="O" Margin="1" Grid.Column="8" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="0" Content="P" Margin="1" Grid.Column="9" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="0" Content="í" Margin="1" Grid.Column="10" Style="{StaticResource btnKeyboardLetterSpecial}"/>
+            <Button Grid.Row="0" Content="ý" Margin="1" Grid.Column="11" Style="{StaticResource btnKeyboardLetterSpecial}"/>
+
+            <Button Grid.Row="1" Content="A" Margin="1" Grid.Column="0" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="1" Content="S" Margin="1" Grid.Column="1" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="1" Content="D" Margin="1" Grid.Column="2" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="1" Content="F" Margin="1" Grid.Column="3" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="1" Content="G" Margin="1" Grid.Column="4" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="1" Content="H" Margin="1" Grid.Column="5" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="1" Content="J" Margin="1" Grid.Column="6" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="1" Content="K" Margin="1" Grid.Column="7" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="1" Content="L" Margin="1" Grid.Column="8" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="1" Content="á" Margin="1" Grid.Column="9" Style="{StaticResource btnKeyboardLetterSpecial}"/>
+            <Button Grid.Row="1" Content="ä" Margin="1" Grid.Column="10" Style="{StaticResource btnKeyboardLetterSpecial}"/>
+            <Button Grid.Row="1" Content="é" Margin="1" Grid.Column="11" Style="{StaticResource btnKeyboardLetterSpecial}"/>
+
+            <Button Grid.Row="2" Content="Z" Margin="1" Grid.Column="0" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="2" Content="X" Margin="1" Grid.Column="1" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="2" Content="C" Margin="1" Grid.Column="2" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="2" Content="V" Margin="1" Grid.Column="3" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="2" Content="B" Margin="1" Grid.Column="4" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="2" Content="N" Margin="1" Grid.Column="5" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="2" Content="M" Margin="1" Grid.Column="6" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="2" Content="ó" Margin="1" Grid.Column="7" Style="{StaticResource btnKeyboardLetterSpecial}"/>
+            <Button Grid.Row="2" Content="ö" Margin="1" Grid.Column="8" Style="{StaticResource btnKeyboardLetterSpecial}"/>
+            <Button Grid.Row="2" Content="ő" Margin="1" Grid.Column="9" Style="{StaticResource btnKeyboardLetterSpecial}"/>
+
+            <Button Grid.Row="2" Content="č" Margin="1" Grid.Column="10" Style="{StaticResource btnKeyboardLetterSpecial}"/>
+            <Button Grid.Row="2" Content="š" Margin="1" Grid.Column="11" Style="{StaticResource btnKeyboardLetterSpecial}"/>
+
+            <Button Grid.Row="3" Content="↑" Margin="1" Grid.Column="0" Style="{StaticResource btnKeyboardLetterSpecial}"/>
+            <Button Grid.Row="3" Content="Medzera" Margin="1" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource btnKeyboardLetterMain}"/>
+            <Button Grid.Row="3" Content="ú" Margin="1" Grid.Column="4" Style="{StaticResource btnKeyboardLetterSpecial}"/>
+            <Button Grid.Row="3" Content="ü" Margin="1" Grid.Column="5" Style="{StaticResource btnKeyboardLetterSpecial}"/>
+            <Button Grid.Row="3" Content="ű" Margin="1" Grid.Column="6" Style="{StaticResource btnKeyboardLetterSpecial}"/>
+            <Button Grid.Row="3" Content="ľ" Margin="1" Grid.Column="7" Style="{StaticResource btnKeyboardLetterSpecial}"/>
+            <Button Grid.Row="3" Content="ž" Margin="1" Grid.Column="8" Style="{StaticResource btnKeyboardLetterSpecial}"/>
+            <Button Grid.Row="3" Content="ď" Margin="1" Grid.Column="9" Style="{StaticResource btnKeyboardLetterSpecial}"/>
+            <Button Grid.Row="3" Content="ť" Margin="1" Grid.Column="10" Style="{StaticResource btnKeyboardLetterSpecial}"/>
+            <Button Grid.Row="3" Content="ň" Margin="1" Grid.Column="11" Style="{StaticResource btnKeyboardLetterSpecial}"/>
+
+            <!--NUMERIC-->
+            <Button Grid.Row="0" Content="7" Margin="1" Grid.Column="13" Style="{StaticResource btnKeyboardNumeric}"/>
+            <Button Grid.Row="0" Content="8" Margin="1" Grid.Column="14" Style="{StaticResource btnKeyboardNumeric}"/>
+            <Button Grid.Row="0" Content="9" Margin="1" Grid.Column="15" Style="{StaticResource btnKeyboardNumeric}"/>
+            <Button Grid.Row="0" Content="*" Margin="1" Grid.Column="12" Style="{StaticResource btnKeyboardLetterExtra}"/>
+
+            <Button Grid.Row="0" Content="←" Margin="1" Grid.Column="16" Style="{StaticResource btnKeyboardLetterSpecial}"/>
+            <Button Grid.Row="1" Content="@" Margin="1" Grid.Column="16" Style="{StaticResource btnKeyboardLetterExtra}"/>
+
+            <Button Grid.Row="1" Content="4" Margin="1" Grid.Column="13" Style="{StaticResource btnKeyboardNumeric}"/>
+            <Button Grid.Row="1" Content="5" Margin="1" Grid.Column="14" Style="{StaticResource btnKeyboardNumeric}"/>
+            <Button Grid.Row="1" Content="6" Margin="1" Grid.Column="15" Style="{StaticResource btnKeyboardNumeric}"/>
+            <Button Grid.Row="1" Content="-" Margin="1" Grid.Column="12" Style="{StaticResource btnKeyboardLetterExtra}"/>
+
+            <Button Grid.Row="2" Content="1" Margin="1" Grid.Column="13" Style="{StaticResource btnKeyboardNumeric}"/>
+            <Button Grid.Row="2" Content="2" Margin="1" Grid.Column="14" Style="{StaticResource btnKeyboardNumeric}"/>
+            <Button Grid.Row="2" Content="3" Margin="1" Grid.Column="15" Style="{StaticResource btnKeyboardNumeric}"/>
+            <Button Grid.Row="2" Content="+" Margin="1" Grid.Column="12" Style="{StaticResource btnKeyboardLetterExtra}"/>
+
+            <Button Grid.Row="3" Content="0" Margin="1" Grid.Column="13" Style="{StaticResource btnKeyboardNumeric}"/>
+            <Button Grid.Row="3" Content="," Margin="1" Grid.Column="14" Style="{StaticResource btnKeyboardNumeric}"/>
+            <Button Grid.Row="3" Content="." Margin="1" Grid.Column="15" Style="{StaticResource btnKeyboardNumeric}"/>
+            <Button Grid.Row="3" Content="/" Margin="1" Grid.Column="12" Style="{StaticResource btnKeyboardLetterExtra}"/>
+
+            <Button Grid.Row="2" Grid.RowSpan="2" FontSize="20" Content="OK" Margin="1" Grid.Column="16" Style="{StaticResource btnKeyboardLetterSpecial}"/>
+
+        </Grid>
+        
+    </Grid>
+</Window>

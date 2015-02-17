@@ -1,21 +1,21 @@
 ﻿using ClubArcada.BusinessObjects;
 using ClubArcada.BusinessObjects.DataClasses;
+using ClubArcada.Mailer;
+using ClubArcada.Win.Controls;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
+using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace ClubArcada.Win.Dialogs
 {
     public partial class NewPlayerDlg : DialogBase
     {
-        public CashResult Result { get; set; }
+        public List<CashTable> TableList { get { return App.ParentWindow.Tables; } }
 
-        public MainWindow Main { get; set; }
+        public CashResult Result { get; set; }
 
         public List<eGameType> GameTypeList { get; set; }
 
@@ -28,11 +28,12 @@ namespace ClubArcada.Win.Dialogs
             InitializeComponent();
             Result = new CashResult();
             Result.CashTableId = selectedTableId;
+            this.Owner = App.ParentWindow;
 
             Result.CashResultId = Guid.NewGuid();
             DataContext = this;
             GameTypeList = Common.Extensions.GetValueList<eGameType>();
-            txtSearch.Focus();
+            this.Loaded += delegate { txtSearch.Focus(); };
         }
 
         private bool Validate()
@@ -106,7 +107,7 @@ namespace ClubArcada.Win.Dialogs
                     Result.StartTime = DateTime.Now;
                     Result.PlayerId = Guid.NewGuid();
                     Result.UserId = Result.User.UserId;
-                    Result.TournamentId = Main.Tournament.TournamentId;
+                    Result.TournamentId = App.ParentWindow.Tournament.TournamentId;
 
                     Result.CashIns = new List<CashIn>();
                     Result.CashIns.Add(new CashIn()
@@ -117,31 +118,27 @@ namespace ClubArcada.Win.Dialogs
                         DateCreated = DateTime.Now
                     });
 
-                    Main.AddPlayer((cbTable.SelectedItem as CashTable).CashTableId, Result);
-                    this.Close();
+                    App.ParentWindow.AddPlayer((cbTable.SelectedItem as CashTable).CashTableId, Result);
+
+                    var worker = new BackgroundWorker();
+                    worker.DoWork += delegate
+                    {
+                        var balance = BusinessObjects.Data.UserData.GetUserBalance(Result.User.UserId);
+                        if (balance < 0)
+                            Mailer.Mailer.SendMail(Constants.MailUserRegisteredWithNegativeBalanceSubject, string.Format(Constants.MailUserRegisteredWithNegativeBalanceBody, Result.User.NickName, Result.User.FirstName, Result.User.LastName, balance, App.User.FullName));
+                    };
+
+                    worker.RunWorkerCompleted += delegate
+                    {
+                        this.Close();
+                    };
+
+                    worker.RunWorkerAsync();
                 }
                 else
                 {
                     return;
                 }
-            }
-        }
-
-        private void TextBox_KeyUp(object sender, KeyEventArgs e)
-        {
-            var textBox = sender as TextBox;
-
-            if (textBox.Text != string.Empty)
-            {
-                var userList = BusinessObjects.Data.UserData.GetListBySearchString(eConnectionString.Local, RemoveDiacritics(textBox.Text));
-
-                var filteredUserList = userList.Where(u => !Main.PlayingPlayerIds.Contains(u.UserId)).ToList();
-                lbxUsers.ItemsSource = filteredUserList;
-                lbxUsers.DisplayMemberPath = "FullDislpayName";
-            }
-            else
-            {
-                lbxUsers.ItemsSource = null;
             }
         }
 
@@ -162,26 +159,22 @@ namespace ClubArcada.Win.Dialogs
             this.Close();
         }
 
-        private void txtAmount_GotFocus(object sender, RoutedEventArgs e)
+        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            (sender as TextBox).Text = string.Empty;
-        }
+            var textBox = sender as CustomTextBox;
 
-        private static string RemoveDiacritics(string text)
-        {
-            string formD = text.Normalize(NormalizationForm.FormD);
-            StringBuilder sb = new StringBuilder();
-
-            foreach (char ch in formD)
+            if (textBox.Text != string.Empty)
             {
-                UnicodeCategory uc = CharUnicodeInfo.GetUnicodeCategory(ch);
-                if (uc != UnicodeCategory.NonSpacingMark)
-                {
-                    sb.Append(ch);
-                }
-            }
+                var userList = BusinessObjects.Data.UserData.GetListBySearchString(eConnectionString.Local, textBox.Text);
 
-            return sb.ToString().Normalize(NormalizationForm.FormC);
+                var filteredUserList = userList.Where(u => !App.ParentWindow.PlayingPlayerIds.Contains(u.UserId)).ToList();
+                lbxUsers.ItemsSource = filteredUserList;
+                lbxUsers.DisplayMemberPath = "FullDislpayName";
+            }
+            else
+            {
+                lbxUsers.ItemsSource = null;
+            }
         }
     }
 }

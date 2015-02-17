@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ClubArcada.BusinessObjects.DataClasses;
+using System;
+using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ClubArcada.Win.Dialogs
 {
@@ -23,17 +14,35 @@ namespace ClubArcada.Win.Dialogs
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            var user = BusinessObjects.Data.UserData.Login(txtEmail.Text, txtPassword.Password);
-            if(user == null)
-            {
+            if (txtEmail.Text == string.Empty)
                 return;
-            }
-            else
+
+            if (txtPassword.Password == string.Empty)
+                return;
+
+            var mail = txtEmail.Text.Trim();
+            var pass = txtPassword.Password.Trim();
+
+            var worker = new BackgroundWorker();
+            User user = null;
+
+            worker.DoWork += delegate
             {
-                App.User = user;
-                this.DialogResult = true;
-                this.Close();
-            }
+                user = BusinessObjects.Data.UserData.Login(mail, pass);
+            };
+
+            worker.RunWorkerCompleted += delegate
+            {
+                busy.IsBusy = false;
+                if (user != null)
+                {
+                    App.User = user;
+                    this.DialogResult = true;
+                    this.Close();
+                }
+            };
+
+            worker.RunWorkerAsync();
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)

@@ -41,5 +41,6 @@
                 <Button Style="{StaticResource btnDelete}" Width="200" Margin="5" Grid.ColumnSpan="3" Content="Zavrieť" Click="btnClose_Click"/>
             </StackPanel>
         </Grid>
+        <wpfx:BusyIndicator IsBusy="False" Name="busy"/>
     </Grid>
 </Window>

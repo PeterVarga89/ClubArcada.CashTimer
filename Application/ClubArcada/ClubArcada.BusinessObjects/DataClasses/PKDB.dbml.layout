@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.25, 10.375" name="PKDB">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.375, 11.75" name="PKDB">
   <DataContextMoniker Name="/PKDBDataContext" />
   <nestedChildShapes>
     <classShape Id="2a612212-daf1-4cb7-94e0-172a14f87774" absoluteBounds="3.75, 5.75, 2, 1.9631982421875005">
@@ -32,12 +32,6 @@
         <elementListCompartment Id="de371bc4-8201-44a5-a875-f77e46f8faae" absoluteBounds="7.5150000000000006, 0.96, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="403d713b-9e4a-470e-914e-ccb064c00e2a" absoluteBounds="0.5, 0.5, 2, 4.2708154296875">
-      <DataClassMoniker Name="/PKDBDataContext/User" />
-      <nestedChildShapes>
-        <elementListCompartment Id="a323d414-a4ac-493d-85e6-583d94f9d641" absoluteBounds="0.515, 0.96, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="98874441-2d1e-4718-b5fb-21a87b05a9c3" absoluteBounds="12, 0.5, 2, 5.4246240234375">
       <DataClassMoniker Name="/PKDBDataContext/TournamentCashout" />
       <nestedChildShapes>
@@ -50,17 +44,23 @@
         <elementListCompartment Id="6f732bb4-8841-4131-9cfb-4e011a8e4f7a" absoluteBounds="5.015, 0.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="d56d023e-29d1-40fb-91d7-04648f6eb889" absoluteBounds="2.75, 0.5, 2, 2.5401025390625">
-      <DataClassMoniker Name="/PKDBDataContext/Transaction" />
+    <classShape Id="80a8ebe4-446c-4852-adc0-ff02ea1fd2fb" absoluteBounds="9.375, 7, 2, 4.4631168619791666">
+      <DataClassMoniker Name="/PKDBDataContext/User" />
       <nestedChildShapes>
-        <elementListCompartment Id="c9c58d08-d0cf-44de-b005-5feb12c5e5d2" absoluteBounds="2.765, 0.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="52a4af8c-d971-48c4-aab4-1ffa48ac0d92" absoluteBounds="9.39, 7.46, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.5 : 1.77005126953125); (2.75 : 1.77005126953125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <classShape Id="0fed6610-689f-4980-9c8f-51cc3143700c" absoluteBounds="12.125, 8, 2, 2.5401025390624987">
+      <DataClassMoniker Name="/PKDBDataContext/Transaction" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5bc8c1ff-df22-4d1b-aad6-f66f3568d252" absoluteBounds="12.14, 8.46, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(11.375 : 9.27005126953125); (12.125 : 9.27005126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PKDBDataContext/User/User_Transaction" />
       <nodes>
-        <classShapeMoniker Id="403d713b-9e4a-470e-914e-ccb064c00e2a" />
-        <classShapeMoniker Id="d56d023e-29d1-40fb-91d7-04648f6eb889" />
+        <classShapeMoniker Id="80a8ebe4-446c-4852-adc0-ff02ea1fd2fb" />
+        <classShapeMoniker Id="0fed6610-689f-4980-9c8f-51cc3143700c" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

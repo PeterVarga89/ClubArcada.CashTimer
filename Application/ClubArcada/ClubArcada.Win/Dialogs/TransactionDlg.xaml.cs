@@ -1,10 +1,7 @@
 ﻿using ClubArcada.BusinessObjects;
 using ClubArcada.BusinessObjects.DataClasses;
-using System.Globalization;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace ClubArcada.Win.Dialogs
 {
@@ -19,6 +16,7 @@ namespace ClubArcada.Win.Dialogs
             InitializeComponent();
             this.DataContext = this;
             Transaction = new Transaction() { CratedByUserId = App.User.UserId, Description = string.Empty };
+            this.Loaded += delegate { txtSearch.Focus(); };
         }
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
@@ -76,39 +74,6 @@ namespace ClubArcada.Win.Dialogs
             this.Close();
         }
 
-        private static string RemoveDiacritics(string text)
-        {
-            string formD = text.Normalize(NormalizationForm.FormD);
-            StringBuilder sb = new StringBuilder();
-
-            foreach (char ch in formD)
-            {
-                UnicodeCategory uc = CharUnicodeInfo.GetUnicodeCategory(ch);
-                if (uc != UnicodeCategory.NonSpacingMark)
-                {
-                    sb.Append(ch);
-                }
-            }
-
-            return sb.ToString().Normalize(NormalizationForm.FormC);
-        }
-
-        private void TextBox_KeyUp(object sender, KeyEventArgs e)
-        {
-            var textBox = sender as TextBox;
-
-            if (textBox.Text != string.Empty)
-            {
-                var userList = BusinessObjects.Data.UserData.GetListBySearchString(eConnectionString.Local, RemoveDiacritics(textBox.Text));
-                lbxUsers.ItemsSource = userList;
-                lbxUsers.DisplayMemberPath = "FullDislpayName";
-            }
-            else
-            {
-                lbxUsers.ItemsSource = null;
-            }
-        }
-
         private void lbxUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var lbxUsers = sender as ListBox;
@@ -117,6 +82,22 @@ namespace ClubArcada.Win.Dialogs
                 var selectedUser = lbxUsers.SelectedItem as User;
                 txtSearch.Text = selectedUser.FullDislpayName;
                 User = selectedUser;
+                lbxUsers.ItemsSource = null;
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textBox = sender as TextBox;
+
+            if (textBox.Text != string.Empty)
+            {
+                var userList = BusinessObjects.Data.UserData.GetListBySearchString(eConnectionString.Local, textBox.Text);
+                lbxUsers.ItemsSource = userList;
+                lbxUsers.DisplayMemberPath = "FullDislpayName";
+            }
+            else
+            {
                 lbxUsers.ItemsSource = null;
             }
         }

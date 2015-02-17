@@ -26,7 +26,7 @@ namespace ClubArcada.Win.Dialogs
             {
                 var cbxItem = (ComboBoxItem)item;
 
-                var tableNames = Main.Tables.Select(t => t.Name.ToLower()).ToList();
+                var tableNames = App.ParentWindow.Tables.Select(t => t.Name.ToLower()).ToList();
                 var name = cbxItem.Content.ToString();
 
                 foreach (var tn in tableNames)
@@ -42,8 +42,6 @@ namespace ClubArcada.Win.Dialogs
             }
 
         }
-
-        public MainWindow Main { get; set; }
 
         public CashTable CashTable { get; set; }
 
@@ -61,8 +59,8 @@ namespace ClubArcada.Win.Dialogs
             CashTable.GameType = int.Parse((cbGameType.SelectedItem as ComboBoxItem).Tag.ToString());
             CashTable.Name = string.Format("Stôl č. {0}", (cbTable.SelectedItem as ComboBoxItem).Tag.ToString());
 
-            Main.Tables.Add(CashTable);
-            Main.AddTable(CashTable);
+            App.ParentWindow.Tables.Add(CashTable);
+            App.ParentWindow.AddTable(CashTable);
             this.Close();
         }
 

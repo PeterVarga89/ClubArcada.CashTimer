@@ -1,4 +1,5 @@
-﻿using ClubArcada.BusinessObjects.DataClasses;
+﻿using ClubArcada.BusinessObjects;
+using ClubArcada.BusinessObjects.DataClasses;
 using ClubArcada.Win.Other;
 using System;
 using System.ComponentModel;
@@ -32,26 +33,25 @@ namespace ClubArcada.Win.Controls
 
         public Visibility IsGrayVisible { get { return Result.EndTime.HasValue ? Visibility.Visible : Visibility.Collapsed; } }
         public Visibility PauseBtnVisibility { get { return Timer.IsEnabled ? Visibility.Visible : Visibility.Collapsed; } }
-        public Visibility PlayBtnVisibility { get { return !Timer.IsEnabled ? Visibility.Visible : Visibility.Collapsed; } }
+        public Visibility PlayBtnVisibility { get { return !Timer.IsEnabled && !App.ParentWindow.IsPaused ? Visibility.Visible : Visibility.Collapsed; } }
 
         public CashResult Result { get; set; }
 
-        public DispatcherTimer Timer { get; set; }
+        private DispatcherTimer Timer { get; set; }
 
-        private MainWindow Main { get; set; }
-
-        public PlayerLineCtrl(CashResult res, MainWindow mainWindow)
+        public PlayerLineCtrl(CashResult res)
         {
             Result = res;
-            Main = mainWindow;
             InitializeComponent();
             DataContext = this;
 
             Timer = new DispatcherTimer();
             Timer.Interval = new System.TimeSpan(0, 1, 0);
             Timer.Tick += Timer_Tick;
-            if (!(Application.Current.MainWindow as MainWindow).IsPaused)
-                Timer.Start();
+            if (!App.ParentWindow.IsPaused)
+                Start();
+            else
+                Stop();
 
             txtTimer.Text = "0 mins";
         }
@@ -82,7 +82,7 @@ namespace ClubArcada.Win.Controls
 
             if(Result.EndTime.HasValue)
             {
-                foreach(var t in Main.Tables)
+                foreach(var t in App.ParentWindow.Tables)
                 {
                     t.RefreshVisibility();
                 }
@@ -101,22 +101,28 @@ namespace ClubArcada.Win.Controls
             PropertyChanged.Raise(this, Property.PlayBtnVisibility.ToString());
         }
 
-        private void btnStart_Click(object sender, RoutedEventArgs e)
+        public void Start()
         {
             gridPause.Visibility = Visibility.Collapsed;
-            if (!Timer.IsEnabled)
-                Timer.Start();
-
+            Timer.IsEnabled = true;
             Refresh();
+        }
+
+        public void Stop()
+        {
+            gridPause.Visibility = Visibility.Visible;
+            Timer.IsEnabled = false;
+            Refresh();
+        }
+
+        private void btnStart_Click(object sender, RoutedEventArgs e)
+        {
+            this.Start();
         }
 
         private void btnPause_Click(object sender, RoutedEventArgs e)
         {
-            gridPause.Visibility = System.Windows.Visibility.Visible;
-            if (Timer.IsEnabled)
-                Timer.Stop();
-
-            Refresh();
+            this.Stop();
         }
 
         private void btnRePlay_Click(object sender, RoutedEventArgs e)
@@ -128,11 +134,10 @@ namespace ClubArcada.Win.Controls
 
             if (cashInDlg.DialogResult.HasValue && cashInDlg.DialogResult.Value)
             {
-                Timer.Start();
-                Refresh();
+                this.Start();
             }
 
-            foreach (var t in Main.Tables)
+            foreach (var t in App.ParentWindow.Tables)
             {
                 t.RefreshVisibility();
             }
@@ -140,7 +145,7 @@ namespace ClubArcada.Win.Controls
 
         private void btnBonus_Click(object sender, RoutedEventArgs e)
         {
-            var dlg = new Dialogs.BonusDialog(Result.User, Main);
+            var dlg = new Dialogs.BonusDialog(Result.User);
             dlg.ShowDialog();
             this.Refresh();
         }

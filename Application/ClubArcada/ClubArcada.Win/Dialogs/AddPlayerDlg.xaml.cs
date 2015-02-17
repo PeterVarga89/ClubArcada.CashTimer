@@ -6,8 +6,6 @@ namespace ClubArcada.Win.Dialogs
 {
     public partial class AddPlayerDlg : DialogBase
     {
-        public MainWindow Main { get; set; }
-
         public AddPlayerDlg()
         {
             InitializeComponent();
@@ -29,15 +27,13 @@ namespace ClubArcada.Win.Dialogs
 
         private void ExistingPlayer_Click(object sender, RoutedEventArgs e)
         {
-            ToOpenOnClose = new Dialogs.NewPlayerDlg(new Guid((Main.tabCtrl.SelectedContent as ListBox).Tag.ToString()));
-            (ToOpenOnClose as NewPlayerDlg).Main = Main;
+            ToOpenOnClose = new Dialogs.NewPlayerDlg(new Guid((App.ParentWindow.tabCtrl.SelectedContent as ListBox).Tag.ToString()));
             this.Close();
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
             ToOpenOnClose = new Dialogs.RegisterUserDlg();
-            (ToOpenOnClose as RegisterUserDlg).Main = Main;
             this.Close();
         }
 

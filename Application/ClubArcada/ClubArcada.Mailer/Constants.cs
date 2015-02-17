@@ -23,6 +23,9 @@
         public static string MailNewBorrowSubject = "Peniaze boli požičané";
         public static string MailNewBorrowBody = "Nick: {0}\nMeno: {1}\nPriezvisko: {2}\nHra: {3}\nSuma: {4}€\nBalance: {5}€\nZodpovedný: {6}";
 
+        public static string MailUserRegisteredWithNegativeBalanceSubject = "Hráč s negatívnym balancom sa registroval do hry";
+        public static string MailUserRegisteredWithNegativeBalanceBody = "Nick: {0}\nMeno: {1}\nPriezvisko: {2}\nBalance: {3}€\nZodpovedný: {4}";
+
         public static string MailSignature = "\n----\nTento mail je generovaný automaticky.\nNeodpovedajte naň.";
     }
 }

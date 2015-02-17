@@ -22,8 +22,7 @@ namespace ClubArcada.Win.Dialogs
             DataContext = this;
 
             Title = string.Format("Cash In - {0}", cashResult.User.FullDislpayName);
-
-            txtAmount.Focus();
+            this.Loaded += delegate { txtAmount.Focus(); };
         }
 
         private void btClose_Click(object sender, RoutedEventArgs e)
@@ -47,7 +46,6 @@ namespace ClubArcada.Win.Dialogs
             confirmDlg1.ShowDialog();
             if (confirmDlg1.DialogResult.HasValue && confirmDlg1.DialogResult.Value)
             {
-
                 if (Borrowed != 0)
                 {
                     if (Borrowed > CashIn.Amount)

@@ -11,6 +11,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Threading;
+using ClubArcada.BusinessObjects;
 
 namespace ClubArcada.Win
 {
@@ -66,12 +67,24 @@ namespace ClubArcada.Win
         public MainWindow()
         {
             InitializeComponent();
+
+            var dlgLogin = new Dialogs.LoginDlg();
+            dlgLogin.ShowDialog();
+
+            if(dlgLogin.DialogResult.HasValue && dlgLogin.DialogResult.Value)
+            {
+            }
+            else
+            {
+                Environment.Exit(0);
+            }
+            
+            App.ParentWindow = this;
+            App.KeyBoard = new Dialogs.KeyboardDlg();
+            DataContext = this;
             IsShadeVisible = System.Windows.Visibility.Collapsed;
             this.Loaded += MainWindow_Loaded;
-            DataContext = this;
-            App.ParentWindow = this;
-            InkInputHelper.DisableWPFTabletSupport();
-
+            
             this.SizeChanged += MainWindow_SizeChanged;
 
             if (App.User.IsNotNull())
@@ -85,6 +98,8 @@ namespace ClubArcada.Win
 
         private void HandleBackground(double width, double height)
         {
+            this.WindowState = System.Windows.WindowState.Maximized;
+
             if (Height > width)
             {
                 img_bg.Source = (ImageSource)FindResource("ImagePortrait");
@@ -99,23 +114,27 @@ namespace ClubArcada.Win
         {
             HandleBackground(this.ActualWidth, this.ActualHeight);
 
-            //Windows 8 API to enable touch keyboard to monitor for focus tracking in this WPF application
-            InputPanelConfiguration cp = new InputPanelConfiguration();
-            IInputPanelConfiguration icp = cp as IInputPanelConfiguration;
-            if (icp != null)
-                icp.EnableFocusTracking();
-
             var checkTimer = new DispatcherTimer();
             checkTimer.Interval = new TimeSpan(0, 0, 5);
             checkTimer.Tick += checkTimer_Tick;
             checkTimer.Start();
 
-            var syncDlg = new Dialogs.SyncDlg(this);
-            syncDlg.ShowDialog();
+            var updateTimer = new DispatcherTimer();
+            updateTimer.Interval = new TimeSpan(0, 1, 0);
+            updateTimer.Tick += delegate { App.UpdateOnline(this.Copy()); };
+            updateTimer.Start();
+
+            var syncDlg = new Dialogs.SyncDlg();
+            syncDlg.Show();
 
             CashResults = new List<CashResult>();
             Tables = new List<CashTable>();
             PlayingPlayerIds = new List<Guid>();
+        }
+
+        private void SetLastUpdateTimeText()
+        {
+            txtLastUpdate.Text =string.Format("Last update: {0}",App.LastUpdateDate.ToString("dd.MM.yyyy HH:mm") );
         }
 
         private void checkTimer_Tick(object sender, EventArgs e)
@@ -151,7 +170,9 @@ namespace ClubArcada.Win
                 if (tableId.ToString() == tabitem.Tag.ToString())
                 {
                     PlayingPlayerIds.Add(cashResult.UserId);
-                    (tabitem.Content as ListBox).Items.Add(new Controls.PlayerLineCtrl(cashResult, this));
+
+                    var playerLineCtrl = new Controls.PlayerLineCtrl(cashResult);
+                    (tabitem.Content as ListBox).Items.Add(playerLineCtrl);
                     tabitem.IsSelected = true;
                     tabitem.Focus();
                 }
@@ -172,14 +193,12 @@ namespace ClubArcada.Win
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var addPlayerDlg = new Dialogs.AddPlayerDlg();
-            addPlayerDlg.Main = this;
             addPlayerDlg.ShowDialog();
         }
 
         private void Button_btnNewTable(object sender, RoutedEventArgs e)
         {
             var dlg = new Dialogs.NewTableDlg();
-            dlg.Main = this;
             dlg.ShowDialog();
             tabCtrl.Focus();
 
@@ -200,7 +219,7 @@ namespace ClubArcada.Win
                 return;
             }
 
-            Dialogs.TotalCashOutDlg totalCashoutDlg = new Dialogs.TotalCashOutDlg(this);
+            Dialogs.TotalCashOutDlg totalCashoutDlg = new Dialogs.TotalCashOutDlg();
             totalCashoutDlg.ShowDialog();
         }
 
@@ -245,11 +264,11 @@ namespace ClubArcada.Win
                         {
                             if (doPlay)
                             {
-                                tb.Timer.Start();
+                                tb.Start();
                             }
                             else
                             {
-                                tb.Timer.Stop();
+                                tb.Stop();
                             }
                             tb.Refresh();
                         }

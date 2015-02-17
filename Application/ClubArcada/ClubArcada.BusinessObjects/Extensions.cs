@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ClubArcada.BusinessObjects
 {
-    internal static class Extensions
+    public static class Extensions
     {
         public static void Raise(this PropertyChangedEventHandler helper, object thing, string name)
         {
@@ -44,6 +44,30 @@ namespace ClubArcada.BusinessObjects
             }
         }
 
-        
+        public static double ToAbs(this double val)
+        {
+            return Math.Abs(val);
+        }
+
+        public static double ToAbs(this double? val)
+        {
+            if (!val.HasValue)
+                return 0;
+
+            return Math.Abs(val.Value);
+        }
+
+        public static double ToAbs(this int val)
+        {
+            return Math.Abs(val);
+        }
+
+        public static double ToAbs(this int? val)
+        {
+            if (!val.HasValue)
+                return 0;
+
+            return Math.Abs(val.Value);
+        }
     }
 }
