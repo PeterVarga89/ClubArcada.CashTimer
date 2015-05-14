@@ -9,24 +9,11 @@ namespace ClubArcada.BusinessObjects.DataClasses
     {
         # region PropertyChanged
 
-        private void PropertyChange(eProperty property)
-        {
-            PropertyChanged.Raise(this, property.ToString());
-        }
-
-        private enum eProperty
-        {
-            NotSet = 0,
-            PlayerCountStatString,
-            ActivePlayerCount,
-            GameTypeString
-        }
-
         public void RefreshVisibility()
         {
-            PropertyChange(eProperty.ActivePlayerCount);
-            PropertyChange(eProperty.PlayerCountStatString);
-            PropertyChange(eProperty.GameTypeString);
+            PropertyChanged.Raise(() => ActivePlayerCount);
+            PropertyChanged.Raise(() => PlayerCountStatString);
+            PropertyChanged.Raise(() => GameTypeString);
         }
 
         # endregion

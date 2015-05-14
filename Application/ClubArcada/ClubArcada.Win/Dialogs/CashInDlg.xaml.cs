@@ -1,8 +1,8 @@
-﻿using ClubArcada.BusinessObjects;
-using ClubArcada.BusinessObjects.DataClasses;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using ClubArcada.BusinessObjects;
+using ClubArcada.BusinessObjects.DataClasses;
 
 namespace ClubArcada.Win.Dialogs
 {
@@ -63,20 +63,17 @@ namespace ClubArcada.Win.Dialogs
                         return;
                     }
 
-                    BusinessObjects.Data.TransactionData.Create(eConnectionString.Online, new Transaction()
+                    BusinessObjects.Data.TransactionData.Create(new Transaction()
                     {
                         Amount = Borrowed * (-1),
+                        Amount2 = Borrowed * (-1),
                         UserId = CashResult.User.UserId,
-                        TransactionType = (int)eTransactionType.NotSet,
+                        TransactionType = (int)eTransactionType.CashGame,
                         DateDeleted = null,
                         DateUsed = null,
                         Description = string.Empty,
                         CratedByUserId = App.User.UserId
                     });
-
-                    var balance = BusinessObjects.Data.UserData.GetUserBalance(CashResult.UserId);
-                    var mailBody = string.Format(Mailer.Constants.MailNewBorrowBody, CashResult.User.NickName, CashResult.User.FirstName, CashResult.User.LastName, "Cash Game", Borrowed, balance, App.User.FullName);
-                    ClubArcada.Mailer.Mailer.SendMail(Mailer.Constants.MailNewBorrowSubject, mailBody);
                 }
 
                 CashIn.CashInId = Guid.NewGuid();

@@ -37,10 +37,7 @@ namespace ClubArcada.Win.Dialogs
                 var worker = new BackgroundWorker();
                 worker.DoWork += delegate
                 {
-                    BusinessObjects.Data.TransactionData.Create(BusinessObjects.eConnectionString.Online, Transaction);
-                    var balance = BusinessObjects.Data.UserData.GetUserBalance(User.UserId);
-                    var mailBody = string.Format(Mailer.Constants.MailNewBonusBody, User.NickName, User.FirstName, User.LastName, "Cash Game", Transaction.Amount, balance);
-                    ClubArcada.Mailer.Mailer.SendMail(Mailer.Constants.MailNewBonusSubject, mailBody);
+                    BusinessObjects.Data.TransactionData.Create(Transaction);
 
                     if (Transaction.DateUsed.HasValue)
                     {

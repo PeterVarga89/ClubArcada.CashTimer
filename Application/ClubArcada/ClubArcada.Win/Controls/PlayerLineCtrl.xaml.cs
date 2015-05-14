@@ -15,20 +15,6 @@ namespace ClubArcada.Win.Controls
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void PropertyChange(Property property)
-        {
-            PropertyChanged.Raise(this, property.ToString());
-        }
-
-        private enum Property
-        {
-            NotSet = 0,
-            Result,
-            IsGrayVisible,
-            PauseBtnVisibility,
-            PlayBtnVisibility
-        }
-
         # endregion
 
         public Visibility IsGrayVisible { get { return Result.EndTime.HasValue ? Visibility.Visible : Visibility.Collapsed; } }
@@ -58,11 +44,15 @@ namespace ClubArcada.Win.Controls
 
         private void Timer_Tick(object sender, System.EventArgs e)
         {
-            Result.Duration = Result.Duration + (int)Result.GameType;
+            //Result.Duration = Result.Duration + (int)Result.GameType;
+
+             
             Result.MinutesPlayed++;
 
+            Result.Duration = Result.MinutesPlayed / 60;
+
             txtTimer.Text = string.Format("{0} mins", Result.MinutesPlayed);
-            PropertyChange(Property.Result);
+            PropertyChanged.Raise(() => Result);
         }
 
         private void btnCashIn_Click(object sender, RoutedEventArgs e)
@@ -86,6 +76,8 @@ namespace ClubArcada.Win.Controls
                 {
                     t.RefreshVisibility();
                 }
+
+                gridPause.Visibility = System.Windows.Visibility.Collapsed;
             }
         }
 
@@ -95,10 +87,10 @@ namespace ClubArcada.Win.Controls
 
         public void Refresh()
         {
-            PropertyChanged.Raise(this, Property.Result.ToString());
-            PropertyChanged.Raise(this, Property.IsGrayVisible.ToString());
-            PropertyChanged.Raise(this, Property.PauseBtnVisibility.ToString());
-            PropertyChanged.Raise(this, Property.PlayBtnVisibility.ToString());
+            PropertyChanged.Raise(() => Result);
+            PropertyChanged.Raise(() => IsGrayVisible);
+            PropertyChanged.Raise(() => PauseBtnVisibility);
+            PropertyChanged.Raise(() => PlayBtnVisibility);
         }
 
         public void Start()

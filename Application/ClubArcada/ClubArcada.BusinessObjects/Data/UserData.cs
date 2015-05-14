@@ -1,8 +1,8 @@
-﻿using ClubArcada.BusinessObjects.DataClasses;
-using ClubArcada.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ClubArcada.BusinessObjects.DataClasses;
+using ClubArcada.Common;
 
 namespace ClubArcada.BusinessObjects.Data
 {
@@ -112,6 +112,16 @@ namespace ClubArcada.BusinessObjects.Data
             {
                 var user = app.Users.SingleOrDefault(u => u.Email == email && u.Password == password);
                 return user;
+            }
+        }
+
+        public static void SetUserRefactoringType(Guid userId, eAutoReturnState returnState)
+        {
+            using (var app = new PKDBDataContext(eConnectionString.Online.GetEnumDescription()))
+            {
+                var user = app.Users.SingleOrDefault(u => u.UserId == userId);
+                user.AutoReturnState = returnState;
+                app.SubmitChanges();
             }
         }
     }

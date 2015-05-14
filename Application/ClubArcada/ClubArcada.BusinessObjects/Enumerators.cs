@@ -33,16 +33,34 @@ namespace ClubArcada.BusinessObjects
 
     public enum eTransactionType
     {
-        [Description("Požičané (-)")]
+        [Description("Pôžička (-)")]
         NotSet = 0,
 
-        [Description("Vrátené (+)")]
-        Gived = 1,
-
-        [Description("Bonus (+)")]
-        Bonus = 2,
+        [Description("Pôžička (+)")]
+        Returned = 1,
 
         [Description("Bar (-)")]
-        Bar = 3,
+        Bar = 2,
+
+        [Description("Bar (+)")]
+        BarReturned = 3,
+
+        [Description("Turnaj (-)")]
+        Tournament = 4,
+
+        [Description("Turnaj (+)")]
+        TournamentReturned = 5,
+
+        [Description("Cash Game (-)")]
+        CashGame = 6,
+
+        [Description("Cash Game (+)")]
+        CashGameReturned = 7,
+
+        [Description("Bonus (-)")]
+        Bonus = 8,
+
+        [Description("Bonus (-)")]
+        BonusReturned = 9
     }
 }

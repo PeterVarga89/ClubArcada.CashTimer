@@ -12,9 +12,11 @@ A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\
 A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\obj\Debug\ClubArcada.BusinessObjects.csprojResolveAssemblyReference.cache
 A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\obj\Debug\ClubArcada.BusinessObjects.dll
 A:\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\obj\Debug\ClubArcada.BusinessObjects.pdb
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\bin\Debug\ClubArcada.BusinessObjects.pdb
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\obj\Debug\ClubArcada.BusinessObjects.pdb
 E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\bin\Debug\ClubArcada.BusinessObjects.dll.config
 E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\bin\Debug\ClubArcada.BusinessObjects.dll
-E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\bin\Debug\ClubArcada.BusinessObjects.pdb
 E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\obj\Debug\ClubArcada.BusinessObjects.csprojResolveAssemblyReference.cache
 E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\obj\Debug\ClubArcada.BusinessObjects.dll
-E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\obj\Debug\ClubArcada.BusinessObjects.pdb
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\bin\Debug\ClubArcada.Mailer.dll
+E:\Club Arcada\Applications\Club.Arcada\ClubArcada.CashTimer\ClubArcada.CashTimer\Application\ClubArcada\ClubArcada.BusinessObjects\bin\Debug\ClubArcada.Mailer.pdb

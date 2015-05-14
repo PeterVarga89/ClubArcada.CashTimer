@@ -1,8 +1,8 @@
-﻿using ClubArcada.BusinessObjects;
-using ClubArcada.BusinessObjects.DataClasses;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using ClubArcada.BusinessObjects;
+using ClubArcada.BusinessObjects.DataClasses;
 
 namespace ClubArcada.Win.Dialogs
 {

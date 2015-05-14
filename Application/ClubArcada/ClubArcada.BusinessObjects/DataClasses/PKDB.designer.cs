@@ -55,6 +55,9 @@ namespace ClubArcada.BusinessObjects.DataClasses
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
+    partial void InsertUserSetting(UserSetting instance);
+    partial void UpdateUserSetting(UserSetting instance);
+    partial void DeleteUserSetting(UserSetting instance);
     partial void InsertTransaction(Transaction instance);
     partial void UpdateTransaction(Transaction instance);
     partial void DeleteTransaction(Transaction instance);
@@ -151,6 +154,14 @@ namespace ClubArcada.BusinessObjects.DataClasses
 			get
 			{
 				return this.GetTable<User>();
+			}
+		}
+		
+		public System.Data.Linq.Table<UserSetting> UserSettings
+		{
+			get
+			{
+				return this.GetTable<UserSetting>();
 			}
 		}
 		
@@ -2853,6 +2864,182 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserSettings")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class UserSetting : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _SettingId;
+		
+		private System.Nullable<System.DateTime> _LeagueTableUpdateDateTime;
+		
+		private System.Nullable<System.DateTime> _CashTableUpdateDateTime;
+		
+		private System.Nullable<System.DateTime> _ApcLeagueUpdateDateTime;
+		
+		private System.Nullable<System.DateTime> _ApcCashUpdateDateTime;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSettingIdChanging(System.Guid value);
+    partial void OnSettingIdChanged();
+    partial void OnLeagueTableUpdateDateTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnLeagueTableUpdateDateTimeChanged();
+    partial void OnCashTableUpdateDateTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnCashTableUpdateDateTimeChanged();
+    partial void OnApcLeagueUpdateDateTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnApcLeagueUpdateDateTimeChanged();
+    partial void OnApcCashUpdateDateTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnApcCashUpdateDateTimeChanged();
+    #endregion
+		
+		public UserSetting()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SettingId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public System.Guid SettingId
+		{
+			get
+			{
+				return this._SettingId;
+			}
+			set
+			{
+				if ((this._SettingId != value))
+				{
+					this.OnSettingIdChanging(value);
+					this.SendPropertyChanging();
+					this._SettingId = value;
+					this.SendPropertyChanged("SettingId");
+					this.OnSettingIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LeagueTableUpdateDateTime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public System.Nullable<System.DateTime> LeagueTableUpdateDateTime
+		{
+			get
+			{
+				return this._LeagueTableUpdateDateTime;
+			}
+			set
+			{
+				if ((this._LeagueTableUpdateDateTime != value))
+				{
+					this.OnLeagueTableUpdateDateTimeChanging(value);
+					this.SendPropertyChanging();
+					this._LeagueTableUpdateDateTime = value;
+					this.SendPropertyChanged("LeagueTableUpdateDateTime");
+					this.OnLeagueTableUpdateDateTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CashTableUpdateDateTime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public System.Nullable<System.DateTime> CashTableUpdateDateTime
+		{
+			get
+			{
+				return this._CashTableUpdateDateTime;
+			}
+			set
+			{
+				if ((this._CashTableUpdateDateTime != value))
+				{
+					this.OnCashTableUpdateDateTimeChanging(value);
+					this.SendPropertyChanging();
+					this._CashTableUpdateDateTime = value;
+					this.SendPropertyChanged("CashTableUpdateDateTime");
+					this.OnCashTableUpdateDateTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApcLeagueUpdateDateTime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+		public System.Nullable<System.DateTime> ApcLeagueUpdateDateTime
+		{
+			get
+			{
+				return this._ApcLeagueUpdateDateTime;
+			}
+			set
+			{
+				if ((this._ApcLeagueUpdateDateTime != value))
+				{
+					this.OnApcLeagueUpdateDateTimeChanging(value);
+					this.SendPropertyChanging();
+					this._ApcLeagueUpdateDateTime = value;
+					this.SendPropertyChanged("ApcLeagueUpdateDateTime");
+					this.OnApcLeagueUpdateDateTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApcCashUpdateDateTime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+		public System.Nullable<System.DateTime> ApcCashUpdateDateTime
+		{
+			get
+			{
+				return this._ApcCashUpdateDateTime;
+			}
+			set
+			{
+				if ((this._ApcCashUpdateDateTime != value))
+				{
+					this.OnApcCashUpdateDateTimeChanging(value);
+					this.SendPropertyChanging();
+					this._ApcCashUpdateDateTime = value;
+					this.SendPropertyChanged("ApcCashUpdateDateTime");
+					this.OnApcCashUpdateDateTimeChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Transactions")]
 	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class Transaction : INotifyPropertyChanging, INotifyPropertyChanged
@@ -2878,6 +3065,14 @@ namespace ClubArcada.BusinessObjects.DataClasses
 		
 		private string _Description;
 		
+		private System.Nullable<System.DateTime> _DatePayed;
+		
+		private System.Nullable<int> _CratedByApplication;
+		
+		private System.Nullable<double> _Amount2;
+		
+		private System.Nullable<System.Guid> _AttachedTransactionId;
+		
 		private EntityRef<User> _User;
 		
     #region Extensibility Method Definitions
@@ -2902,6 +3097,14 @@ namespace ClubArcada.BusinessObjects.DataClasses
     partial void OnDateUsedChanged();
     partial void OnDescriptionChanging(string value);
     partial void OnDescriptionChanged();
+    partial void OnDatePayedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDatePayedChanged();
+    partial void OnCratedByApplicationChanging(System.Nullable<int> value);
+    partial void OnCratedByApplicationChanged();
+    partial void OnAmount2Changing(System.Nullable<double> value);
+    partial void OnAmount2Changed();
+    partial void OnAttachedTransactionIdChanging(System.Nullable<System.Guid> value);
+    partial void OnAttachedTransactionIdChanged();
     #endregion
 		
 		public Transaction()
@@ -3098,6 +3301,90 @@ namespace ClubArcada.BusinessObjects.DataClasses
 					this._Description = value;
 					this.SendPropertyChanged("Description");
 					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DatePayed", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
+		public System.Nullable<System.DateTime> DatePayed
+		{
+			get
+			{
+				return this._DatePayed;
+			}
+			set
+			{
+				if ((this._DatePayed != value))
+				{
+					this.OnDatePayedChanging(value);
+					this.SendPropertyChanging();
+					this._DatePayed = value;
+					this.SendPropertyChanged("DatePayed");
+					this.OnDatePayedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CratedByApplication", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=11)]
+		public System.Nullable<int> CratedByApplication
+		{
+			get
+			{
+				return this._CratedByApplication;
+			}
+			set
+			{
+				if ((this._CratedByApplication != value))
+				{
+					this.OnCratedByApplicationChanging(value);
+					this.SendPropertyChanging();
+					this._CratedByApplication = value;
+					this.SendPropertyChanged("CratedByApplication");
+					this.OnCratedByApplicationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount2", DbType="Float")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=12)]
+		public System.Nullable<double> Amount2
+		{
+			get
+			{
+				return this._Amount2;
+			}
+			set
+			{
+				if ((this._Amount2 != value))
+				{
+					this.OnAmount2Changing(value);
+					this.SendPropertyChanging();
+					this._Amount2 = value;
+					this.SendPropertyChanged("Amount2");
+					this.OnAmount2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AttachedTransactionId", DbType="UniqueIdentifier")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=13)]
+		public System.Nullable<System.Guid> AttachedTransactionId
+		{
+			get
+			{
+				return this._AttachedTransactionId;
+			}
+			set
+			{
+				if ((this._AttachedTransactionId != value))
+				{
+					this.OnAttachedTransactionIdChanging(value);
+					this.SendPropertyChanging();
+					this._AttachedTransactionId = value;
+					this.SendPropertyChanged("AttachedTransactionId");
+					this.OnAttachedTransactionIdChanged();
 				}
 			}
 		}

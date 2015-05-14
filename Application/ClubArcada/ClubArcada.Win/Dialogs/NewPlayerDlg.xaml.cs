@@ -1,13 +1,13 @@
-﻿using ClubArcada.BusinessObjects;
-using ClubArcada.BusinessObjects.DataClasses;
-using ClubArcada.Mailer;
-using ClubArcada.Win.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using ClubArcada.BusinessObjects;
+using ClubArcada.BusinessObjects.DataClasses;
+using ClubArcada.Mailer;
+using ClubArcada.Win.Controls;
 
 namespace ClubArcada.Win.Dialogs
 {
@@ -87,20 +87,16 @@ namespace ClubArcada.Win.Dialogs
                             return;
                         }
 
-                        BusinessObjects.Data.TransactionData.Create(eConnectionString.Online, new Transaction()
+                        BusinessObjects.Data.TransactionData.Create(new Transaction()
                         {
                             Amount = Borrowed * (-1),
                             UserId = Result.User.UserId,
-                            TransactionType = (int)eTransactionType.NotSet,
+                            TransactionType = (int)eTransactionType.CashGame,
                             DateDeleted = null,
                             DateUsed = null,
                             Description = string.Empty,
                             CratedByUserId = App.User.UserId
                         });
-
-                        var balance = BusinessObjects.Data.UserData.GetUserBalance(Result.User.UserId);
-                        var mailBody = string.Format(Mailer.Constants.MailNewBorrowBody, Result.User.NickName, Result.User.FirstName, Result.User.LastName, "Cash Game", Borrowed, balance, App.User.FullName);
-                        ClubArcada.Mailer.Mailer.SendMail(Mailer.Constants.MailNewBorrowSubject, mailBody);
                     }
 
                     Result.CashResultId = Guid.NewGuid();
@@ -115,7 +111,7 @@ namespace ClubArcada.Win.Dialogs
                         Amount = Amount,
                         CashInId = Guid.NewGuid(),
                         CashResultId = Result.CashResultId,
-                        DateCreated = DateTime.Now
+                        DateCreated = DateTime.Now,
                     });
 
                     App.ParentWindow.AddPlayer((cbTable.SelectedItem as CashTable).CashTableId, Result);

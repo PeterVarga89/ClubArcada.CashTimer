@@ -21,21 +21,9 @@ namespace ClubArcada.Win
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void PropertyChange(Property property)
-        {
-            PropertyChanged.Raise(this, property.ToString());
-        }
-
-        private enum Property
-        {
-            NotSet = 0,
-            PausedVisibility,
-            IsShadeVisible
-        }
-
         private void Refresh()
         {
-            PropertyChange(Property.PausedVisibility);
+            PropertyChanged.Raise(() => PausedVisibility);
         }
 
         # endregion
@@ -50,7 +38,7 @@ namespace ClubArcada.Win
             set
             {
                 _isShadeVisible = value;
-                PropertyChange(Property.IsShadeVisible);
+                PropertyChanged.Raise(() => IsShadeVisible);
             }
         }
 
@@ -98,7 +86,7 @@ namespace ClubArcada.Win
 
         private void HandleBackground(double width, double height)
         {
-            this.WindowState = System.Windows.WindowState.Maximized;
+            //this.WindowState = System.Windows.WindowState.Maximized;
 
             if (Height > width)
             {
@@ -120,8 +108,8 @@ namespace ClubArcada.Win
             checkTimer.Start();
 
             var updateTimer = new DispatcherTimer();
-            updateTimer.Interval = new TimeSpan(0, 1, 0);
-            updateTimer.Tick += delegate { App.UpdateOnline(this.Copy()); };
+            updateTimer.Interval = new TimeSpan(0, 0, 30);
+            updateTimer.Tick += delegate { App.UpdateOnline(this); };
             updateTimer.Start();
 
             var syncDlg = new Dialogs.SyncDlg();

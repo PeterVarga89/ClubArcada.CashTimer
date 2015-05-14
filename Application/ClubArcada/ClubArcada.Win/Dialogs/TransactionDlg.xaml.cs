@@ -48,6 +48,8 @@ namespace ClubArcada.Win.Dialogs
 
             var subject = string.Empty;
 
+            BusinessObjects.Data.TransactionData.HandleRefactoring(Transaction.UserId, Transaction.Amount, App.User.UserId, "Vrátené ručne - [generované aplikáciou]");
+
             if (type == "Požičané")
             {
                 Transaction.TransactionType = 0;
@@ -59,13 +61,6 @@ namespace ClubArcada.Win.Dialogs
                 Transaction.TransactionType = 1;
                 subject = ClubArcada.Mailer.Constants.MailNewReplySubject;
             }
-
-            BusinessObjects.Data.TransactionData.Create(eConnectionString.Online, Transaction);
-
-            var balance = BusinessObjects.Data.UserData.GetUserBalance(User.UserId);
-            var mailBody = string.Format(Mailer.Constants.MailNewBorrowBody, User.NickName, User.FirstName, User.LastName, "Cash Game", Transaction.Amount, balance, App.User.FullName);
-            ClubArcada.Mailer.Mailer.SendMail(subject, mailBody);
-
             this.Close();
         }
 

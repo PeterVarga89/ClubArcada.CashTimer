@@ -1,6 +1,7 @@
 ﻿<src:DialogBase x:Class="ClubArcada.Win.Dialogs.CashOutDlg"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wpfx="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended"
         xmlns:ctr="clr-namespace:ClubArcada.Win.Controls"
         xmlns:src="clr-namespace:ClubArcada.Win.Dialogs"
         Style="{StaticResource dialogWindowStyle}"
@@ -53,5 +54,7 @@
             </StackPanel>
             
         </Grid>
+        
+        <wpfx:BusyIndicator IsBusy="{Binding IsBusy, Mode=TwoWay}"/>
     </Grid>
 </src:DialogBase>

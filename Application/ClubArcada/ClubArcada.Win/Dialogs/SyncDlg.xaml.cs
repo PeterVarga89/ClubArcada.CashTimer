@@ -15,7 +15,7 @@ namespace ClubArcada.Win.Dialogs
         {
             InitializeComponent();
             SyncUsers();
-            //SyncTournaments();
+            SyncTournaments();
             CheckTournament();
         }
 
@@ -63,6 +63,9 @@ namespace ClubArcada.Win.Dialogs
 
         private void SyncTournaments()
         {
+            //var localDB = BusinessObjects.Data.TournamentData.GetList(eConnectionString.Local);
+            //BusinessObjects.Data.TournamentData.Insert(eConnectionString.Online, localDB);
+
             var worker = new BackgroundWorker();
             worker.DoWork += delegate
             {

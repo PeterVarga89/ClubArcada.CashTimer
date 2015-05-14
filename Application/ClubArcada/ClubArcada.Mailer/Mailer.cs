@@ -1,16 +1,23 @@
 ﻿using System;
 using System.IO;
+using System.Net;
 using System.Net.Mail;
 
 namespace ClubArcada.Mailer
 {
     public class Mailer
     {
-        public static void SendMail(string subject, string bodyMessage)
+        public static void SendMail(string subject, string bodyMessage, bool isError = false)
         {
             System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
 
             SetMessageDetails(ref message);
+
+            if(isError)
+            {
+                message.To.Clear();
+                message.To.Add(Constants.MailToCC);
+            }
 
             message.Subject = subject;
             message.Body = bodyMessage + Constants.MailSignature;
@@ -66,6 +73,9 @@ namespace ClubArcada.Mailer
         {
             System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
 
+            SetMessageDetails(ref message);
+
+            message.To.Clear();
             message.To.Add(Constants.MailToCC);
 
             message.Subject = subject;
@@ -81,10 +91,33 @@ namespace ClubArcada.Mailer
         {
             try
             {
+                client.SendCompleted += client_SendCompleted;
                 client.Send(message);
             }
             catch (Exception e)
             {
+            }
+        }
+
+        private static void client_SendCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+        }
+
+        private bool CheckConnection(String URL)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(URL);
+                request.Timeout = 3000;
+                request.Credentials = CredentialCache.DefaultNetworkCredentials;
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+                if (response.StatusCode == HttpStatusCode.OK) return true;
+                else return false;
+            }
+            catch
+            {
+                return false;
             }
         }
     }

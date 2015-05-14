@@ -1,7 +1,8 @@
-﻿using ClubArcada.BusinessObjects.DataClasses;
-using System;
+﻿using System;
+using System.ComponentModel;
 using System.Globalization;
 using System.Windows;
+using ClubArcada.BusinessObjects.DataClasses;
 
 namespace ClubArcada.Win.Dialogs
 {
@@ -51,6 +52,7 @@ namespace ClubArcada.Win.Dialogs
             {
                 var user = BusinessObjects.Data.UserData.GetById(BusinessObjects.eConnectionString.Online, CashResult.User.UserId);
                 BusinessObjects.Data.UserData.Update(BusinessObjects.eConnectionString.Local, user);
+                CashResult.User = user;
             }
             catch (Exception exp)
             { }
@@ -62,7 +64,7 @@ namespace ClubArcada.Win.Dialogs
             {
                 var balance = BusinessObjects.Data.UserData.GetUserBalance(CashResult.User.UserId);
 
-                double avaibleMoneyToCashIn = 0;
+                double avaibleMoneyToCashOut = 0;
                 double givedBack = 0;
 
                 if (balance < 0 && CashResult.CashOut != 0 && CashResult.User.AutoReturnState != BusinessObjects.eAutoReturnState.NotSet)
@@ -71,42 +73,37 @@ namespace ClubArcada.Win.Dialogs
                     {
                         if (CashResult.CashOut > CashResult.CashInTotal)
                         {
-                            givedBack = CashResult.CashOut.Value - CashResult.CashInTotal;
-                            avaibleMoneyToCashIn = CashResult.CashOut.Value - givedBack;
-                            var confirmBalanceDialog = new Dialogs.AlertDialog(string.Format("POZOR! Hráč má balance {0}€. Cash out môže byť {1}€! Stiahnutá suma: {2}€! ", balance, avaibleMoneyToCashIn, givedBack));
-                            confirmBalanceDialog.ShowDialog();
-                            var transaction = new Transaction() { Amount = givedBack, CratedByUserId = App.User.UserId, DateUsed = null, TransactionType = (int)BusinessObjects.eTransactionType.Gived, UserId = CashResult.User.UserId, Description = "Stiahnuté z výhry - Cash Game", DateDeleted = null };
-                            BusinessObjects.Data.TransactionData.Create(BusinessObjects.eConnectionString.Online, transaction);
-                            var balance1 = BusinessObjects.Data.UserData.GetUserBalance(CashResult.User.UserId);
-                            var mailBody = string.Format(Mailer.Constants.MailNewBorrowBody, CashResult.User.NickName, CashResult.User.FirstName, CashResult.User.LastName, "Cash Game", transaction.Amount, balance1, App.User.FullName);
-                            ClubArcada.Mailer.Mailer.SendMail(ClubArcada.Mailer.Constants.MailNewReplySubject, mailBody);
+                            var b = Math.Abs(balance);
+                            var nettoWin = CashResult.CashOut.Value - CashResult.CashInTotal;
+
+                            if (nettoWin >= Math.Abs(b))
+                            {
+                                givedBack = Math.Abs(b);
+                                avaibleMoneyToCashOut = nettoWin - givedBack;
+                            }
+                            else
+                            {
+                                givedBack = Math.Abs(b) - nettoWin;
+                                avaibleMoneyToCashOut = 0;
+                            }
+
+                            CreateTransaction(b, givedBack, avaibleMoneyToCashOut);
                         }
                     }
                     else
                     {
-                        if (CashResult.CashOut > balance)
+                        if (CashResult.CashOut > Math.Abs(balance))
                         {
-                            givedBack = CashResult.CashOut.Value - balance;
-                            avaibleMoneyToCashIn = CashResult.CashOut.Value - givedBack;
-                            var confirmBalanceDialog = new Dialogs.AlertDialog(string.Format("POZOR! Hráč má balance {0}€. Cash out môže byť {1}€! Stiahnutá suma: {2}€! ", balance, avaibleMoneyToCashIn, givedBack));
-                            confirmBalanceDialog.ShowDialog();
-                            var transaction = new Transaction() { Amount = givedBack, CratedByUserId = App.User.UserId, DateUsed = null, TransactionType = (int)BusinessObjects.eTransactionType.Gived, UserId = CashResult.User.UserId, Description = "Stiahnuté z výhry - Cash Game", DateDeleted = null };
-                            BusinessObjects.Data.TransactionData.Create(BusinessObjects.eConnectionString.Online, transaction);
-                            var balance1 = BusinessObjects.Data.UserData.GetUserBalance(CashResult.User.UserId);
-                            var mailBody = string.Format(Mailer.Constants.MailNewBorrowBody, CashResult.User.NickName, CashResult.User.FirstName, CashResult.User.LastName, "Cash Game", transaction.Amount, balance1, App.User.FullName);
-                            ClubArcada.Mailer.Mailer.SendMail(ClubArcada.Mailer.Constants.MailNewReplySubject, mailBody);
+                            givedBack = Math.Abs(balance);
+                            avaibleMoneyToCashOut = CashResult.CashOut.Value - givedBack;
+
+                            CreateTransaction(balance, givedBack, avaibleMoneyToCashOut);
                         }
                         else
                         {
-                            givedBack = balance - CashResult.CashOut.Value;
-                            avaibleMoneyToCashIn = 0;
-                            var confirmBalanceDialog = new Dialogs.AlertDialog(string.Format("POZOR! Hráč má balance {0}€. Cash out môže byť {1}€! Stiahnutá suma: {2}€! ", balance, avaibleMoneyToCashIn, givedBack));
-                            confirmBalanceDialog.ShowDialog();
-                            var transaction = new Transaction() { Amount = givedBack, CratedByUserId = App.User.UserId, DateUsed = null, TransactionType = (int)BusinessObjects.eTransactionType.Gived, UserId = CashResult.User.UserId, Description = "Stiahnuté z výhry - Cash Game", DateDeleted = null };
-                            BusinessObjects.Data.TransactionData.Create(BusinessObjects.eConnectionString.Online, transaction);
-                            var balance1 = BusinessObjects.Data.UserData.GetUserBalance(CashResult.User.UserId);
-                            var mailBody = string.Format(Mailer.Constants.MailNewBorrowBody, CashResult.User.NickName, CashResult.User.FirstName, CashResult.User.LastName, "Cash Game", transaction.Amount, balance1, App.User.FullName);
-                            ClubArcada.Mailer.Mailer.SendMail(ClubArcada.Mailer.Constants.MailNewReplySubject, mailBody);
+                            givedBack = CashResult.CashOut.Value;
+                            avaibleMoneyToCashOut = 0;
+                            CreateTransaction(balance, givedBack, avaibleMoneyToCashOut);
                         }
                     }
                 }
@@ -117,6 +114,29 @@ namespace ClubArcada.Win.Dialogs
                 App.ParentWindow.PlayingPlayerIds.Remove(CashResult.UserId);
                 this.Close();
             }
+        }
+
+        private void CreateTransaction(double balance, double givedBack, double avaibleMoneyToCashOut)
+        {
+            var confirmBalanceDialog = new Dialogs.AlertDialog(string.Format("POZOR! Hráč má balance {0}€. Cash out môže byť {1}€! Stiahnutá suma: {2}€! ", balance, avaibleMoneyToCashOut, givedBack));
+            confirmBalanceDialog.ShowDialog();
+
+            BackgroundWorker bw = new BackgroundWorker();
+
+            var loggedInUserId = App.User.UserId;
+
+            bw.DoWork += delegate
+            {
+                BusinessObjects.Data.TransactionData.HandleRefactoring(CashResult.UserId, givedBack, loggedInUserId);
+            };
+
+            bw.RunWorkerCompleted += delegate
+            {
+                IsBusy = false;
+            };
+
+            IsBusy = true;
+            bw.RunWorkerAsync();
         }
 
         private void txtCashOut_GotFocus(object sender, RoutedEventArgs e)

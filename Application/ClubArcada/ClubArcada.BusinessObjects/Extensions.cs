@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +13,22 @@ namespace ClubArcada.BusinessObjects
 {
     public static class Extensions
     {
-        public static void Raise(this PropertyChangedEventHandler helper, object thing, string name)
+        public static void Raise<T>(this PropertyChangedEventHandler handler, Expression<Func<T>> propertyExpression)
         {
-            if (helper != null)
+            if (handler != null)
             {
-                helper(thing, new PropertyChangedEventArgs(name));
+                var body = propertyExpression.Body as MemberExpression;
+                if (body == null)
+                    throw new ArgumentException("'propertyExpression' should be a member expression");
+
+                var expression = body.Expression as ConstantExpression;
+                if (expression == null)
+                    throw new ArgumentException("'propertyExpression' body should be a constant expression");
+
+                object target = Expression.Lambda(expression).Compile().DynamicInvoke();
+
+                var e = new PropertyChangedEventArgs(body.Member.Name);
+                handler(target, e);
             }
         }
 
@@ -68,6 +80,34 @@ namespace ClubArcada.BusinessObjects
                 return 0;
 
             return Math.Abs(val.Value);
+        }
+
+        public static eTransactionType GetOposite(this eTransactionType value)
+        {
+            if (value == eTransactionType.Bar)
+            {
+                return eTransactionType.BarReturned;
+            }
+            else if (value == eTransactionType.CashGame)
+            {
+                return eTransactionType.CashGameReturned;
+            }
+            else if (value == eTransactionType.NotSet)
+            {
+                return eTransactionType.Returned;
+            }
+            else if (value == eTransactionType.Tournament)
+            {
+                return eTransactionType.TournamentReturned;
+            }
+            else if (value == eTransactionType.Bonus)
+            {
+                return eTransactionType.BonusReturned;
+            }
+            else
+            {
+                throw new NotImplementedException("Must be (-)");
+            }
         }
     }
 }

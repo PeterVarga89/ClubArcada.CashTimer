@@ -48,6 +48,7 @@
     <Compile Include="DataClasses\PartialClasses\CashResult.cs" />
     <Compile Include="DataClasses\PartialClasses\CashTable.cs" />
     <Compile Include="DataClasses\PartialClasses\Tournament.cs" />
+    <Compile Include="DataClasses\PartialClasses\Transaction.cs" />
     <Compile Include="DataClasses\PKDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -69,7 +70,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ClubArcada.Mailer\ClubArcada.Mailer.csproj">
+      <Project>{fa36ede3-082c-400b-b577-d4c629ff77a3}</Project>
+      <Name>ClubArcada.Mailer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="DataClasses\PKDB.dbml">

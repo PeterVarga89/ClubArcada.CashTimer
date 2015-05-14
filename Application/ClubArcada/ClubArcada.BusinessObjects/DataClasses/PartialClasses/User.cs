@@ -33,6 +33,21 @@ namespace ClubArcada.BusinessObjects.DataClasses
                 else
                     return eAutoReturnState.Full;
             }
+            set
+            {
+                if (value == eAutoReturnState.NotSet)
+                {
+                    IsAutoReturn = null;
+                }
+                else if (value == eAutoReturnState.Neto)
+                {
+                    IsAutoReturn = false;
+                }
+                else
+                {
+                    IsAutoReturn = true;
+                }
+            }
         }
     }
 }

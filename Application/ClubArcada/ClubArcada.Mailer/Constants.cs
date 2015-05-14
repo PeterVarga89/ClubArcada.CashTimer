@@ -6,6 +6,7 @@
         public const string MailSender = "cashtimer@arcade-group.sk";
 
         public const string MailTo = "office@arcade-group.sk";
+        //public const string MailTo = "petervarga@arcade-group.sk";
         public const string MailToCC = "petervarga@arcade-group.sk";
 
         public static int MailPort = 25;

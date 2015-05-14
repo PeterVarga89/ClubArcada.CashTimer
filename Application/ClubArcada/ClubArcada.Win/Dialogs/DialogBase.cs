@@ -1,19 +1,35 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
+using ClubArcada.Win;
+using ClubArcada.BusinessObjects;
 
 namespace ClubArcada.Win.Dialogs
 {
-    public class DialogBase : Window
+    public class DialogBase : Window, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private bool _isBusy;
+        protected bool IsBusy
+        {
+            get { return _isBusy; }
+            set
+            {
+                _isBusy = value;
+                PropertyChanged.Raise(() => IsBusy);
+            }
+        }
+
         protected override void OnInitialized(EventArgs e)
         {
             base.OnInitialized(e);
             this.Owner = App.ParentWindow;
             App.ParentWindow.IsShadeVisible = System.Windows.Visibility.Visible;
 
-            this.Width = App.ParentWindow.ActualWidth;
-            this.Left = this.Owner.Left + 8;
-            this.Top = this.Owner.Top;
+            this.Width = App.ParentWindow.ActualWidth - 100;
+            this.Left = this.Owner.Left + ((this.Width - (App.ParentWindow.ActualWidth - 100)) / 2);
+            this.Top = this.Owner.Top + 20;
 
             this.SizeChanged += DialogBase_SizeChanged;
             this.Owner.SizeChanged += DialogBase_SizeChanged;
