@@ -16,4 +16,5 @@ obj
 *.bak
 *.user
 *.xap
+*.dbml
 *Publish.xml

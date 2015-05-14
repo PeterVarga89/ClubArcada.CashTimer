@@ -522,7 +522,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Window}">
                     <Grid>
-                        <Border Background="#2C0000" Padding="0,2,0,6" CornerRadius="0,0,4,4" BorderBrush="DarkGray" BorderThickness="0,1,0,1">
+                        <Border Background="#2C0000" Padding="0,2,0,6" CornerRadius="5" BorderBrush="Silver" BorderThickness="2">
                             <Grid Background="Transparent">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="70"></RowDefinition>
@@ -539,7 +539,7 @@
                                     <TextBlock Text="{TemplateBinding Title}" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0" Margin="10,0,0,0" />
                                 </Border>
 
-                                <ContentPresenter Grid.Row="1" />
+                                <ContentPresenter Margin="20,0,20,0" Grid.Row="1" />
                             </Grid>
                         </Border>
                     </Grid>

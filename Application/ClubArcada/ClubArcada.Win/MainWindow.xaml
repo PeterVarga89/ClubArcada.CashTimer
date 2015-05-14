@@ -21,7 +21,9 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <Image Name="img_bg" Grid.RowSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <Viewbox Stretch="UniformToFill" Grid.RowSpan="3">
+        <Image Name="img_bg"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        </Viewbox>
         <!--HEADER-->
         <Grid Background="Transparent" Grid.Row="0">
             <StackPanel Orientation="Horizontal">

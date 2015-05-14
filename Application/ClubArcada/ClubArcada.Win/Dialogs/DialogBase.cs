@@ -25,11 +25,11 @@ namespace ClubArcada.Win.Dialogs
         {
             base.OnInitialized(e);
             this.Owner = App.ParentWindow;
+            this.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+
             App.ParentWindow.IsShadeVisible = System.Windows.Visibility.Visible;
 
-            this.Width = App.ParentWindow.ActualWidth - 100;
-            this.Left = this.Owner.Left + ((this.Width - (App.ParentWindow.ActualWidth - 100)) / 2);
-            this.Top = this.Owner.Top + 20;
+            this.Width = this.Owner.ActualWidth  * 0.8;
 
             this.SizeChanged += DialogBase_SizeChanged;
             this.Owner.SizeChanged += DialogBase_SizeChanged;
@@ -37,9 +37,7 @@ namespace ClubArcada.Win.Dialogs
 
         private void DialogBase_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            this.Width = App.ParentWindow.ActualWidth;
-            this.Left = this.Owner.Left + 8;
-            this.Top = this.Owner.Top;
+            this.Width = this.Owner.ActualWidth - 200;
         }
 
         protected override void OnClosed(EventArgs e)
