@@ -44,12 +44,16 @@ namespace ClubArcada.Win.Controls
 
         private void Timer_Tick(object sender, System.EventArgs e)
         {
+            //NORMAL
             //Result.Duration = Result.Duration + (int)Result.GameType;
-
              
             Result.MinutesPlayed++;
 
-            Result.Duration = Result.MinutesPlayed / 60;
+            //CASHBACK
+            Result.Duration = Result.MinutesPlayed;
+
+            //BENDIK
+            //Result.Duration = Result.MinutesPlayed / 60;
 
             txtTimer.Text = string.Format("{0} mins", Result.MinutesPlayed);
             PropertyChanged.Raise(() => Result);
